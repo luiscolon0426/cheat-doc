@@ -1,0 +1,15 @@
+{
+  "title": "CSS",
+  "snippets": [
+    {
+      "title": "Center an Element",
+      "description": "Use Flexbox to center content.",
+      "code": "display: flex;\njustify-content: center;\nalign-items: center;"
+    },
+    {
+      "title": "Responsive Text",
+      "description": "Set font size using vw units.",
+      "code": "font-size: 5vw;"
+    }
+  ]
+}

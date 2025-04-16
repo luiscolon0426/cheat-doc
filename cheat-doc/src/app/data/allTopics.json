@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "html",
+    "title": "HTML",
+    "description": "Markup for the web",
+    "icon": "⌨️",
+    "tags": ["markup", "web", "structure"],
+    "preview": {
+      "Basic Structure": ["doctype", "html", "head", "body"],
+      "Content Tags": ["p", "h1-h6", "a", "img", "ul", "ol", "li"],
+      "Forms": ["form", "input", "label", "textarea", "button"]
+    }
+  },
+  {
+    "slug": "css",
+    "title": "CSS",
+    "description": "Style your pages",
+    "icon": "⌨️",
+    "tags": ["style", "design", "responsive"],
+    "preview": {
+      "Selectors": ["element", "class", "id", "attribute", "pseudo"],
+      "Box Model": ["margin", "border", "padding", "content"],
+      "Layout": ["flexbox", "grid", "position", "float", "z-index"]
+    }
+  },
+  {
+    "slug": "sass",
+    "title": "Sass",
+    "description": "Programming | css",
+    "icon": "/icons/sass.svg",
+    "preview": {
+      "Sass Basics": [
+        "introduction",
+        "variables",
+        "interpolation",
+        "mixins",
+        "extend",
+        "@import"
+      ],
+      "Sass Mixins": ["parameters", "default values", "default variable"],
+      "Sass Loops": ["for loops", "each loops", "while loops"]
+    }
+  }
+]
