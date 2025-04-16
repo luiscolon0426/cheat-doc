@@ -1,55 +1,47 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import SearchModal from "./searchModal";
+import { Sun, Moon } from "lucide-react";
 
 export default function Header() {
-  const [showModal, setShowModal] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
-  // ⌘K shortcut opens the modal
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        setShowModal((prev) => !prev);
-      }
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
 
   return (
-    <>
-      <header className="sticky top-0 z-50 bg-[#0e1525] border-b border-gray-800 px-6 py-4 flex justify-between items-center">
-        <h1 className="text-white text-xl font-bold">
-          <span className="text-green-400">Quick</span>Ref
-          <span className="text-blue-400">.ME</span>
-        </h1>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0e1525] border-b border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <Link href="/" className="text-xl font-bold text-green-400">
+          Cheat<span className="text-white">Doc</span>.ME
+        </Link>
 
-        <button
-          onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-sm text-gray-300 rounded-md hover:bg-gray-700 transition"
-        >
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
+        <div className="flex items-center gap-2">
+          <button
+            className="bg-gray-800 text-sm text-gray-300 px-3 py-1 rounded hover:bg-gray-700"
+            onClick={() => {
+              const event = new KeyboardEvent("keydown", {
+                key: "k",
+                metaKey: true,
+              });
+              window.dispatchEvent(event);
+            }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-4.35-4.35M5 11a6 6 0 1112 0 6 6 0 01-12 0z"
-            />
-          </svg>
-          Search for cheatsheet…
-          <kbd className="ml-auto bg-gray-600 px-2 py-0.5 rounded text-xs">
-            ⌘ K
-          </kbd>
-        </button>
-      </header>
-
-      {showModal && <SearchModal close={() => setShowModal(false)} />}
-    </>
+            ⌘K
+          </button>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="ml-2 p-2 rounded bg-gray-700 hover:bg-gray-600 transition"
+          >
+            {darkMode ? (
+              <Sun className="w-4 h-4 text-yellow-300" />
+            ) : (
+              <Moon className="w-4 h-4 text-blue-300" />
+            )}
+          </button>
+        </div>
+      </div>
+    </header>
   );
 }
