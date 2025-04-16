@@ -1,11 +1,37 @@
 "use client";
 import Head from "next/head";
 import Header from "./components/Header";
+import { useEffect, useState } from "react";
+import SearchModal from "./components/searchModal";
 
 export default function Home() {
+  const [openModal, setOpenModal] = useState(false);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      const isMac = navigator.platform.toUpperCase().includes("MAC");
+      if (
+        (isMac && e.metaKey && e.key === "k") ||
+        (!isMac && e.ctrlKey && e.key === "k")
+      ) {
+        e.preventDefault();
+        setOpenModal(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
   return (
     <>
       <main className="bg-[#0e1525] min-h-screen text-white">
+        {/* Header */}
+
+        {openModal && (
+          <SearchModal close={() => setOpenModal(false)} open={false} />
+        )}
+
         {/* Hero Section */}
         <div className="text-center py-20 px-4">
           <h1 className="text-4xl sm:text-5xl font-bold">Quick Reference</h1>
@@ -14,18 +40,10 @@ export default function Home() {
             like you.
           </p>
 
-          {/* Optional Search Prompt (can be removed if header search is enough) */}
           <div className="mt-8 max-w-md mx-auto">
             <div
               className="w-full px-4 py-2 rounded-md bg-[#1f2937] text-white text-left placeholder-gray-400 border border-gray-600 cursor-pointer hover:border-blue-500 transition"
-              onClick={() => {
-                const event = new KeyboardEvent("keydown", {
-                  key: "k",
-                  metaKey: true,
-                  bubbles: true,
-                });
-                window.dispatchEvent(event);
-              }}
+              onClick={() => setOpenModal(true)}
             >
               <span className="opacity-60">Search for cheatsheet...</span>
               <kbd className="float-right bg-gray-600 px-2 py-0.5 rounded text-xs">
@@ -50,7 +68,7 @@ export default function Home() {
               { name: "Node.js", color: "bg-green-600" },
             ].map(({ name, color }) => (
               <a
-                href={`/${name.toLowerCase().replace(".", "")}`} // handle "Node.js" → "nodejs"
+                href={`/${name.toLowerCase().replace(".", "")}`}
                 key={name}
                 className={`block rounded-lg text-center py-4 px-2 font-semibold text-white hover:opacity-70 transition ${color}`}
               >
@@ -60,6 +78,9 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      {/* Search Modal */}
+      <SearchModal open={openModal} close={() => setOpenModal(false)} />
     </>
   );
 }
