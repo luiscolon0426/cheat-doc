@@ -4,8 +4,10 @@ import CodeBlock from "../components/CodeBlock";
 
 type Snippet = {
   title: string;
-  description: string;
+  description?: string;
   code: string;
+  tag?: string;
+  table?: [string, string][];
 };
 
 type TopicProps = {
@@ -32,14 +34,23 @@ export default async function TopicPage({ params }: TopicProps) {
 
   return (
     <main className="min-h-screen bg-[#0e1525] text-white p-6">
-      <h1 className="text-3xl font-bold mb-4">{parsed.title} Cheatsheet</h1>
-      {parsed.snippets?.length > 0 ? (
-        parsed.snippets.map((snippet: Snippet, i: number) => (
-          <CodeBlock key={i} {...snippet} />
-        ))
-      ) : (
-        <p className="text-gray-400">No snippets available for this topic.</p>
-      )}
+      <h1 className="text-3xl font-bold mb-8">{parsed.title} Cheatsheet</h1>
+
+      {parsed.snippets.map((section: any, i: number) => (
+        <div key={i} className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4">{section.section}</h2>
+
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {section.cards.map((snippet: Snippet, j: number) => (
+              <CodeBlock
+                key={`${i}-${j}`}
+                {...snippet}
+                description={snippet.description || ""}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
     </main>
   );
 }

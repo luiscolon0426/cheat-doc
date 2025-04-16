@@ -6,7 +6,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const GITHUB_OWNER = "luiscolon0426"; // Replace with your GitHub username
-  const GITHUB_REPO = "https://github.com/luiscolon0426/cheat-doc"; // Replace with your repository name
+  const GITHUB_REPO = "https://github.com/luiscolon0426/cheat-doc";
 
   try {
     const response = await fetch(
