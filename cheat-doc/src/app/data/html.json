@@ -48,30 +48,57 @@
       ]
     },
     {
-      "section": "HTML Tags",
+      "section": "HTML5 Tags",
       "cards": [
         {
-          "title": "Headings",
-          "tag": "Headings",
-          "code": "<h1>This is Heading 1</h1>\n<h2>This is Heading 2</h2>\n<h3>This is Heading 3</h3>\n<h4>This is Heading 4</h4>\n<h5>This is Heading 5</h5>\n<h6>This is Heading 6</h6>",
-          "description": "You should only have one h1 on your page"
+          "title": "Document",
+          "tag": "Document",
+          "code": "<body>\n  <header>\n    <nav>...</nav>\n  </header>\n  <main>\n    <h1>QuickRef.ME</h1>\n  </main>\n  <footer>\n    <p>©2023 QuickRef.ME</p>\n  </footer>\n</body>"
         },
         {
-          "title": "Section Divisions",
-          "tag": "Section Divisions",
-          "code": "<div></div>\n<span></span>\n<p></p>\n<br>\n<hr>",
-          "description": "Tags used to divide your page into sections"
+          "title": "Header Navigation",
+          "tag": "Header Navigation",
+          "code": "<header>\n  <nav>\n    <ul>\n      <li><a href=\"#\">Edit Page</a></li>\n      <li><a href=\"#\">Twitter</a></li>\n      <li><a href=\"#\">Facebook</a></li>\n    </ul>\n  </nav>\n</header>"
         },
         {
-          "title": "Text Formatting",
-          "tag": "Text Formatting Tags",
-          "code": "<b>Bold Text</b>\n<strong>This text is important</strong>\n<i>Italic Text</i>\n<em>This text is emphasized</em>\n<u>Underline Text</u>\n<pre>Pre-formatted Text</pre>\n<code>Source code</code>\n<del>Deleted text</del>\n<mark>Highlighted text (HTML5)</mark>\n<ins>Inserted text</ins>\n<sup>Makes text superscripted</sup>\n<sub>Makes text subscripted</sub>\n<small>Makes text smaller</small>\n<kbd>Ctrl</kbd>\n<blockquote>Text Block Quote</blockquote>"
+          "title": "HTML5 Video",
+          "tag": "HTML5 Video",
+          "code": "<video controls width=\"100%\">\n  <source src=\"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4\" type=\"video/mp4\">\n  Sorry, your browser doesn't support embedded videos.\n</video>",
+          "description": "↳ Preview"
         },
         {
-          "title": "Inline Frame",
-          "tag": "Inline Frame",
-          "code": "<iframe title=\"New York\" width=\"342\" height=\"306\" id=\"gmap_canvas\" src=\"https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed\" scrolling=\"no\"></iframe>",
-          "description": "See: The Inline Frame element"
+          "title": "HTML5 Audio",
+          "tag": "HTML5 Audio",
+          "code": "<audio controls>\n  <source src=\"https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3\">\n  Your browser does not support the audio element.\n</audio>",
+          "description": "↳ Preview"
+        },
+        {
+          "title": "HTML5 Tags",
+          "tag": "HTML5 Tags",
+          "table": [
+            ["article", "Content that’s independent"],
+            ["aside", "Secondary content"],
+            ["audio", "Embeds a sound, or an audio stream"],
+            ["bdi", "The Bidirectional Isolate element"],
+            ["canvas", "Draw graphics via JavaScript"],
+            ["data", "Machine readable content"],
+            ["datalist", "A set of pre-defined options"],
+            ["details", "Additional information"],
+            ["dialog", "A dialog box or sub-window"],
+            ["embed", "Embeds external application"],
+            ["figcaption", "A caption or legend for a figure"],
+            ["figure", "A figure illustrated"],
+            ["footer", "Footer or least important"],
+            ["header", "Masthead or important information"],
+            ["main", "The main content of the document"],
+            ["mark", "Text highlighted"],
+            ["meter", "A scalar value within a known range"],
+            ["nav", "A section of navigation links"],
+            ["output", "The result of a calculation"],
+            ["picture", "A container for multiple image sources"],
+            ["progress", "The completion progress of a task"],
+            ["rp", "Provides fall-back parenthesis"]
+          ]
         }
       ]
     }
