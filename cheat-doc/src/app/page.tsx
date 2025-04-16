@@ -1,7 +1,6 @@
 "use client";
-import Head from "next/head";
-import Header from "./components/Header";
 import { useEffect, useState } from "react";
+import Header from "./components/Header";
 import SearchModal from "./components/searchModal";
 
 export default function Home() {
@@ -25,13 +24,13 @@ export default function Home() {
 
   return (
     <>
-      <main className="bg-[#0e1525] min-h-screen text-white">
-        {/* Header */}
+      <Header onSearchClick={() => setOpenModal(true)} />
 
-        {openModal && (
-          <SearchModal close={() => setOpenModal(false)} open={false} />
-        )}
+      {openModal && (
+        <SearchModal open={openModal} close={() => setOpenModal(false)} />
+      )}
 
+      <main className="bg-[#0e1525] min-h-screen text-white pt-24">
         {/* Hero Section */}
         <div className="text-center py-20 px-4">
           <h1 className="text-4xl sm:text-5xl font-bold">Quick Reference</h1>
@@ -40,6 +39,7 @@ export default function Home() {
             like you.
           </p>
 
+          {/* Search Field */}
           <div className="mt-8 max-w-md mx-auto">
             <div
               className="w-full px-4 py-2 rounded-md bg-[#1f2937] text-white text-left placeholder-gray-400 border border-gray-600 cursor-pointer hover:border-blue-500 transition"
@@ -78,9 +78,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-
-      {/* Search Modal */}
-      <SearchModal open={openModal} close={() => setOpenModal(false)} />
     </>
   );
 }
