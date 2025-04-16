@@ -1,0 +1,10 @@
+{
+  "title": "HTML",
+  "snippets": [
+    {
+      "title": "Basic HTML Template",
+      "description": "A boilerplate HTML5 document.",
+      "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>My Page</title>\n  </head>\n  <body>\n  </body>\n</html>"
+    }
+  ]
+}
