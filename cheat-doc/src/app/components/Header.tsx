@@ -1,14 +1,25 @@
+// components/Header.tsx
 "use client";
 import Link from "next/link";
-import { Sun, Moon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Github, Search } from "lucide-react";
 
-export default function Header({
-  onSearchClick,
-}: {
-  onSearchClick: () => void;
-}) {
-  const [darkMode, setDarkMode] = useState(true);
+export default function Header() {
+  const [stars, setStars] = useState<number | null>(null);
+
+  useEffect(() => {
+    const fetchStars = async () => {
+      try {
+        const response = await fetch("/api/github-stars");
+        const data = await response.json();
+        setStars(data.stars);
+      } catch (error) {
+        console.error("Error fetching star count:", error);
+      }
+    };
+
+    fetchStars();
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0e1525] border-b border-gray-800">
@@ -18,28 +29,46 @@ export default function Header({
           Cheat<span className="text-white">Doc</span>.ME
         </Link>
 
-        {/* Actions */}
-        <div className="flex items-center gap-2">
-          {/* Search Trigger */}
-          <div
-            onClick={onSearchClick}
-            className="bg-gray-800 text-sm text-gray-300 px-3 py-1 rounded hover:bg-gray-700 cursor-pointer flex items-center gap-2"
-          >
-            🔍 <span className="hidden sm:inline">Search</span>
-            <kbd className="bg-gray-600 px-2 py-0.5 rounded text-xs">⌘ K</kbd>
-          </div>
-
-          {/* Dark Mode Toggle */}
+        {/* Right Controls */}
+        <div className="flex items-center gap-4">
+          {/* Search */}
           <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="ml-2 p-2 rounded bg-gray-700 hover:bg-gray-600 transition"
+            className="flex items-center gap-1 bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded text-gray-300 text-sm transition"
+            onClick={() =>
+              window.dispatchEvent(
+                new KeyboardEvent("keydown", {
+                  key: "k",
+                  metaKey: true,
+                })
+              )
+            }
           >
-            {darkMode ? (
-              <Sun className="w-4 h-4 text-yellow-300" />
-            ) : (
-              <Moon className="w-4 h-4 text-blue-300" />
-            )}
+            <Search size={14} />
+            <span>Search</span>
+            <kbd className="ml-2 bg-gray-600 px-1.5 py-0.5 rounded text-xs">
+              ⌘ K
+            </kbd>
           </button>
+
+          {/* GitHub Star */}
+          <a
+            href="https://github.com/luiscolon0426/cheat-doc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded text-gray-300 text-sm"
+          >
+            ⭐ Star {stars !== null ? `(${stars})` : ""}
+          </a>
+
+          {/* GitHub Icon */}
+          <a
+            href="https://github.com/luiscolon0426"
+            target="_blank"
+            className="text-gray-400 hover:text-white transition"
+            aria-label="GitHub"
+          >
+            <Github size={18} />
+          </a>
         </div>
       </div>
     </header>
