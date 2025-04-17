@@ -101,6 +101,161 @@
           ]
         }
       ]
+    },
+    {
+      "section": "HTML Tables",
+      "cards": [
+        {
+          "title": "Table Example",
+          "tag": "Table Example",
+          "code": "<table>\n  <thead>\n    <tr>\n      <td>name</td>\n      <td>age</td>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Roberta</td>\n      <td>39</td>\n    </tr>\n    <tr>\n      <td>Oliver</td>\n      <td>25</td>\n    </tr>\n  </tbody>\n</table>"
+        },
+        {
+          "title": "HTML Table Tags",
+          "tag": "HTML Table Tags",
+          "code": "",
+          "table": [
+            ["<table>", "Defines a table"],
+            ["<th>", "Defines a header cell in a table"],
+            ["<tr>", "Defines a row in a table"],
+            ["<td>", "Defines a cell in a table"],
+            ["<caption>", "Defines a table caption"],
+            ["<colgroup>", "Defines a group of columns"],
+            ["<col>", "Defines a column within a table"],
+            ["<thead>", "Groups the header content"],
+            ["<tbody>", "Groups the body content"],
+            ["<tfoot>", "Groups the footer content"]
+          ],
+          "description": "See: td#Attributes"
+        },
+        {
+          "title": "<td> Attributes",
+          "tag": "<td> Attributes",
+          "code": "",
+          "table": [
+            ["colspan", "Number of columns a cell should span"],
+            ["headers", "One or more header cells a cell is related to"],
+            ["rowspan", "Number of rows a cell should span"]
+          ],
+          "description": "See: td#Attributes"
+        },
+        {
+          "title": "<th> Attributes",
+          "tag": "<th> Attributes",
+          "code": "",
+          "table": [
+            ["colspan", "Number of columns a cell should span"],
+            ["headers", "One or more header cells a cell is related to"],
+            ["rowspan", "Number of rows a cell should span"],
+            ["abbr", "Description of the cell's content"],
+            ["scope", "The header element relates to"]
+          ],
+          "description": "See: th#Attributes"
+        }
+      ]
+    },
+    {
+      "section": "HTML Lists",
+      "cards": [
+        {
+          "title": "Unordered List",
+          "tag": "Unordered list",
+          "code": "<ul>\n  <li>I'm an item</li>\n  <li>I'm another item</li>\n  <li>I'm another item</li>\n</ul>",
+          "description": "See: The Unordered List element"
+        },
+        {
+          "title": "Ordered List",
+          "tag": "Ordered list",
+          "code": "<ol>\n  <li>I'm the first item</li>\n  <li>I'm the second item</li>\n  <li>I'm the third item</li>\n</ol>",
+          "description": "See: The Ordered List element"
+        },
+        {
+          "title": "Definition List",
+          "tag": "Definition list",
+          "code": "<dl>\n  <dt>A Term</dt>\n  <dd>Definition of a term</dd>\n  <dt>Another Term</dt>\n  <dd>Definition of another term</dd>\n</dl>",
+          "description": "See: The Description List element"
+        }
+      ]
+    },
+    {
+      "section": "HTML Forms",
+      "cards": [
+        {
+          "title": "Form Element",
+          "tag": "Form tags",
+          "code": "<form method=\"POST\" action=\"api/login\">\n  <label for=\"mail\">Email: </label>\n  <input type=\"email\" id=\"mail\" name=\"mail\" />\n  <br/>\n  <label for=\"pw\">Password: </label>\n  <input type=\"password\" id=\"pw\" name=\"pw\" />\n  <br/>\n  <input type=\"submit\" value=\"Login\" />\n  <br/>\n  <input type=\"checkbox\" id=\"ck\" name=\"ck\" />\n  <label for=\"ck\">Remember me</label>\n</form>",
+          "description": "The HTML <form> element is used to collect and send information to an external source."
+        },
+        {
+          "title": "Form Attributes",
+          "tag": "Form Attribute",
+          "code": "",
+          "table": [
+            ["name", "Name of form for scripting"],
+            ["action", "URL of form script"],
+            ["method", "HTTP method, POST / GET (default)"],
+            ["enctype", "Media type, See enctype"],
+            ["onsubmit", "Runs when the form was submit"],
+            ["onreset", "Runs when the form was reset"]
+          ]
+        },
+        {
+          "title": "Label Tags",
+          "tag": "Label tags",
+          "code": "<!-- Nested label -->\n<label>Click me\n  <input type=\"text\" id=\"user\" name=\"name\"/>\n</label>\n\n<!-- 'for' attribute -->\n<label for=\"user\">Click me</label>\n<input id=\"user\" type=\"text\" name=\"name\"/>",
+          "description": "for in a label references an input's id attribute"
+        },
+        {
+          "title": "Input Text Field",
+          "tag": "Input tags",
+          "code": "<label for=\"Name\">Name:</label>\n<input type=\"text\" name=\"Name\" id=\"\" />",
+          "description": "See: HTML input Tags"
+        },
+        {
+          "title": "Textarea Tags",
+          "tag": "Textarea tags",
+          "code": "<textarea rows=\"2\" cols=\"30\" name=\"address\" id=\"address\"></textarea>",
+          "description": "Textarea is a multiple-line text input control"
+        },
+        {
+          "title": "Radio Buttons",
+          "tag": "Radio Buttons",
+          "code": "<input type=\"radio\" name=\"gender\" id=\"m\" />\n<label for=\"m\">Male</label>\n<input type=\"radio\" name=\"gender\" id=\"f\" />\n<label for=\"f\">Female</label>"
+        },
+        {
+          "title": "Checkboxes",
+          "tag": "Checkboxes",
+          "code": "<input type=\"checkbox\" name=\"s\" id=\"soc\" />\n<label for=\"soc\">Soccer</label>\n<input type=\"checkbox\" name=\"s\" id=\"bas\" />\n<label for=\"bas\">Baseball</label>"
+        },
+        {
+          "title": "Select Tags",
+          "tag": "Select tags",
+          "code": "<label for=\"city\">City:</label>\n<select name=\"city\" id=\"city\">\n  <option value=\"1\">Sydney</option>\n  <option value=\"2\">Melbourne</option>\n  <option value=\"3\">Cromwell</option>\n</select>"
+        }
+      ]
+    },
+    {
+      "section": "HTML Media",
+      "cards": [
+        {
+          "title": "Image",
+          "tag": "Image",
+          "code": "<img src=\"\" alt=\"\" />",
+          "description": "See: The Image element"
+        },
+        {
+          "title": "Audio",
+          "tag": "Audio",
+          "code": "<audio src=\"\" controls></audio>",
+          "description": "See: The Audio element"
+        },
+        {
+          "title": "Video",
+          "tag": "Video",
+          "code": "<video src=\"\" controls></video>",
+          "description": "See: The Video element"
+        }
+      ]
     }
   ]
 }
