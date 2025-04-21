@@ -69,6 +69,46 @@
           "code": "/* This is a single line comment */\n\n/* This is a\n   multi-line comment */"
         }
       ]
+    },
+    {
+      "section": "Fonts & Colors",
+      "cards": [
+        {
+          "title": "Font shorthand",
+          "code": "font: italic 400 14px / 1.5 sans-serif;",
+          "description": "Shorthand for font-style, weight, size, line-height, and font-family."
+        },
+        {
+          "title": "Font family example",
+          "code": "font-family: Arial, sans-serif;\nfont-size: 12pt;\nletter-spacing: 0.02em;",
+          "description": "Basic font-family with font size and spacing."
+        },
+        {
+          "title": "@font-face",
+          "code": "@font-face {\n  font-family: 'Glegoo';\n  src: url('../Glegoo.woff');\n}",
+          "description": "Use custom fonts with @font-face."
+        },
+        {
+          "title": "Text transform",
+          "code": "/* Hello */\ntext-transform: capitalize;\n\n/* HELLO */\ntext-transform: uppercase;\n\n/* hello */\ntext-transform: lowercase;",
+          "description": "Control capitalization of text."
+        },
+        {
+          "title": "Named colors",
+          "code": "color: red;\ncolor: orange;\ncolor: tan;\ncolor: rebeccapurple;",
+          "description": "Named colors supported by CSS."
+        },
+        {
+          "title": "Hexadecimal colors",
+          "code": "color: #090;\ncolor: #009900;\ncolor: #09a;\ncolor: #009900aa;",
+          "description": "Hex color codes. The last version uses transparency."
+        },
+        {
+          "title": "RGB / RGBA colors",
+          "code": "color: rgb(34, 12, 64, 0.6);\ncolor: rgba(34, 12, 64, 0.6);\ncolor: rgb(34 12 64 / 0.6);\ncolor: rgba(34 12 64 / 0.3);\ncolor: rgb(34.0 12 64 / 60%);\ncolor: rgba(34.6 12 64 / 30%);",
+          "description": "RGB and RGBA values with various syntax styles and transparency."
+        }
+      ]
     }
   ]
 }
