@@ -1,0 +1,218 @@
+{
+  "title": "JavaScript",
+  "tags": ["js"],
+  "snippets": [
+    {
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "Console Logging",
+          "code": "console.log(\"Hello world!\");\nconsole.warn(\"hello %s\", \"CheatSheets.zip\");\nconsole.error(new Error(\"Oops!\"));"
+        },
+        {
+          "title": "Numbers & Variables",
+          "code": "let amount = 6;\nlet price = 4.99;\n\nlet x = null;\nlet name = \"Tammy\";\nconst found = false;\n\nconsole.log(name, found, x);\n\nvar a;\nconsole.log(a); // undefined"
+        },
+        {
+          "title": "Strings",
+          "code": "let single = \"Wheres my bandit hat?\";\nconsole.log(single.length); // 21"
+        },
+        {
+          "title": "Comments",
+          "code": "// This line is a comment\n/*\n  Multi-line\n  Comment\n*/"
+        },
+        {
+          "title": "Operators",
+          "code": "5 + 5 // 10\n10 - 5 // 5\n5 * 10 // 50\n10 / 5 // 2\n10 % 5 // 0"
+        },
+        {
+          "title": "Assignment Operators",
+          "code": "let number = 100;\nnumber = number + 10;\nnumber += 10;\nconsole.log(number); // 120"
+        },
+        {
+          "title": "String Interpolation",
+          "code": "let age = 7;\n`Tommy is ${age} years old.`;"
+        },
+        {
+          "title": "let and const",
+          "code": "let count;\nconsole.log(count); // undefined\ncount = 10;\nconsole.log(count);\n\nconst numberOfColumns = 4;\n// numberOfColumns = 8; // ❌ TypeError"
+        }
+      ]
+    },
+    {
+      "section": "Conditionals",
+      "cards": [
+        {
+          "title": "if Statement",
+          "code": "const isMailSent = true;\nif (isMailSent) {\n  console.log(\"Mail sent to recipient\");\n}"
+        },
+        {
+          "title": "Ternary Operator",
+          "code": "let x = 1;\nconst result = x == 1 ? true : false;"
+        },
+        {
+          "title": "else if",
+          "code": "const size = 10;\nif (size > 100) {\n  console.log(\"Big\");\n} else if (size > 20) {\n  console.log(\"Medium\");\n} else if (size > 4) {\n  console.log(\"Small\");\n} else {\n  console.log(\"Tiny\");\n}"
+        },
+        {
+          "title": "switch Statement",
+          "code": "const food = \"salad\";\nswitch (food) {\n  case \"oyster\":\n    console.log(\"The taste of the sea\");\n    break;\n  case \"pizza\":\n    console.log(\"A delicious pie\");\n    break;\n  default:\n    console.log(\"Enjoy your meal\");\n}"
+        },
+        {
+          "title": "Comparison & Logical Operators",
+          "code": "1 > 3; // false\n3 > 1; // true\n250 >= 250; // true\n1 === 1; // true\n1 === \"1\"; // false\n\ntrue || false; // true\ntrue && true; // true\n!true; // false"
+        },
+        {
+          "title": "Nullish Coalescing (??)",
+          "code": "null ?? \"I win\";       // 'I win'\nundefined ?? \"Me too\";  // 'Me too'\nfalse ?? \"I lose\";      // false\n0 ?? \"I lose again\";    // 0"
+        },
+        {
+          "title": "== vs ===",
+          "code": "0 == false;        // true\n0 === false;       // false\n1 == \"1\";         // true\n1 === \"1\";        // false\nnull == undefined; // true\nnull === undefined; // false"
+        }
+      ]
+    },
+    {
+      "section": "Functions",
+      "cards": [
+        {
+          "title": "Function Declaration",
+          "code": "function sum(num1, num2) {\n  return num1 + num2;\n}\nsum(3, 6);"
+        },
+        {
+          "title": "Anonymous & Arrow Functions",
+          "code": "const rocketToMars = function () {\n  return \"BOOM!\";\n};\n\nconst printHello = () => {\n  console.log(\"hello\");\n};"
+        },
+        {
+          "title": "Concise Arrow Function",
+          "code": "const multiply = (a, b) => a * b;\nconsole.log(multiply(2, 30));"
+        },
+        {
+          "title": "Function Expressions & Parameters",
+          "code": "const dog = function () {\n  return \"Woof!\";\n};\n\nfunction sayHello(name) {\n  return `Hello, ${name}!`;\n}"
+        }
+      ]
+    },
+    {
+      "section": "Scope",
+      "cards": [
+        {
+          "title": "Block vs Function Scope",
+          "code": "for (let i = 0; i < 3; i++) {\n  // i scoped inside block\n}\n\nfor (var i = 0; i < 3; i++) {\n  // i accessible outside\n}"
+        },
+        {
+          "title": "Closures in Loops",
+          "code": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 10);\n}\n\nfor (let j = 0; j < 3; j++) {\n  setTimeout(() => console.log(j), 10);\n}"
+        }
+      ]
+    },
+    {
+      "section": "Arrays & Sets",
+      "cards": [
+        {
+          "title": "Array Basics",
+          "code": "const fruits = [\"apple\", \"orange\"];\nconst data = [1, \"chicken\", false];\nfruits.length; // 2"
+        },
+        {
+          "title": "Array Methods",
+          "code": "fruits.push(\"banana\");\nfruits.pop();\nfruits.shift();\nfruits.unshift(\"grape\");\nfruits.concat([\"kiwi\"]);"
+        },
+        {
+          "title": "Set Basics",
+          "code": "const mySet = new Set([1, true, \"hi\"]);\nmySet.add(\"new\");\nmySet.delete(\"hi\");\nmySet.has(1);"
+        }
+      ]
+    },
+    {
+      "section": "Loops",
+      "cards": [
+        {
+          "title": "Loop Types",
+          "code": "for (let i = 0; i < 4; i++) {}\nwhile (i < 5) {}\ndo {} while (i < 5);"
+        },
+        {
+          "title": "Loop Helpers",
+          "code": "for...of\nfor...in\nbreak;\ncontinue;"
+        }
+      ]
+    },
+    {
+      "section": "Iterators",
+      "cards": [
+        {
+          "title": "map / filter / reduce",
+          "code": "array.map(fn);\narray.filter(fn);\narray.reduce(fn);"
+        },
+        {
+          "title": "Callback Example",
+          "code": "const isEven = n => n % 2 === 0;\nfunction check(evenFunc, num) {\n  console.log(evenFunc(num));\n}"
+        }
+      ]
+    },
+    {
+      "section": "Objects",
+      "cards": [
+        {
+          "title": "Basic Object Access",
+          "code": "const apple = { color: \"green\" };\napple.color;"
+        },
+        {
+          "title": "Methods, this, and Shorthand",
+          "code": "const engine = {\n  start() { console.log(\"go\") },\n  sputter: () => console.log(\"...\"),\n};"
+        }
+      ]
+    },
+    {
+      "section": "Classes & Inheritance",
+      "cards": [
+        {
+          "title": "Class Basics",
+          "code": "class Dog {\n  constructor(name) {\n    this.name = name;\n  }\n  bark() {\n    console.log(\"woof\");\n  }\n}"
+        },
+        {
+          "title": "extends",
+          "code": "class Media {}\nclass Song extends Media {}"
+        }
+      ]
+    },
+    {
+      "section": "Modules",
+      "cards": [
+        {
+          "title": "ES Modules",
+          "code": "export function add() {}\nimport { add } from './math.js';"
+        },
+        {
+          "title": "CommonJS",
+          "code": "module.exports = { add }\nconst math = require('./math.js')"
+        }
+      ]
+    },
+    {
+      "section": "Promises & Async",
+      "cards": [
+        {
+          "title": "Promise Basics",
+          "code": "const p = new Promise((res, rej) => {...});\np.then(...).catch(...);"
+        },
+        {
+          "title": "Async / Await",
+          "code": "async function load() {\n  const res = await fetch(url);\n}"
+        }
+      ]
+    },
+    {
+      "section": "Requests",
+      "cards": [
+        {
+          "title": "fetch API",
+          "code": "fetch(url, {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify(data)\n})"
+        },
+        {
+          "title": "XHR",
+          "code": "const xhr = new XMLHttpRequest();\nxhr.open(\"GET\", \"/path\");\nxhr.send();"
+        }
+      ]
+    }
+  ]
+}

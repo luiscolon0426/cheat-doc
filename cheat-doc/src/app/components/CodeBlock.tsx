@@ -27,7 +27,7 @@ const detectLanguage = (tag?: string, title?: string): string => {
   if (ref.includes("java")) return "java";
   if (ref.includes("tsx")) return "tsx";
   if (ref.includes("jsx")) return "jsx";
-  return "html"; // fallback
+  return "html";
 };
 
 export default function CodeBlock({

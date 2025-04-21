@@ -1,0 +1,88 @@
+{
+  "title": "JSON",
+  "snippets": [
+    {
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "Basic Object",
+          "code": "{\n  \"name\": \"Jason\",\n  \"age\": 39,\n  \"married\": true,\n  \"children\": [\n    { \"name\": \"Tom\", \"age\": 9 },\n    { \"name\": \"Ava\", \"age\": 7 }\n  ]\n}"
+        },
+        {
+          "title": "Escape Characters",
+          "code": "{\n  \"msg\": \"Hi,\\n\\\"CheatSheets.zip\\\"\",\n  \"url\": \"https://cheatsheets.zip\"\n}"
+        },
+        {
+          "title": "Invalid String",
+          "code": "{ foo: \"bar\" } // ❌ invalid — keys must be in double quotes"
+        },
+        {
+          "title": "Valid Numbers",
+          "code": "{\n  \"positive\": 12,\n  \"negative\": -1,\n  \"fraction\": 10.25,\n  \"exponent\": 1.0e2,\n  \"zero\": 0\n}"
+        },
+        {
+          "title": "Invalid Number",
+          "code": "{ \"foo\": 0xff } // ❌ Hex is invalid in JSON"
+        }
+      ]
+    },
+    {
+      "section": "Data Structures",
+      "cards": [
+        {
+          "title": "Object",
+          "code": "{\n  \"color\": \"Purple\",\n  \"id\": \"210\",\n  \"composition\": { \"R\": 70, \"G\": 39, \"B\": 89 }\n}"
+        },
+        {
+          "title": "Array",
+          "code": "[1, 2, 3, 4, 5]"
+        },
+        {
+          "title": "Array of Objects",
+          "code": "{\n  \"children\": [\n    { \"name\": \"Jimmy\", \"age\": 15 },\n    { \"name\": \"Sammy\", \"age\": 12 }\n  ]\n}"
+        },
+        {
+          "title": "Object of Arrays",
+          "code": "{\n  \"attributes\": [\"a1\", \"a2\"],\n  \"methods\": [\"getter\", \"setter\"],\n  \"empty\": []\n}"
+        },
+        {
+          "title": "2D Array",
+          "code": "{\n  \"matrix\": [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9, 0]\n  ]\n}"
+        },
+        {
+          "title": "Object of Objects",
+          "code": "{\n  \"Mark\": { \"hr\": 65, \"avg\": 0.278 },\n  \"Sammy\": { \"hr\": 63, \"avg\": 0.288 }\n}"
+        },
+        {
+          "title": "Nested Object",
+          "code": "{\n  \"Jack\": {\n    \"id\": 1,\n    \"hobby\": [\"a\", \"b\"],\n    \"location\": { \"country\": \"A\", \"city\": \"A-A\" }\n  }\n}"
+        }
+      ]
+    },
+    {
+      "section": "Access in JavaScript",
+      "cards": [
+        {
+          "title": "Access Object",
+          "tag": "javascript",
+          "code": "myObject.name;\nmyObject[\"name\"];\nmyObject[0]; // undefined"
+        },
+        {
+          "title": "Access Nested Object",
+          "tag": "javascript",
+          "code": "myObject.ref.age;\nmyObject.jsmith[3];"
+        },
+        {
+          "title": "Access Array of Objects",
+          "tag": "javascript",
+          "code": "myArray[0];\nmyArray[1].name;\nmyArray[3]; // undefined"
+        },
+        {
+          "title": "Access Array",
+          "tag": "javascript",
+          "code": "myArray[1]; // \"Doe\"\nmyArray[5]; // true"
+        }
+      ]
+    }
+  ]
+}

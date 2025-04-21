@@ -1,0 +1,174 @@
+{
+  "title": "Homebrew",
+  "snippets": [
+    {
+      "section": "Installation",
+      "cards": [
+        {
+          "title": "Install Command Line Tools",
+          "tag": "bash",
+          "code": "xcode-select --install"
+        },
+        {
+          "title": "Install Homebrew",
+          "code": "/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+        }
+      ]
+    },
+    {
+      "section": "Basic Commands",
+      "cards": [
+        {
+          "title": "Install Package",
+          "code": "brew install git"
+        },
+        {
+          "title": "Uninstall Package",
+          "code": "brew uninstall git"
+        },
+        {
+          "title": "Upgrade Package",
+          "code": "brew upgrade git"
+        },
+        {
+          "title": "Link / Unlink Package",
+          "code": "brew unlink git\nbrew link git"
+        },
+        {
+          "title": "Switch Package Version",
+          "code": "brew switch git 1.0.0"
+        },
+        {
+          "title": "List Installed Versions",
+          "code": "brew list --versions git"
+        }
+      ]
+    },
+    {
+      "section": "Help & Diagnostics",
+      "cards": [
+        {
+          "title": "Homebrew Version",
+          "code": "brew --version"
+        },
+        {
+          "title": "General Help",
+          "code": "brew help"
+        },
+        {
+          "title": "Help for Command",
+          "code": "brew help <sub-command>"
+        },
+        {
+          "title": "System Check",
+          "code": "brew doctor"
+        }
+      ]
+    },
+    {
+      "section": "Updates",
+      "cards": [
+        {
+          "title": "Update Homebrew",
+          "code": "brew update"
+        },
+        {
+          "title": "List Outdated",
+          "code": "brew outdated"
+        },
+        {
+          "title": "Upgrade All",
+          "code": "brew upgrade"
+        },
+        {
+          "title": "Upgrade Specific",
+          "code": "brew upgrade <formula>"
+        },
+        {
+          "title": "Pin / Unpin",
+          "code": "brew pin <formula>\nbrew unpin <formula>"
+        }
+      ]
+    },
+    {
+      "section": "Taps (Repositories)",
+      "cards": [
+        {
+          "title": "List Taps",
+          "code": "brew tap"
+        },
+        {
+          "title": "Tap Repo",
+          "code": "brew tap <user/repo>"
+        },
+        {
+          "title": "Tap with URL",
+          "code": "brew tap <user/repo> <URL>"
+        },
+        {
+          "title": "Untap Repo",
+          "code": "brew untap <user/repo>"
+        }
+      ]
+    },
+    {
+      "section": "Cask",
+      "cards": [
+        {
+          "title": "Tap Cask",
+          "code": "brew tap homebrew/cask"
+        },
+        {
+          "title": "List Casks",
+          "code": "brew cask list"
+        },
+        {
+          "title": "Search Casks",
+          "code": "brew search <text>"
+        },
+        {
+          "title": "Install / Reinstall / Uninstall Cask",
+          "code": "brew cask install <cask>\nbrew cask reinstall <cask>\nbrew cask uninstall <cask>"
+        }
+      ]
+    },
+    {
+      "section": "Search & Info",
+      "cards": [
+        {
+          "title": "List Installed Formulae",
+          "code": "brew list"
+        },
+        {
+          "title": "Search All Formulae",
+          "code": "brew search"
+        },
+        {
+          "title": "Search by Text",
+          "code": "brew search <text>"
+        },
+        {
+          "title": "Get Info on Formula",
+          "code": "brew info <formula>"
+        }
+      ]
+    },
+    {
+      "section": "Cleanup",
+      "cards": [
+        {
+          "title": "Remove Old Versions",
+          "code": "brew cleanup"
+        },
+        {
+          "title": "Cleanup Specific Formula",
+          "code": "brew cleanup <formula>"
+        },
+        {
+          "title": "Dry Run Cleanup",
+          "code": "brew cleanup -n"
+        }
+      ]
+    }
+  ]
+}

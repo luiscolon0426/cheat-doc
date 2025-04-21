@@ -42,6 +42,54 @@
     }
   },
   {
+    "slug": "javascript",
+    "title": "JavaScript",
+    "description": "A quick reference for JavaScript concepts, functions, methods, and more.",
+    "icon": "📜",
+    "tags": ["js", "web", "frontend", "programming"],
+    "preview": {
+      "Getting Started": ["console", "variables", "strings", "operators"],
+      "Functions": [
+        "function declaration",
+        "arrow functions",
+        "return",
+        "parameters"
+      ],
+      "Conditionals": [
+        "if",
+        "else if",
+        "ternary",
+        "switch",
+        "logical operators"
+      ],
+      "Scope & Loops": ["let vs var", "closures", "for", "while", "for...of"],
+      "Arrays & Iterators": ["push/pop", "map", "filter", "reduce"],
+      "Objects & Classes": [
+        "this",
+        "methods",
+        "factory",
+        "constructor",
+        "extends"
+      ],
+      "Modules": ["export", "import", "require"],
+      "Promises": [".then", "catch", "async/await", "chaining"],
+      "Requests": ["fetch", "XMLHttpRequest", "POST", "JSON"]
+    }
+  },
+  {
+    "slug": "json",
+    "title": "JSON",
+    "description": "Human-readable config & data format",
+    "icon": "🧾",
+    "tags": ["config", "data", "api"],
+    "preview": {
+      "Getting Started": ["basic object", "escape", "invalid"],
+      "Data Structures": ["arrays", "objects", "nested"],
+      "Access in JavaScript": ["dot access", "nested access"]
+    }
+  },
+
+  {
     "slug": "git",
     "title": "Git",
     "description": "Version control for code",
