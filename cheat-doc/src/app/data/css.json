@@ -2,14 +2,73 @@
   "title": "CSS",
   "snippets": [
     {
-      "title": "Center an Element",
-      "description": "Use Flexbox to center content.",
-      "code": "display: flex;\njustify-content: center;\nalign-items: center;"
-    },
-    {
-      "title": "Responsive Text",
-      "description": "Set font size using vw units.",
-      "code": "font-size: 5vw;"
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "External stylesheet",
+          "tag": "Introduction",
+          "code": "<link href=\"./path/to/stylesheet/style.css\" rel=\"stylesheet\" type=\"text/css\">"
+        },
+        {
+          "title": "Internal stylesheet",
+          "code": "<style>\n  body {\n    background-color: linen;\n  }\n</style>"
+        },
+        {
+          "title": "Inline styles",
+          "code": "<h2 style=\"text-align: center;\">Centered text</h2>\n<p style=\"color: blue; font-size: 18px;\">Blue, 18–point text</p>"
+        },
+        {
+          "title": "Add class",
+          "tag": "Add class",
+          "code": "<div class=\"classname\"></div>\n<div class=\"class1 ... classN\"></div>",
+          "description": "Support multiple classes on one element."
+        },
+        {
+          "title": "Important",
+          "tag": "!important",
+          "code": ".post-title {\n  color: blue !important;\n}",
+          "description": "Overrides all previous styling rules."
+        },
+        {
+          "title": "Selector",
+          "tag": "Selector",
+          "code": "h1 { }\n#job-title { }\ndiv.hero { }\ndiv > p { }",
+          "description": "See: Selectors"
+        },
+        {
+          "title": "Text color",
+          "tag": "Text color",
+          "code": "color: #2a2aff;\ncolor: green;\ncolor: rgb(34, 12, 64, 0.6);\ncolor: hsla(30 100% 50% / 0.6);",
+          "description": "See: Colors"
+        },
+        {
+          "title": "Background",
+          "tag": "Background",
+          "code": "background-color: blue;\nbackground-image: url(\"nyan-cat.gif\");\nbackground-image: url(\"../image.png\");",
+          "description": "See: Backgrounds"
+        },
+        {
+          "title": "Font",
+          "tag": "Font",
+          "code": ".page-title {\n  font-weight: bold;\n  font-size: 30px;\n  font-family: \"Courier New\";\n}",
+          "description": "See: Fonts"
+        },
+        {
+          "title": "Position",
+          "tag": "Position",
+          "code": ".box {\n  position: relative;\n  top: 20px;\n  left: 20px;\n}"
+        },
+        {
+          "title": "Animation",
+          "tag": "Animation",
+          "code": "animation: 300ms linear 0s infinite;\n\nanimation: bounce 300ms linear infinite;"
+        },
+        {
+          "title": "Comment",
+          "tag": "Comment",
+          "code": "/* This is a single line comment */\n\n/* This is a\n   multi-line comment */"
+        }
+      ]
     }
   ]
 }
