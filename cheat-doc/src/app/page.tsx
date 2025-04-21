@@ -64,7 +64,7 @@ export default function Home() {
               { name: "Git", color: "bg-gray-700" },
               { name: "React", color: "bg-cyan-500" },
               { name: "Tailwind", color: "bg-teal-400" },
-              { name: "Python", color: "bg-indigo-600" },
+              { name: "Sass", color: "bg-indigo-600" },
               { name: "Node.js", color: "bg-green-600" },
             ].map(({ name, color }) => (
               <a

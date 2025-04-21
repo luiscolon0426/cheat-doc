@@ -1,18 +1,101 @@
 {
-  "slug": "sass",
   "title": "Sass",
-  "description": "Programming | css",
-  "icon": "/icons/sass.svg",
-  "preview": {
-    "Sass Basics": [
-      "introduction",
-      "variables",
-      "interpolation",
-      "mixins",
-      "extend",
-      "@import"
-    ],
-    "Sass Mixins": ["parameters", "default values", "default variable"],
-    "Sass Loops": ["for loops", "each loops", "while loops"]
-  }
+  "snippets": [
+    {
+      "section": "Sass Basics",
+      "cards": [
+        {
+          "title": "Documentation",
+          "tag": "Introduction",
+          "code": "- Documentation (sass-lang.com)\n- Learn X in Y minutes (learnxinyminutes.com)",
+          "description": "Helpful resources to learn Sass."
+        },
+        {
+          "title": "Variables",
+          "tag": "Variables",
+          "code": "$defaultLinkColor: #46EAC2;\n\na {\n  color: $defaultLinkColor;\n}"
+        },
+        {
+          "title": "String Interpolation",
+          "tag": "String interpolation",
+          "code": "$wk: -webkit-;\n\n.rounded-box {\n  #{$wk}border-radius: 4px;\n}"
+        },
+        {
+          "title": "Comments",
+          "tag": "Comments",
+          "code": "/*\n  Block comments\n  Block comments\n*/\n\n// Line comments"
+        },
+        {
+          "title": "Mixins",
+          "tag": "Mixins",
+          "code": "@mixin heading-font {\n  font-family: sans-serif;\n  font-weight: bold;\n}\n\nh1 {\n  @include heading-font;\n}"
+        },
+        {
+          "title": "Nesting",
+          "tag": "Nesting",
+          "code": ".markdown-body {\n  a {\n    color: blue;\n    &:hover {\n      color: red;\n    }\n  }\n}"
+        },
+        {
+          "title": "Extend",
+          "tag": "Extend",
+          "code": ".button {\n  ...\n}\n\n.push-button {\n  @extend .button;\n}"
+        },
+        {
+          "title": "@import",
+          "tag": "@import",
+          "code": "@import './other_sass_file';\n@import '/code', 'lists';\n\n// Plain CSS @imports\n@import \"theme.css\";\n@import url(theme);\n\n// The .sass or .scss extension is optional."
+        },
+        {
+          "title": "To Properties",
+          "tag": "to properties",
+          "code": "text: {\n  // like text-align: center\n  align: center;\n\n  // like text-transform: uppercase\n  transform: uppercase;\n}"
+        }
+      ]
+    },
+    {
+      "section": "Sass Mixins",
+      "cards": [
+        {
+          "title": "Mixin with Parameters",
+          "tag": "Parameters",
+          "code": "@mixin font-size($n) {\n  font-size: $n * 1.2em;\n}\n\nbody {\n  @include font-size(2);\n}"
+        },
+        {
+          "title": "Mixin with Default Value",
+          "tag": "Default values",
+          "code": "@mixin pad($n: 10px) {\n  padding: $n;\n}\n\nbody {\n  @include pad(15px);\n}"
+        },
+        {
+          "title": "Mixin with Default Variable",
+          "tag": "Default variable",
+          "code": "$default-padding: 10px;\n\n@mixin pad($n: $default-padding) {\n  padding: $n;\n}\n\nbody {\n  @include pad(15px);\n}"
+        }
+      ]
+    },
+    {
+      "section": "Sass Color Functions",
+      "cards": [
+        {
+          "title": "RGBA",
+          "tag": "rgba",
+          "code": "rgb(100, 120, 140)\nrgba(100, 120, 140, .5)\nrgba($color, .5)"
+        },
+        {
+          "title": "Mixing Colors",
+          "tag": "Mixing",
+          "code": "mix($a, $b, 10%)  // 10% a, 90% b"
+        },
+        {
+          "title": "Modify HSLA",
+          "tag": "Modifying HSLA",
+          "code": "darken($color, 5%)\nlighten($color, 5%)\n\nsaturate($color, 5%)\ndesaturate($color, 5%)\ngrayscale($color)\n\nadjust-hue($color, 15deg)\ncomplement($color)\n  // Like adjust-hue(_, 180deg)\ninvert($color)\n\nfade-in($color, .5) // aka opacity()"
+        },
+        {
+          "title": "Get HSLA/RGB Components",
+          "tag": "Getting individual values",
+          "code": "hue($color)         // 0deg..360deg\nsaturation($color)  // 0%..100%\nlightness($color)   // 0%..100%\nalpha($color)       // 0..1 (aka opacity())\n\nred($color)   // 0..255\ngreen($color) // 0..255\nblue($color)  // 0..255"
+        }
+      ]
+    }
+  ]
 }

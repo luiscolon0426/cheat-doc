@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 type CodeBlockProps = {
   title: string;
@@ -16,6 +16,7 @@ const detectLanguage = (tag?: string, title?: string): string => {
 
   if (ref.includes("html")) return "html";
   if (ref.includes("css")) return "css";
+  if (ref.includes("sass") || ref.includes("scss")) return "scss";
   if (ref.includes("js") || ref.includes("javascript")) return "javascript";
   if (ref.includes("json")) return "json";
   if (ref.includes("python")) return "python";
@@ -65,21 +66,24 @@ export default function CodeBlock({
         <div className="relative group">
           <SyntaxHighlighter
             language={language}
-            style={oneDark}
+            style={vscDarkPlus}
             customStyle={{
               fontSize: "0.875rem",
+              fontFamily: "Fira Code, Consolas, Menlo, monospace",
               background: "#111827",
               borderRadius: "0.375rem",
               padding: "1rem",
               overflowX: "auto",
               marginBottom: "0.5rem",
+              lineHeight: "1.6",
             }}
+            showLineNumbers={false}
           >
             {code}
           </SyntaxHighlighter>
           <button
             onClick={handleCopy}
-            className="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white text-xs px-2 py-1 rounded transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+            className="absolute top-2 right-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-2 py-1 rounded shadow-md transition-opacity duration-200 opacity-0 group-hover:opacity-100"
           >
             {copied ? "Copied" : "Copy"}
           </button>

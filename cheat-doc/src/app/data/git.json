@@ -1,0 +1,242 @@
+{
+  "title": "Git",
+  "snippets": [
+    {
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "Create a new local repository",
+          "tag": "Create a Repository",
+          "code": "$ git init [project name]"
+        },
+        {
+          "title": "Clone a repository",
+          "code": "$ git clone git_url"
+        },
+        {
+          "title": "Clone into a specific directory",
+          "code": "$ git clone git_url my_directory"
+        },
+        {
+          "title": "Show file status",
+          "tag": "Make a change",
+          "code": "$ git status",
+          "description": "Show modified files in working directory, staged for your next commit"
+        },
+        {
+          "title": "Stage a file",
+          "code": "$ git add [file]",
+          "description": "Stages the file, ready for commit"
+        },
+        {
+          "title": "Stage all changes",
+          "code": "$ git add .",
+          "description": "Stage all changed files, ready for commit"
+        },
+        {
+          "title": "Commit staged files",
+          "code": "$ git commit -m \"commit message\"",
+          "description": "Commit all staged files to versioned history"
+        },
+        {
+          "title": "Commit tracked files",
+          "code": "$ git commit -am \"commit message\"",
+          "description": "Commit all your tracked files to versioned history"
+        },
+        {
+          "title": "Discard unstaged changes",
+          "code": "$ git restore [file]",
+          "description": "Discard changes in working directory which is not staged"
+        },
+        {
+          "title": "Unstage a file",
+          "code": "$ git restore --staged [file]",
+          "description": "Unstage a staged file or file which is staged"
+        },
+        {
+          "title": "Set global username",
+          "tag": "Configuration",
+          "code": "$ git config --global user.name \"name\"",
+          "description": "Set the name that will be attached to your commits and tags"
+        },
+        {
+          "title": "Set global email",
+          "code": "$ git config --global user.email \"email\"",
+          "description": "Set an email address that will be attached to your commits and tags"
+        },
+        {
+          "title": "Enable Git color",
+          "code": "$ git config --global color.ui auto",
+          "description": "Enable some colorization of Git output"
+        },
+        {
+          "title": "Edit global config",
+          "code": "$ git config --global --edit",
+          "description": "Edit the global configuration file in a text editor"
+        },
+        {
+          "title": "List local branches",
+          "tag": "Working with Branches",
+          "code": "$ git branch"
+        },
+        {
+          "title": "List all branches",
+          "code": "$ git branch -av"
+        },
+        {
+          "title": "Switch to branch",
+          "code": "$ git switch my_branch",
+          "description": "Switch to my_branch, and update working directory"
+        },
+        {
+          "title": "Show commit log",
+          "tag": "Observe your Repository",
+          "code": "$ git log",
+          "description": "Show the commit history for the currently active branch"
+        },
+        {
+          "title": "Compare branches",
+          "code": "$ git log branchB..branchA",
+          "description": "Show the commits on branchA that are not on branchB"
+        }
+      ]
+    },
+    {
+      "section": "Remote & Sync",
+      "cards": [
+        {
+          "title": "Fetch remote branches",
+          "tag": "Synchronize",
+          "code": "$ git fetch [alias]"
+        },
+        {
+          "title": "Merge remote branch (no fast-forward)",
+          "code": "$ git merge --no-ff [alias]/[branch]"
+        },
+        {
+          "title": "Merge remote branch (fast-forward only)",
+          "code": "$ git merge --ff-only [alias]/[branch]"
+        },
+        {
+          "title": "Push local commits",
+          "code": "$ git push [alias] [branch]"
+        },
+        {
+          "title": "Pull changes from remote",
+          "code": "$ git pull"
+        },
+        {
+          "title": "Cherry-pick a commit",
+          "code": "$ git cherry-pick [commit_id]",
+          "description": "Merge a specific commit into your current branch"
+        },
+        {
+          "title": "Add remote alias",
+          "tag": "Remote",
+          "code": "$ git remote add [alias] [url]"
+        },
+        {
+          "title": "List remotes",
+          "code": "$ git remote"
+        },
+        {
+          "title": "List remotes with URLs",
+          "code": "$ git remote -v"
+        },
+        {
+          "title": "Remove remote",
+          "code": "$ git remote rm [remote repo name]"
+        },
+        {
+          "title": "Change remote URL",
+          "code": "$ git remote set-url origin [git_url]"
+        },
+        {
+          "title": "Stash changes",
+          "tag": "Temporary Commits",
+          "code": "$ git stash"
+        },
+        {
+          "title": "List stash stack",
+          "code": "$ git stash list"
+        },
+        {
+          "title": "Apply top stash",
+          "code": "$ git stash pop"
+        },
+        {
+          "title": "Drop top stash",
+          "code": "$ git stash drop"
+        },
+        {
+          "title": "Remove file from project",
+          "tag": "Tracking path Changes",
+          "code": "$ git rm [file]"
+        },
+        {
+          "title": "Example .gitignore file",
+          "tag": "Ignoring Files",
+          "code": "/logs/*\n!logs/.gitkeep\n\n# Ignore Mac system files\n.DS_Store"
+        }
+      ]
+    },
+    {
+      "section": "Git Tricks",
+      "cards": [
+        {
+          "title": "Rename local branch",
+          "tag": "Rename branch",
+          "code": "$ git branch -m <new_name>"
+        },
+        {
+          "title": "Push renamed branch",
+          "code": "$ git push origin -u <new_name>"
+        },
+        {
+          "title": "Delete remote branch",
+          "code": "$ git push origin --delete <old>"
+        },
+        {
+          "title": "Rewrite last commit message",
+          "tag": "Rewriting history",
+          "code": "$ git commit --amend -m \"new message\""
+        },
+        {
+          "title": "Search log by term",
+          "tag": "Log",
+          "code": "$ git log -S'<a term in the source>'"
+        },
+        {
+          "title": "Log changes to file",
+          "code": "$ git log -p <file_name>"
+        },
+        {
+          "title": "Graph commit history",
+          "code": "$ git log --pretty=oneline --graph --decorate --all"
+        },
+        {
+          "title": "List branches with upstreams",
+          "tag": "Branch",
+          "code": "$ git branch -vv"
+        },
+        {
+          "title": "Switch to previous branch",
+          "code": "$ git checkout -"
+        },
+        {
+          "title": "List remote branches",
+          "code": "$ git branch -r"
+        },
+        {
+          "title": "Checkout file from branch",
+          "code": "$ git checkout <branch> -- <file>"
+        },
+        {
+          "title": "Git Aliases",
+          "tag": "Git Aliases",
+          "code": "git config --global alias.co checkout\ngit config --global alias.br branch\ngit config --global alias.ci commit\ngit config --global alias.st status"
+        }
+      ]
+    }
+  ]
+}

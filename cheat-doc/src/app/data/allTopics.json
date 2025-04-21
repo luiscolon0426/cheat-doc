@@ -40,5 +40,17 @@
       "Sass Mixins": ["parameters", "default values", "default variable"],
       "Sass Loops": ["for loops", "each loops", "while loops"]
     }
+  },
+  {
+    "slug": "git",
+    "title": "Git",
+    "description": "Version control for code",
+    "icon": "/icons/git.svg",
+    "tags": ["version control", "cli", "git"],
+    "preview": {
+      "Getting Started": ["init", "clone", "add", "commit"],
+      "Remote & Sync": ["push", "pull", "fetch", "merge", "remote"],
+      "Git Tricks": ["branch -m", "cherry-pick", "amend", "log", "aliases"]
+    }
   }
 ]
