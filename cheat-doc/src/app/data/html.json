@@ -7,7 +7,7 @@
         {
           "title": "Basic HTML Template",
           "tag": "hello.html",
-          "code": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>HTML5 Boilerplate</title>\n  </head>\n  <body>\n    <h1>Hello world, hello QuickRef.ME!</h1>\n  </body>\n</html>",
+          "code": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>HTML5 Boilerplate</title>\n  </head>\n  <body>\n    <h1>Hello world, hello CheatDoc!</h1>\n  </body>\n</html>",
           "description": "A boilerplate HTML5 document."
         },
         {
@@ -18,13 +18,12 @@
         {
           "title": "Paragraph",
           "tag": "Paragraph",
-          "code": "<p>I'm from QuickRef.ME</p>\n<p>Share quick reference cheat sheet.</p>",
+          "code": "<p>I'm from CheatDoc.ME</p>\n<p>Share quick reference cheat sheet.</p>",
           "description": "See: The Paragraph element"
         },
         {
           "title": "HTML link",
           "tag": "HTML link",
-          "code": "<a href=\"https://quickref.me\">QuickRef</a>\n<a href=\"mailto:jack@abc.com\">Email</a>\n<a href=\"tel:+123456789\">Call</a>\n<a href=\"sms:+123456789&body=ha%20ha\">Msg</a>",
           "table": [
             ["href", "The URL that the hyperlink points to"],
             ["rel", "Relationship of the linked URL"],
@@ -53,7 +52,7 @@
         {
           "title": "Document",
           "tag": "Document",
-          "code": "<body>\n  <header>\n    <nav>...</nav>\n  </header>\n  <main>\n    <h1>QuickRef.ME</h1>\n  </main>\n  <footer>\n    <p>©2023 QuickRef.ME</p>\n  </footer>\n</body>"
+          "code": "<body>\n  <header>\n    <nav>...</nav>\n  </header>\n  <main>\n    <h1>CheatDoc.ME</h1>\n  </main>\n  <footer>\n    <p>©2023 CheatDoc.ME</p>\n  </footer>\n</body>"
         },
         {
           "title": "Header Navigation",
