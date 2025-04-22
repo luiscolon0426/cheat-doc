@@ -1,0 +1,191 @@
+{
+  "title": "PHP",
+  "snippets": [
+    {
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "Install via Composer",
+          "tag": "bash",
+          "code": "composer create-project laravel/laravel example-app\ncd example-app\nphp artisan serve",
+          "description": "Create a new Laravel project and start the development server."
+        },
+        {
+          "title": "Sail Setup (Linux/macOS)",
+          "tag": "bash",
+          "code": "curl -s https://laravel.build/example-app | bash\ncd example-app\n./vendor/bin/sail up",
+          "description": "Install Laravel with Docker using Sail."
+        },
+        {
+          "title": "Access App",
+          "tag": "note",
+          "code": "http://localhost",
+          "description": "Default local development URL."
+        }
+      ]
+    },
+    {
+      "section": "Environment & Config",
+      "cards": [
+        {
+          "title": "Access .env Values",
+          "tag": "php",
+          "code": "env('APP_DEBUG');\nenv('APP_DEBUG', false);",
+          "description": "Get environment variables with optional default."
+        },
+        {
+          "title": "App Environment",
+          "code": "use Illuminate\\Support\\Facades\\App;\n\n$env = App::environment();",
+          "description": "Get current app environment."
+        },
+        {
+          "title": "Config Access",
+          "code": "config('app.timezone');\nconfig('app.timezone', 'UTC');",
+          "description": "Access config values with optional fallback."
+        }
+      ]
+    },
+    {
+      "section": "Routing",
+      "cards": [
+        {
+          "title": "Basic Route",
+          "code": "Route::get('/hello', function () {\n  return 'Hello World';\n});",
+          "description": "Simple GET route using closure."
+        },
+        {
+          "title": "Controller Route",
+          "code": "Route::get('/user', [UserController::class, 'index']);",
+          "description": "Define route with controller method."
+        },
+        {
+          "title": "Named Route",
+          "code": "Route::get('/profile', function () {\n  // ...\n})->name('profile');",
+          "description": "Create a named route for reuse."
+        }
+      ]
+    },
+    {
+      "section": "Route Parameters",
+      "cards": [
+        {
+          "title": "Required Param",
+          "code": "Route::get('/user/{id}', function ($id) {\n  return $id;\n});",
+          "description": "Capture route parameters from URI."
+        },
+        {
+          "title": "Optional Param",
+          "code": "Route::get('/user/{name?}', function ($name = 'Guest') {\n  return $name;\n});",
+          "description": "Make a route parameter optional."
+        }
+      ]
+    },
+    {
+      "section": "Middleware & Groups",
+      "cards": [
+        {
+          "title": "Middleware Group",
+          "code": "Route::middleware(['auth'])->group(function () {\n  Route::get('/dashboard', function () {\n    return 'Dashboard';\n  });\n});",
+          "description": "Apply middleware to multiple routes."
+        },
+        {
+          "title": "Route Prefix",
+          "code": "Route::prefix('admin')->group(function () {\n  Route::get('/users', function () {\n    return 'Admin Users';\n  });\n});",
+          "description": "Group routes under a common URL prefix."
+        }
+      ]
+    },
+    {
+      "section": "Blade Templates",
+      "cards": [
+        {
+          "title": "Echo Output",
+          "code": "<h1>Hello, {{ $name }}</h1>",
+          "description": "Display data in Blade templates."
+        },
+        {
+          "title": "If Statement",
+          "code": "@if($count > 0)\n  Count: {{ $count }}\n@endif",
+          "description": "Conditional logic in Blade."
+        },
+        {
+          "title": "Loop Example",
+          "code": "@foreach ($users as $user)\n  {{ $user->name }}\n@endforeach",
+          "description": "Iterate over arrays or collections."
+        }
+      ]
+    },
+    {
+      "section": "Controllers",
+      "cards": [
+        {
+          "title": "Basic Controller",
+          "code": "class UserController extends Controller {\n  public function show($id) {\n    return view('user.profile', ['user' => User::find($id)]);\n  }\n}",
+          "description": "Basic Laravel controller example."
+        },
+        {
+          "title": "Route to Controller",
+          "code": "Route::get('/user/{id}', [UserController::class, 'show']);",
+          "description": "Route mapped to controller method."
+        }
+      ]
+    },
+    {
+      "section": "Requests",
+      "cards": [
+        {
+          "title": "CSRF Token",
+          "tag": "blade",
+          "code": "<form method=\"POST\" action=\"/profile\">\n  @csrf\n  ...\n</form>",
+          "description": "Protect forms from CSRF attacks."
+        },
+        {
+          "title": "Access Request Data",
+          "code": "$name = $request->input('name');",
+          "description": "Read input from form submissions."
+        },
+        {
+          "title": "Old Input",
+          "code": "<input value=\"{{ old('email') }}\" />",
+          "description": "Repopulate form inputs after validation error."
+        }
+      ]
+    },
+    {
+      "section": "Validation",
+      "cards": [
+        {
+          "title": "Validate Request",
+          "code": "$request->validate([\n  'title' => 'required|max:255',\n  'body' => 'required',\n]);",
+          "description": "Validate incoming request data."
+        },
+        {
+          "title": "Validation Errors",
+          "tag": "blade",
+          "code": "@if ($errors->any())\n  <ul>\n    @foreach ($errors->all() as $error)\n      <li>{{ $error }}</li>\n    @endforeach\n  </ul>\n@endif",
+          "description": "Display validation errors in Blade."
+        }
+      ]
+    },
+    {
+      "section": "Commands",
+      "cards": [
+        {
+          "title": "Run Dev Server",
+          "code": "php artisan serve",
+          "description": "Start Laravel dev server at http://localhost:8000"
+        },
+        {
+          "title": "Clear Cache",
+          "code": "php artisan config:clear\nphp artisan route:clear\nphp artisan view:clear",
+          "description": "Clear all Laravel caches."
+        },
+        {
+          "title": "Migrate DB",
+          "code": "php artisan migrate",
+          "description": "Run the database migrations."
+        }
+      ]
+    }
+  ]
+}

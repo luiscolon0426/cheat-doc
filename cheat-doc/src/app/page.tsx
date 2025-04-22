@@ -62,7 +62,7 @@ export default function Home() {
               { name: "CSS", color: "bg-blue-500" },
               { name: "JavaScript", color: "bg-yellow-500 text-black" },
               { name: "Git", color: "bg-gray-700" },
-              { name: "React", color: "bg-cyan-500" },
+              { name: "PHP", color: "bg-cyan-500" },
               { name: "HomeBrew", color: "bg-teal-400" },
               { name: "Sass", color: "bg-indigo-600" },
               { name: "JSON", color: "bg-green-600" },
