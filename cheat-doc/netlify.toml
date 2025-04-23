@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[functions]
+  included_files = ["public/**", ".next/static/**"]
+
+[[plugins]]
+  package = "@netlify/next"
