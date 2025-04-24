@@ -10,8 +10,13 @@ type Snippet = {
   table?: [string, string][];
 };
 
+type Section = {
+  section: string;
+  cards: Snippet[];
+};
+
 type TopicProps = {
-  params: { topic: string };
+  params: Promise<{ topic: string }>;
 };
 
 export async function generateStaticParams() {
@@ -23,7 +28,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function TopicPage({ params }: TopicProps) {
+export default async function TopicPage(props: TopicProps) {
+  const params = await props.params;
   const filePath = path.join(
     process.cwd(),
     "src/app/data",
@@ -36,7 +42,7 @@ export default async function TopicPage({ params }: TopicProps) {
     <main className="min-h-screen bg-[#0e1525] text-white p-6">
       <h1 className="text-3xl font-bold mb-8">{parsed.title} Cheatsheet</h1>
 
-      {parsed.snippets.map((section: any, i: number) => (
+      {parsed.snippets.map((section: Section, i: number) => (
         <div key={i} className="mb-10">
           <h2 className="text-2xl font-semibold mb-4">{section.section}</h2>
 

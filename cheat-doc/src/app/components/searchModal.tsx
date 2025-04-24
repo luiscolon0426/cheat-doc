@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Fuse from "fuse.js";
-import Link from "next/link";
 import topics from "@/app/data/allTopics.json";
 import { motion, AnimatePresence } from "framer-motion";
 

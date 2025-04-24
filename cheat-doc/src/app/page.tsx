@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Header from "./components/Header";
 import SearchModal from "./components/searchModal";
 
 export default function Home() {
@@ -24,7 +23,7 @@ export default function Home() {
 
   return (
     <>
-      <Header onSearchClick={() => setOpenModal(true)} />
+      {/* <Header onSearchClick={() => setOpenModal(true)} /> */}
 
       {openModal && (
         <SearchModal open={openModal} close={() => setOpenModal(false)} />
