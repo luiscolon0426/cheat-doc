@@ -16,7 +16,7 @@ type Section = {
 };
 
 type TopicProps = {
-  params: Promise<{ topic: string }>;
+  params: { topic: string };
 };
 
 export async function generateStaticParams() {
@@ -29,12 +29,9 @@ export async function generateStaticParams() {
 }
 
 export default async function TopicPage(props: TopicProps) {
-  const params = await props.params;
-  const filePath = path.join(
-    process.cwd(),
-    "src/app/data",
-    `${params.topic}.json`
-  );
+  const { topic } = props.params;
+  const filePath = path.join(process.cwd(), "src/app/data", `${topic}.json`);
+
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const parsed = JSON.parse(fileContent);
 
