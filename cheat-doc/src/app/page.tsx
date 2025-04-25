@@ -65,6 +65,7 @@ export default function Home() {
               { name: "HomeBrew", color: "bg-teal-400" },
               { name: "Sass", color: "bg-indigo-600" },
               { name: "JSON", color: "bg-green-600" },
+              { name: "Python", color: "bg-green-400" },
             ].map(({ name, color }) => (
               <a
                 href={`/${name.toLowerCase().replace(".", "")}`}

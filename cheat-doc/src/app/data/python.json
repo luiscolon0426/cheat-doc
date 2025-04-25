@@ -1,0 +1,146 @@
+{
+  "title": "Python",
+  "snippets": [
+    {
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "Hello World",
+          "code": "print(\"Hello, World!\")",
+          "description": "The famous Hello World program in Python."
+        },
+        {
+          "title": "Variables",
+          "code": "age = 18\nname = \"John\"\nprint(name)",
+          "description": "Python doesn't require variable type declaration."
+        },
+        {
+          "title": "Slicing String",
+          "code": "msg = \"Hello, World!\"\nprint(msg[2:5])",
+          "description": "Get a substring from a string."
+        }
+      ]
+    },
+    {
+      "section": "Control Flow",
+      "cards": [
+        {
+          "title": "If Else",
+          "code": "num = 200\nif num > 0:\n    print(\"greater than 0\")\nelse:\n    print(\"not greater than 0\")"
+        },
+        {
+          "title": "Loops",
+          "code": "for item in range(6):\n    if item == 3: break\n    print(item)\nelse:\n    print(\"Finished!\")"
+        }
+      ]
+    },
+    {
+      "section": "Functions",
+      "cards": [
+        {
+          "title": "Defining a Function",
+          "code": "def my_function():\n    print(\"Hello from a function\")\n\nmy_function()"
+        },
+        {
+          "title": "Returning Values",
+          "code": "def add(x, y):\n    return x + y\n\nresult = add(5, 3)"
+        }
+      ]
+    },
+    {
+      "section": "File Handling",
+      "cards": [
+        {
+          "title": "Read File Line by Line",
+          "code": "with open(\"myfile.txt\", \"r\", encoding='utf8') as file:\n    for line in file:\n        print(line)"
+        },
+        {
+          "title": "Write String to File",
+          "code": "with open(\"myfile.txt\", \"w\") as file:\n    file.write(\"Hello\")"
+        }
+      ]
+    },
+    {
+      "section": "Data Types",
+      "cards": [
+        {
+          "title": "String",
+          "code": "text = \"Hello World\""
+        },
+        {
+          "title": "List",
+          "code": "mylist = [1, 2, 3]"
+        },
+        {
+          "title": "Dictionary",
+          "code": "data = {\"one\": 1, \"two\": 2}"
+        },
+        {
+          "title": "Set",
+          "code": "unique_items = {\"a\", \"b\"}"
+        }
+      ]
+    },
+    {
+      "section": "F-Strings",
+      "cards": [
+        {
+          "title": "Basic f-String",
+          "code": "name = \"Alice\"\nprint(f\"Hello, {name}\")"
+        },
+        {
+          "title": "F-String Math",
+          "code": "num = 5\nprint(f\"{num} + 5 = {num + 5}\")"
+        }
+      ]
+    },
+    {
+      "section": "Lists",
+      "cards": [
+        {
+          "title": "Create and Append",
+          "code": "mylist = []\nmylist.append(1)\nmylist.append(2)"
+        },
+        {
+          "title": "Slicing",
+          "code": "a = ['a','b','c','d']\nprint(a[1:3])"
+        }
+      ]
+    },
+    {
+      "section": "Modules",
+      "cards": [
+        {
+          "title": "Import",
+          "code": "import math\nprint(math.sqrt(16))"
+        },
+        {
+          "title": "Import Specific",
+          "code": "from math import floor\nprint(floor(3.7))"
+        }
+      ]
+    },
+    {
+      "section": "Classes",
+      "cards": [
+        {
+          "title": "Basic Class",
+          "code": "class MyClass:\n    pass\n\nobj = MyClass()"
+        },
+        {
+          "title": "Constructor & Method",
+          "code": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\na = Animal(\"Dog\")\nprint(a.name)"
+        }
+      ]
+    },
+    {
+      "section": "Exceptions",
+      "cards": [
+        {
+          "title": "Try Except",
+          "code": "try:\n    raise ValueError(\"Oops!\")\nexcept ValueError as e:\n    print(e)"
+        }
+      ]
+    }
+  ]
+}
