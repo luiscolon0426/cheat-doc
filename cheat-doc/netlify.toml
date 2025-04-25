@@ -1,6 +1,6 @@
 [build]
   base = "cheat-doc"
-  command = "npm run build && npm run export"
+  command = "npm run build"
   publish = "cheat-doc/out"
 
 [[redirects]]
