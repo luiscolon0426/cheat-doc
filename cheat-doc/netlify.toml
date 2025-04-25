@@ -1,9 +1,9 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
+  base = "cheat-doc"
+  command = "npm run build && npm run export"
+  publish = "cheat-doc/out"
 
-[functions]
-  included_files = ["public/**", ".next/static/**"]
-
-[[plugins]]
-  package = "@netlify/next"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
