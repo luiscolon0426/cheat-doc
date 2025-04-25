@@ -1,0 +1,21 @@
+{
+    "title": "React",
+    "snippets": [
+      {
+        "section": "Hooks",
+        "cards": [
+          {
+            "title": "useState",
+            "description": "Declare state variable",
+            "code": "const [count, setCount] = useState(0);"
+          },
+          {
+            "title": "useEffect",
+            "description": "Run side effects",
+            "code": "useEffect(() => { console.log('mounted'); }, []);"
+          }
+        ]
+      }
+    ]
+  }
+  

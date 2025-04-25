@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Fuse from "fuse.js";
-import topics from "@/app/data/allTopics.json";
+import topics from "@/app/meta/allTopics.json";
 import { motion, AnimatePresence } from "framer-motion";
 
 const fuse = new Fuse(topics, {
