@@ -1,7 +1,7 @@
 [build]
   base = "cheat-doc"
   command = "npm run build"
-  publish = "cheat-doc/out"
+  publish = "out"
 
 [[redirects]]
   from = "/*"
