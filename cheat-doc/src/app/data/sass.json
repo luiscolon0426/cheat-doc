@@ -1,99 +1,120 @@
 {
-  "title": "Sass",
+  "title": "React",
   "snippets": [
     {
-      "section": "Sass Basics",
+      "section": "Getting Started",
       "cards": [
         {
-          "title": "Documentation",
-          "tag": "Introduction",
-          "code": "- Documentation (sass-lang.com)\n- Learn X in Y minutes (learnxinyminutes.com)",
-          "description": "Helpful resources to learn Sass."
+          "title": "Hello World Component",
+          "code": "import React from 'react';\n\nfunction App() {\n  return <h1>Hello, World!</h1>;\n}\n\nexport default App;",
+          "description": "Basic functional component in React."
         },
         {
-          "title": "Variables",
-          "tag": "Variables",
-          "code": "$defaultLinkColor: #46EAC2;\n\na {\n  color: $defaultLinkColor;\n}"
-        },
-        {
-          "title": "String Interpolation",
-          "tag": "String interpolation",
-          "code": "$wk: -webkit-;\n\n.rounded-box {\n  #{$wk}border-radius: 4px;\n}"
-        },
-        {
-          "title": "Comments",
-          "tag": "Comments",
-          "code": "/*\n  Block comments\n  Block comments\n*/\n\n// Line comments"
-        },
-        {
-          "title": "Mixins",
-          "tag": "Mixins",
-          "code": "@mixin heading-font {\n  font-family: sans-serif;\n  font-weight: bold;\n}\n\nh1 {\n  @include heading-font;\n}"
-        },
-        {
-          "title": "Nesting",
-          "tag": "Nesting",
-          "code": ".markdown-body {\n  a {\n    color: blue;\n    &:hover {\n      color: red;\n    }\n  }\n}"
-        },
-        {
-          "title": "Extend",
-          "tag": "Extend",
-          "code": ".button {\n  ...\n}\n\n.push-button {\n  @extend .button;\n}"
-        },
-        {
-          "title": "@import",
-          "tag": "@import",
-          "code": "@import './other_sass_file';\n@import '/code', 'lists';\n\n// Plain CSS @imports\n@import \"theme.css\";\n@import url(theme);\n\n// The .sass or .scss extension is optional."
-        },
-        {
-          "title": "To Properties",
-          "tag": "to properties",
-          "code": "text: {\n  // like text-align: center\n  align: center;\n\n  // like text-transform: uppercase\n  transform: uppercase;\n}"
+          "title": "JSX Syntax",
+          "code": "const element = <h1 className=\"title\">Welcome</h1>;",
+          "description": "JSX lets you write HTML inside JavaScript."
         }
       ]
     },
     {
-      "section": "Sass Mixins",
+      "section": "Props & State",
       "cards": [
         {
-          "title": "Mixin with Parameters",
-          "tag": "Parameters",
-          "code": "@mixin font-size($n) {\n  font-size: $n * 1.2em;\n}\n\nbody {\n  @include font-size(2);\n}"
+          "title": "Passing Props",
+          "code": "function Welcome(props) {\n  return <h1>Hello, {props.name}</h1>;\n}",
+          "description": "Props are passed from parent to child components."
         },
         {
-          "title": "Mixin with Default Value",
-          "tag": "Default values",
-          "code": "@mixin pad($n: 10px) {\n  padding: $n;\n}\n\nbody {\n  @include pad(15px);\n}"
-        },
-        {
-          "title": "Mixin with Default Variable",
-          "tag": "Default variable",
-          "code": "$default-padding: 10px;\n\n@mixin pad($n: $default-padding) {\n  padding: $n;\n}\n\nbody {\n  @include pad(15px);\n}"
+          "title": "useState Hook",
+          "code": "import { useState } from 'react';\n\nconst Counter = () => {\n  const [count, setCount] = useState(0);\n  return <button onClick={() => setCount(count + 1)}>{count}</button>;\n};"
         }
       ]
     },
     {
-      "section": "Sass Color Functions",
+      "section": "useEffect Hook",
       "cards": [
         {
-          "title": "RGBA",
-          "tag": "rgba",
-          "code": "rgb(100, 120, 140)\nrgba(100, 120, 140, .5)\nrgba($color, .5)"
+          "title": "Basic useEffect",
+          "code": "import { useEffect } from 'react';\n\nuseEffect(() => {\n  console.log('Component mounted');\n}, []);"
         },
         {
-          "title": "Mixing Colors",
-          "tag": "Mixing",
-          "code": "mix($a, $b, 10%)  // 10% a, 90% b"
+          "title": "Effect with Cleanup",
+          "code": "useEffect(() => {\n  const id = setInterval(() => console.log('tick'), 1000);\n  return () => clearInterval(id);\n}, []);"
+        }
+      ]
+    },
+    {
+      "section": "Event Handling",
+      "cards": [
+        {
+          "title": "Click Event",
+          "code": "function Button() {\n  const handleClick = () => alert('Clicked');\n  return <button onClick={handleClick}>Click Me</button>;\n}"
         },
         {
-          "title": "Modify HSLA",
-          "tag": "Modifying HSLA",
-          "code": "darken($color, 5%)\nlighten($color, 5%)\n\nsaturate($color, 5%)\ndesaturate($color, 5%)\ngrayscale($color)\n\nadjust-hue($color, 15deg)\ncomplement($color)\n  // Like adjust-hue(_, 180deg)\ninvert($color)\n\nfade-in($color, .5) // aka opacity()"
+          "title": "Form Submit",
+          "code": "function Form() {\n  const handleSubmit = e => {\n    e.preventDefault();\n    alert('Form submitted');\n  };\n  return <form onSubmit={handleSubmit}><button type=\"submit\">Submit</button></form>;\n}"
+        }
+      ]
+    },
+    {
+      "section": "Conditional Rendering",
+      "cards": [
+        {
+          "title": "Ternary Operator",
+          "code": "const isLoggedIn = true;\nreturn <div>{isLoggedIn ? 'Welcome!' : 'Please sign in'}</div>;"
         },
         {
-          "title": "Get HSLA/RGB Components",
-          "tag": "Getting individual values",
-          "code": "hue($color)         // 0deg..360deg\nsaturation($color)  // 0%..100%\nlightness($color)   // 0%..100%\nalpha($color)       // 0..1 (aka opacity())\n\nred($color)   // 0..255\ngreen($color) // 0..255\nblue($color)  // 0..255"
+          "title": "Logical AND",
+          "code": "const messages = [];\nreturn <div>{messages.length > 0 && 'You have messages'}</div>;"
+        }
+      ]
+    },
+    {
+      "section": "Lists & Keys",
+      "cards": [
+        {
+          "title": "Rendering Lists",
+          "code": "const items = ['a', 'b', 'c'];\nreturn <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>;"
+        }
+      ]
+    },
+    {
+      "section": "Custom Components & Props",
+      "cards": [
+        {
+          "title": "Reusable Button",
+          "code": "function Button({ children, onClick }) {\n  return <button onClick={onClick}>{children}</button>;\n}"
+        }
+      ]
+    },
+    {
+      "section": "useRef Hook",
+      "cards": [
+        {
+          "title": "Accessing DOM Elements",
+          "code": "import { useRef, useEffect } from 'react';\n\nfunction FocusInput() {\n  const inputRef = useRef();\n  useEffect(() => inputRef.current.focus(), []);\n  return <input ref={inputRef} />;\n}"
+        }
+      ]
+    },
+    {
+      "section": "React Router (v6+)",
+      "cards": [
+        {
+          "title": "Basic Routing",
+          "code": "import { BrowserRouter, Routes, Route } from 'react-router-dom';\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/about\" element={<About />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}"
+        }
+      ]
+    },
+    {
+      "section": "Context API",
+      "cards": [
+        {
+          "title": "Create & Use Context",
+          "code": "const ThemeContext = React.createContext('light');\n\nfunction App() {\n  return (\n    <ThemeContext.Provider value=\"dark\">\n      <Toolbar />\n    </ThemeContext.Provider>\n  );\n}"
+        },
+        {
+          "title": "Consume Context",
+          "code": "const theme = useContext(ThemeContext);\nreturn <div>Theme is {theme}</div>;"
         }
       ]
     }

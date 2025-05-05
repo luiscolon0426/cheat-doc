@@ -59,7 +59,7 @@ export default function Home() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {[
                 { name: "HTML", color: "bg-red-500" },
-                { name: "CSS", color: "bg-blue-500" },
+                { name: "CSS", color: "bg-blue-600" },
                 { name: "JavaScript", color: "bg-yellow-500 text-black" },
                 { name: "Git", color: "bg-gray-700" },
                 { name: "PHP", color: "bg-cyan-500" },
@@ -67,6 +67,8 @@ export default function Home() {
                 { name: "Sass", color: "bg-indigo-600" },
                 { name: "JSON", color: "bg-green-600" },
                 { name: "Python", color: "bg-green-400" },
+                { name: "NodeJS", color: "bg-yellow-400" },
+                { name: "React", color: "bg-blue-300" },
               ].map(({ name, color }) => (
                 <a
                   href={`/${name.toLowerCase().replace(".", "")}`}

@@ -1,0 +1,98 @@
+{
+  "title": "NodeJS",
+  "snippets": [
+    {
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "Hello World",
+          "code": "console.log('Hello, World!');",
+          "description": "Prints 'Hello, World!' to the console in Node.js."
+        },
+        {
+          "title": "Running a File",
+          "code": "// Save as app.js\nconsole.log('Run this file');",
+          "description": "Use `node app.js` in the terminal to run the file."
+        }
+      ]
+    },
+    {
+      "section": "Modules",
+      "cards": [
+        {
+          "title": "Import Built-in Module",
+          "code": "const fs = require('fs');",
+          "description": "Loads Node's built-in file system module."
+        },
+        {
+          "title": "Export & Import Custom Module",
+          "code": "// myModule.js\nmodule.exports = function greet() { console.log('Hi'); };\n\n// app.js\nconst greet = require('./myModule');\ngreet();",
+          "description": "Create and use your own module."
+        }
+      ]
+    },
+    {
+      "section": "File System (fs)",
+      "cards": [
+        {
+          "title": "Read File",
+          "code": "const fs = require('fs');\nfs.readFile('file.txt', 'utf8', (err, data) => {\n  if (err) throw err;\n  console.log(data);\n});"
+        },
+        {
+          "title": "Write File",
+          "code": "fs.writeFile('file.txt', 'Hello World', (err) => {\n  if (err) throw err;\n  console.log('File saved');\n});"
+        }
+      ]
+    },
+    {
+      "section": "HTTP Server",
+      "cards": [
+        {
+          "title": "Basic HTTP Server",
+          "code": "const http = require('http');\nconst server = http.createServer((req, res) => {\n  res.statusCode = 200;\n  res.setHeader('Content-Type', 'text/plain');\n  res.end('Hello, World!');\n});\nserver.listen(3000);"
+        }
+      ]
+    },
+    {
+      "section": "NPM Packages",
+      "cards": [
+        {
+          "title": "Install a Package",
+          "code": "npm install axios",
+          "description": "Installs the axios HTTP client."
+        },
+        {
+          "title": "Use Installed Package",
+          "code": "const axios = require('axios');\naxios.get('https://api.github.com').then(res => console.log(res.data));"
+        }
+      ]
+    },
+    {
+      "section": "Asynchronous Code",
+      "cards": [
+        {
+          "title": "Callback Example",
+          "code": "function fetchData(callback) {\n  setTimeout(() => {\n    callback('Data loaded');\n  }, 1000);\n}\nfetchData(console.log);"
+        },
+        {
+          "title": "Promise Example",
+          "code": "function fetchData() {\n  return new Promise(resolve => setTimeout(() => resolve('Done'), 1000));\n}\nfetchData().then(console.log);"
+        },
+        {
+          "title": "Async/Await",
+          "code": "async function getData() {\n  const data = await fetchData();\n  console.log(data);\n}\ngetData();"
+        }
+      ]
+    },
+    {
+      "section": "Environment Variables",
+      "cards": [
+        {
+          "title": "Access .env Variables",
+          "code": "require('dotenv').config();\nconsole.log(process.env.MY_SECRET);",
+          "description": "Use the dotenv package to load environment variables."
+        }
+      ]
+    }
+  ]
+}
