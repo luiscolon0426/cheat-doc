@@ -1,0 +1,67 @@
+{
+  "title": "WebSockets",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Browser Client",
+          "code": "const socket = new WebSocket('wss://api.example.com/socket');\nsocket.addEventListener('open', () => socket.send(JSON.stringify({ type: 'subscribe' })));\nsocket.addEventListener('message', event => handle(JSON.parse(event.data)));",
+          "tag": "javascript"
+        },
+        {
+          "title": "Message Envelope",
+          "code": "{\n  \"type\": \"chat.message\",\n  \"id\": \"evt_123\",\n  \"version\": 1,\n  \"timestamp\": \"2026-07-28T12:00:00Z\",\n  \"payload\": {}\n}",
+          "description": "Version and identify messages from the start.",
+          "tag": "json"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Reconnect with Backoff",
+          "code": "delay = Math.min(30_000, 1000 * 2 ** attempt) + Math.random() * 500;\nsetTimeout(connect, delay);",
+          "description": "Add jitter and stop retrying when intentionally closed.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Heartbeat",
+          "code": "client -> ping\nserver -> pong\nclose after missed heartbeat\nreconnect and resubscribe",
+          "description": "Detect half-open connections instead of waiting forever."
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Resume Stream",
+          "code": "{ \"type\": \"resume\", \"lastEventId\": \"evt_122\" }",
+          "description": "Keep event IDs so reconnecting clients can catch up."
+        },
+        {
+          "title": "Presence",
+          "code": "join room\nrefresh lease on heartbeat\nexpire stale presence\nbroadcast changes",
+          "description": "Presence is temporary state, not permanent user status."
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Backpressure",
+          "code": "bound outgoing queues\ndrop/coalesce stale updates\npause producers\ndisconnect slow clients",
+          "description": "A slow receiver must not exhaust server memory."
+        },
+        {
+          "title": "Security",
+          "code": "authenticate handshake\nauthorize every room/action\nvalidate every message\nlimit size and rate",
+          "description": "A connected socket is not permanently trusted."
+        }
+      ]
+    }
+  ]
+}

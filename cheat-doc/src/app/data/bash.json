@@ -1,0 +1,72 @@
+{
+  "title": "Bash",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Safe Script Header",
+          "code": "#!/usr/bin/env bash\nset -Eeuo pipefail\nIFS=$'\\n\\t'",
+          "description": "Exit on errors, unset variables, and failed pipelines.",
+          "tag": "bash"
+        },
+        {
+          "title": "Variables and Arguments",
+          "code": "name=${1:-world}\nreadonly output_dir=\"./dist\"\nprintf 'Hello, %s\\n' \"$name\"",
+          "description": "Quote expansions unless you explicitly need splitting.",
+          "tag": "bash"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Conditionals",
+          "code": "if [[ -f \"$file\" ]]; then\n  printf '%s\\n' \"Found $file\"\nelif [[ -d \"$file\" ]]; then\n  printf '%s\\n' 'Directory'\nfi",
+          "tag": "bash"
+        },
+        {
+          "title": "Loop Safely",
+          "code": "while IFS= read -r line; do\n  printf '%s\\n' \"$line\"\ndone < input.txt",
+          "description": "Avoid parsing ls output.",
+          "tag": "bash"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Find and Transform",
+          "code": "find src -type f -name '*.ts' -print0 | while IFS= read -r -d '' file; do\n  printf '%s\\n' \"$file\"\ndone",
+          "description": "Null delimiters preserve spaces in filenames.",
+          "tag": "bash"
+        },
+        {
+          "title": "Temporary Directory",
+          "code": "tmp_dir=$(mktemp -d)\ntrap 'rm -rf \"$tmp_dir\"' EXIT",
+          "description": "Always clean up temporary resources.",
+          "tag": "bash"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Dangerous Expansion",
+          "code": "# Dangerous: rm -rf $target/*\n# Validate and quote exact targets before destructive actions.",
+          "description": "Empty variables and globs can broaden destructive commands.",
+          "tag": "bash"
+        },
+        {
+          "title": "Debugging",
+          "code": "bash -n script.sh\nshellcheck script.sh\nbash -x script.sh",
+          "description": "Syntax-check, lint, then trace when needed.",
+          "tag": "bash"
+        }
+      ]
+    }
+  ]
+}

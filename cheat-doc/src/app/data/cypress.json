@@ -1,0 +1,69 @@
+{
+  "title": "Cypress",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Basic Test",
+          "code": "describe('login', () => {\n  it('signs in', () => {\n    cy.visit('/login');\n    cy.get('[data-cy=email]').type('user@example.com');\n    cy.get('[data-cy=submit]').click();\n    cy.url().should('include', '/dashboard');\n  });\n});",
+          "tag": "javascript"
+        },
+        {
+          "title": "Run Tests",
+          "code": "npx cypress open\nnpx cypress run\nnpx cypress run --browser chrome --spec 'cypress/e2e/login.cy.ts'",
+          "tag": "bash"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Intercept API",
+          "code": "cy.intercept('GET', '/api/users', { fixture: 'users.json' }).as('users');\ncy.visit('/users');\ncy.wait('@users').its('response.statusCode').should('eq', 200);",
+          "tag": "javascript"
+        },
+        {
+          "title": "Stable Selectors",
+          "code": "<button data-cy=\"save-profile\">Save</button>\n\ncy.get('[data-cy=save-profile]').click();",
+          "description": "Do not couple tests to styling classes.",
+          "tag": "html"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Custom Command",
+          "code": "Cypress.Commands.add('login', (email, password) => {\n  cy.request('POST', '/api/login', { email, password });\n});",
+          "description": "Use API setup when the login UI is not what you are testing.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Retry Assertions",
+          "code": "cy.get('[data-cy=status]').should('be.visible').and('contain', 'Complete');",
+          "description": "Use Cypress retries instead of fixed waits.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Avoid Fixed Waits",
+          "code": "// Avoid\ncy.wait(3000);\n\n// Prefer\ncy.wait('@request');\ncy.get('[data-cy=result]').should('exist');",
+          "tag": "javascript"
+        },
+        {
+          "title": "Test Isolation",
+          "code": "beforeEach(() => {\n  cy.task('db:reset');\n  cy.setCookie('session', 'known-test-session');\n});",
+          "description": "Each test should run independently and deterministically.",
+          "tag": "javascript"
+        }
+      ]
+    }
+  ]
+}

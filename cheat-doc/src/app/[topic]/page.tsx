@@ -5,7 +5,7 @@ import CodeBlock from "../components/CodeBlock";
 type Snippet = {
   title: string;
   description?: string;
-  code: string;
+  code?: string;
   tag?: string;
   table?: [string, string][];
 };

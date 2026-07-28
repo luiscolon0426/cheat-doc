@@ -1,0 +1,65 @@
+{
+  "title": "GraphQL",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Query",
+          "code": "query User($id: ID!) {\n  user(id: $id) { id name posts { id title } }\n}",
+          "description": "Ask for exactly the fields the client needs."
+        },
+        {
+          "title": "Schema",
+          "code": "type User { id: ID!, name: String!, posts: [Post!]! }\ntype Query { user(id: ID!): User }",
+          "description": "Nullability is part of the public API contract."
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Mutation",
+          "code": "mutation UpdateUser($input: UpdateUserInput!) {\n  updateUser(input: $input) { user { id name } errors { field message } }\n}"
+        },
+        {
+          "title": "Resolver Authorization",
+          "code": "const user = requireUser(context);\nconst post = await db.post.findUnique({ where: { id } });\nif (post.authorId !== user.id) throw new ForbiddenError();",
+          "description": "Authorize inside resolvers, not only in the UI.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Reusable Fragment",
+          "code": "fragment UserCard on User { id name avatarUrl }\n\nquery Team { team { members { ...UserCard } } }"
+        },
+        {
+          "title": "Cursor Pagination",
+          "code": "type PageInfo { endCursor: String, hasNextPage: Boolean! }\ntype PostConnection { edges: [PostEdge!]!, pageInfo: PageInfo! }",
+          "description": "Cursor pagination behaves better than offsets on changing data."
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Prevent N+1",
+          "code": "const userLoader = new DataLoader(ids => db.user.findMany({ where: { id: { in: ids } } }));",
+          "description": "Batch and cache related entity loads per request.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Protect the API",
+          "code": "depth limit\nquery complexity budget\nrequest timeout\npersisted queries\nrate limits",
+          "description": "A single GraphQL endpoint still needs resource controls."
+        }
+      ]
+    }
+  ]
+}

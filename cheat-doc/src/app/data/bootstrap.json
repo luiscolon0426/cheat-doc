@@ -1,0 +1,69 @@
+{
+  "title": "Bootstrap",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Responsive Grid",
+          "code": "<div class=\"container\">\n  <div class=\"row g-3\">\n    <div class=\"col-12 col-md-6 col-lg-4\">...</div>\n  </div>\n</div>",
+          "description": "Bootstrap's grid is mobile-first.",
+          "tag": "html"
+        },
+        {
+          "title": "Flex Utilities",
+          "code": "<div class=\"d-flex flex-column flex-sm-row align-items-sm-center gap-3\">...</div>",
+          "tag": "html"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Accessible Modal",
+          "code": "<button data-bs-toggle=\"modal\" data-bs-target=\"#confirmModal\">Delete</button>\n<div class=\"modal\" id=\"confirmModal\" tabindex=\"-1\" aria-labelledby=\"confirmTitle\">...</div>",
+          "description": "Keep labels, focus management, and dismiss controls intact.",
+          "tag": "html"
+        },
+        {
+          "title": "Form Validation",
+          "code": "<label for=\"email\" class=\"form-label\">Email</label>\n<input id=\"email\" type=\"email\" class=\"form-control\" required>\n<div class=\"invalid-feedback\">Enter a valid email.</div>",
+          "tag": "html"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Spacing and Display",
+          "code": "mt-3 p-4 gap-2\nd-none d-md-block\nw-100 max-width utilities\ntext-truncate",
+          "description": "Use the spacing scale consistently."
+        },
+        {
+          "title": "Theme Variables",
+          "code": ":root {\n  --bs-primary: #2563eb;\n  --bs-border-radius: .75rem;\n}",
+          "description": "Prefer Bootstrap variables or Sass customization over overrides.",
+          "tag": "css"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "JavaScript Components",
+          "code": "import Modal from 'bootstrap/js/dist/modal';\nconst modal = Modal.getOrCreateInstance(element);",
+          "description": "Import only the components you use when bundle size matters.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Override Conflicts",
+          "code": "custom theme variables\ncomponent classes\nutility classes\n!important only as a last resort",
+          "description": "Follow a predictable customization layer."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "title": "Firebase",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Initialize App",
+          "code": "const app = initializeApp(firebaseConfig);\nconst auth = getAuth(app);\nconst db = getFirestore(app);",
+          "description": "Firebase client config is public; security comes from rules.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Firestore Read",
+          "code": "const snapshot = await getDoc(doc(db, 'users', userId));\nif (snapshot.exists()) console.log(snapshot.data());",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Security Rules",
+          "code": "match /users/{userId} {\n  allow read, update: if request.auth != null && request.auth.uid == userId;\n}",
+          "description": "Default-deny and test rules with the emulator.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Transaction",
+          "code": "await runTransaction(db, async tx => {\n  const snap = await tx.get(ref);\n  tx.update(ref, { count: snap.data().count + 1 });\n});",
+          "description": "Transactions may retry; keep callbacks free of side effects.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Realtime Listener",
+          "code": "const unsubscribe = onSnapshot(queryRef, snapshot => {\n  items.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));\n});\n// call unsubscribe on cleanup",
+          "tag": "javascript"
+        },
+        {
+          "title": "Local Emulator",
+          "code": "firebase emulators:start\nFIRESTORE_EMULATOR_HOST=127.0.0.1:8080\nFIREBASE_AUTH_EMULATOR_HOST=127.0.0.1:9099",
+          "description": "Develop and test without touching production.",
+          "tag": "bash"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Query and Cost",
+          "code": "read cost is per document\nindexes support query shapes\nlisteners can create ongoing reads\navoid unbounded collections",
+          "description": "Model data around access and cost."
+        },
+        {
+          "title": "Admin SDK",
+          "code": "// Server only: Admin SDK bypasses Firestore security rules.\n// Authenticate and authorize before every privileged operation.",
+          "description": "Never bundle admin credentials in a client."
+        }
+      ]
+    }
+  ]
+}

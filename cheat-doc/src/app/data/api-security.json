@@ -1,0 +1,65 @@
+{
+  "title": "API Security",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Validate at the Boundary",
+          "code": "const Input = z.object({\n  email: z.string().email(),\n  limit: z.coerce.number().int().min(1).max(100),\n}).strict();",
+          "description": "Validate type, format, length, range, and unexpected fields.",
+          "tag": "typescript"
+        },
+        {
+          "title": "Parameterized Query",
+          "code": "db.query('SELECT * FROM users WHERE id = $1', [userId]);",
+          "description": "Never concatenate untrusted values into SQL.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Object-Level Authorization",
+          "code": "const invoice = await loadInvoice(id);\nif (invoice.tenantId !== user.tenantId) throw forbidden();",
+          "description": "Possessing an object ID does not grant access.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Rate Limits",
+          "code": "key: user ID, API key, and/or trusted IP\nlimit by endpoint cost\nreturn 429 + Retry-After\nprotect login and recovery separately"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Security Headers",
+          "code": "Strict-Transport-Security: max-age=31536000\nContent-Security-Policy: default-src 'self'\nX-Content-Type-Options: nosniff\nReferrer-Policy: no-referrer"
+        },
+        {
+          "title": "Safe Outbound Requests",
+          "code": "allow-list schemes and hosts\nresolve and reject private IP ranges\ndisable unsafe redirects\nset timeouts and size limits",
+          "description": "Protect server-side fetches from SSRF."
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Sensitive Data",
+          "code": "do not log tokens, passwords, card data, or health data\nredact structured fields\nencrypt in transit and at rest\nminimize retention"
+        },
+        {
+          "title": "Security Operations",
+          "code": "dependency scanning\nsecret scanning\nkey rotation\naudit logs\nincident playbook\nregular access review",
+          "description": "Security must remain operable after deployment."
+        }
+      ]
+    }
+  ]
+}

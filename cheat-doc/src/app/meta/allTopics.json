@@ -4,11 +4,35 @@
     "title": "HTML",
     "description": "Markup for the web",
     "icon": "⌨️",
-    "tags": ["markup", "web", "structure"],
+    "color": "#ef4444",
+    "tags": [
+      "markup",
+      "web",
+      "structure"
+    ],
     "preview": {
-      "Basic Structure": ["doctype", "html", "head", "body"],
-      "Content Tags": ["p", "h1-h6", "a", "img", "ul", "ol", "li"],
-      "Forms": ["form", "input", "label", "textarea", "button"]
+      "Basic Structure": [
+        "doctype",
+        "html",
+        "head",
+        "body"
+      ],
+      "Content Tags": [
+        "p",
+        "h1-h6",
+        "a",
+        "img",
+        "ul",
+        "ol",
+        "li"
+      ],
+      "Forms": [
+        "form",
+        "input",
+        "label",
+        "textarea",
+        "button"
+      ]
     }
   },
   {
@@ -16,18 +40,46 @@
     "title": "CSS",
     "description": "Style your pages",
     "icon": "⌨️",
-    "tags": ["style", "design", "responsive"],
+    "color": "#3b82f6",
+    "tags": [
+      "style",
+      "design",
+      "responsive"
+    ],
     "preview": {
-      "Selectors": ["element", "class", "id", "attribute", "pseudo"],
-      "Box Model": ["margin", "border", "padding", "content"],
-      "Layout": ["flexbox", "grid", "position", "float", "z-index"]
+      "Selectors": [
+        "element",
+        "class",
+        "id",
+        "attribute",
+        "pseudo"
+      ],
+      "Box Model": [
+        "margin",
+        "border",
+        "padding",
+        "content"
+      ],
+      "Layout": [
+        "flexbox",
+        "grid",
+        "position",
+        "float",
+        "z-index"
+      ]
     }
   },
   {
     "slug": "sass",
     "title": "Sass",
     "description": "Programming | css",
-    "icon": "/icons/sass.svg",
+    "icon": "◆",
+    "color": "#ec4899",
+    "tags": [
+      "css",
+      "scss",
+      "preprocessor"
+    ],
     "preview": {
       "Sass Basics": [
         "introduction",
@@ -37,8 +89,16 @@
         "extend",
         "@import"
       ],
-      "Sass Mixins": ["parameters", "default values", "default variable"],
-      "Sass Loops": ["for loops", "each loops", "while loops"]
+      "Sass Mixins": [
+        "parameters",
+        "default values",
+        "default variable"
+      ],
+      "Sass Loops": [
+        "for loops",
+        "each loops",
+        "while loops"
+      ]
     }
   },
   {
@@ -46,9 +106,20 @@
     "title": "JavaScript",
     "description": "A quick reference for JavaScript concepts, functions, methods, and more.",
     "icon": "📜",
-    "tags": ["js", "web", "frontend", "programming"],
+    "color": "#eab308",
+    "tags": [
+      "js",
+      "web",
+      "frontend",
+      "programming"
+    ],
     "preview": {
-      "Getting Started": ["console", "variables", "strings", "operators"],
+      "Getting Started": [
+        "console",
+        "variables",
+        "strings",
+        "operators"
+      ],
       "Functions": [
         "function declaration",
         "arrow functions",
@@ -62,8 +133,19 @@
         "switch",
         "logical operators"
       ],
-      "Scope & Loops": ["let vs var", "closures", "for", "while", "for...of"],
-      "Arrays & Iterators": ["push/pop", "map", "filter", "reduce"],
+      "Scope & Loops": [
+        "let vs var",
+        "closures",
+        "for",
+        "while",
+        "for...of"
+      ],
+      "Arrays & Iterators": [
+        "push/pop",
+        "map",
+        "filter",
+        "reduce"
+      ],
       "Objects & Classes": [
         "this",
         "methods",
@@ -71,9 +153,23 @@
         "constructor",
         "extends"
       ],
-      "Modules": ["export", "import", "require"],
-      "Promises": [".then", "catch", "async/await", "chaining"],
-      "Requests": ["fetch", "XMLHttpRequest", "POST", "JSON"]
+      "Modules": [
+        "export",
+        "import",
+        "require"
+      ],
+      "Promises": [
+        ".then",
+        "catch",
+        "async/await",
+        "chaining"
+      ],
+      "Requests": [
+        "fetch",
+        "XMLHttpRequest",
+        "POST",
+        "JSON"
+      ]
     }
   },
   {
@@ -81,24 +177,207 @@
     "title": "JSON",
     "description": "Human-readable config & data format",
     "icon": "🧾",
-    "tags": ["config", "data", "api"],
+    "color": "#22c55e",
+    "tags": [
+      "config",
+      "data",
+      "api"
+    ],
     "preview": {
-      "Getting Started": ["basic object", "escape", "invalid"],
-      "Data Structures": ["arrays", "objects", "nested"],
-      "Access in JavaScript": ["dot access", "nested access"]
+      "Getting Started": [
+        "basic object",
+        "escape",
+        "invalid"
+      ],
+      "Data Structures": [
+        "arrays",
+        "objects",
+        "nested"
+      ],
+      "Access in JavaScript": [
+        "dot access",
+        "nested access"
+      ]
     }
   },
-
   {
     "slug": "git",
     "title": "Git",
     "description": "Version control for code",
-    "icon": "/icons/git.svg",
-    "tags": ["version control", "cli", "git"],
+    "icon": "⑂",
+    "color": "#f97316",
+    "tags": [
+      "version control",
+      "cli",
+      "git"
+    ],
     "preview": {
-      "Getting Started": ["init", "clone", "add", "commit"],
-      "Remote & Sync": ["push", "pull", "fetch", "merge", "remote"],
-      "Git Tricks": ["branch -m", "cherry-pick", "amend", "log", "aliases"]
+      "Getting Started": [
+        "init",
+        "clone",
+        "add",
+        "commit"
+      ],
+      "Remote & Sync": [
+        "push",
+        "pull",
+        "fetch",
+        "merge",
+        "remote"
+      ],
+      "Git Tricks": [
+        "branch -m",
+        "cherry-pick",
+        "amend",
+        "log",
+        "aliases"
+      ]
+    }
+  },
+  {
+    "slug": "homebrew",
+    "title": "Homebrew",
+    "description": "Package management for macOS and Linux",
+    "icon": "🍺",
+    "color": "#14b8a6",
+    "tags": [
+      "packages",
+      "macos",
+      "cli"
+    ],
+    "preview": {
+      "Essentials": [
+        "install",
+        "uninstall",
+        "update",
+        "upgrade"
+      ],
+      "Packages": [
+        "search",
+        "list",
+        "info"
+      ],
+      "Maintenance": [
+        "doctor",
+        "cleanup",
+        "outdated"
+      ]
+    }
+  },
+  {
+    "slug": "nodejs",
+    "title": "Node.js",
+    "description": "Run JavaScript outside the browser",
+    "icon": "⬢",
+    "color": "#84cc16",
+    "tags": [
+      "javascript",
+      "runtime",
+      "backend"
+    ],
+    "preview": {
+      "Getting Started": [
+        "node",
+        "npm",
+        "package.json"
+      ],
+      "Modules": [
+        "require",
+        "import",
+        "exports"
+      ],
+      "Core APIs": [
+        "fs",
+        "path",
+        "http"
+      ]
+    }
+  },
+  {
+    "slug": "php",
+    "title": "PHP",
+    "description": "Server-side scripting for the web",
+    "icon": "🐘",
+    "color": "#818cf8",
+    "tags": [
+      "backend",
+      "web",
+      "programming"
+    ],
+    "preview": {
+      "Basics": [
+        "variables",
+        "strings",
+        "arrays"
+      ],
+      "Control Flow": [
+        "if",
+        "switch",
+        "loops"
+      ],
+      "Functions": [
+        "parameters",
+        "return",
+        "scope"
+      ]
+    }
+  },
+  {
+    "slug": "python",
+    "title": "Python",
+    "description": "Readable, versatile programming language",
+    "icon": "🐍",
+    "color": "#facc15",
+    "tags": [
+      "programming",
+      "scripting",
+      "backend"
+    ],
+    "preview": {
+      "Basics": [
+        "variables",
+        "strings",
+        "numbers"
+      ],
+      "Collections": [
+        "lists",
+        "tuples",
+        "dictionaries"
+      ],
+      "Control Flow": [
+        "if",
+        "for",
+        "while"
+      ]
+    }
+  },
+  {
+    "slug": "react",
+    "title": "React",
+    "description": "Build interfaces from reusable components",
+    "icon": "⚛",
+    "color": "#38bdf8",
+    "tags": [
+      "javascript",
+      "frontend",
+      "components"
+    ],
+    "preview": {
+      "Components": [
+        "props",
+        "state",
+        "events"
+      ],
+      "Hooks": [
+        "useState",
+        "useEffect",
+        "useMemo"
+      ],
+      "Rendering": [
+        "conditions",
+        "lists",
+        "keys"
+      ]
     }
   },
   {
@@ -106,11 +385,27 @@
     "title": "TypeScript",
     "description": "Typed superset of JavaScript",
     "icon": "🔷",
-    "tags": ["types", "javascript", "programming"],
+    "color": "#3178c6",
+    "tags": [
+      "types",
+      "javascript",
+      "programming"
+    ],
     "preview": {
-      "Getting Started": ["basic types", "arrays", "any vs unknown"],
-      "Interfaces & Types": ["interface", "type alias", "union types"],
-      "Generics": ["generic function", "generic interface"]
+      "Getting Started": [
+        "basic types",
+        "arrays",
+        "any vs unknown"
+      ],
+      "Interfaces & Types": [
+        "interface",
+        "type alias",
+        "union types"
+      ],
+      "Generics": [
+        "generic function",
+        "generic interface"
+      ]
     }
   },
   {
@@ -118,11 +413,27 @@
     "title": "Next.js",
     "description": "The React framework for production",
     "icon": "▲",
-    "tags": ["react", "framework", "web"],
+    "color": "#ffffff",
+    "tags": [
+      "react",
+      "framework",
+      "web"
+    ],
     "preview": {
-      "Routing (App Router)": ["dynamic route", "layout", "loading/error"],
-      "Data Fetching": ["server fetch", "caching", "revalidate"],
-      "API Routes": ["route handler GET", "route handler POST"]
+      "Routing (App Router)": [
+        "dynamic route",
+        "layout",
+        "loading/error"
+      ],
+      "Data Fetching": [
+        "server fetch",
+        "caching",
+        "revalidate"
+      ],
+      "API Routes": [
+        "route handler GET",
+        "route handler POST"
+      ]
     }
   },
   {
@@ -130,11 +441,707 @@
     "title": "SQL",
     "description": "Query and manage relational data",
     "icon": "🗄️",
-    "tags": ["database", "query", "data"],
+    "color": "#a855f7",
+    "tags": [
+      "database",
+      "query",
+      "data"
+    ],
     "preview": {
-      "Querying": ["select", "order by", "limit"],
-      "Joins": ["inner join", "left join"],
-      "Aggregation": ["count/sum/avg", "group by", "having"]
+      "Querying": [
+        "select",
+        "order by",
+        "limit"
+      ],
+      "Joins": [
+        "inner join",
+        "left join"
+      ],
+      "Aggregation": [
+        "count/sum/avg",
+        "group by",
+        "having"
+      ]
+    }
+  },
+  {
+    "slug": "react-native",
+    "title": "React Native",
+    "icon": "📱",
+    "color": "#61dafb",
+    "description": "Build native mobile apps with React",
+    "tags": [
+      "mobile",
+      "react",
+      "ios",
+      "android"
+    ],
+    "preview": {
+      "Must Know": [
+        "Core Components",
+        "State and Lists"
+      ],
+      "Important Patterns": [
+        "Platform-Specific Code",
+        "Effect Cleanup"
+      ],
+      "Useful Recipes": [
+        "Safe Area",
+        "Keyboard-Aware Form"
+      ]
+    }
+  },
+  {
+    "slug": "aws",
+    "title": "AWS",
+    "icon": "☁️",
+    "color": "#ff9900",
+    "description": "Core cloud services and production patterns",
+    "tags": [
+      "cloud",
+      "lambda",
+      "dynamodb",
+      "iam"
+    ],
+    "preview": {
+      "Must Know": [
+        "Core Service Map",
+        "AWS CLI"
+      ],
+      "Important Patterns": [
+        "Least-Privilege IAM",
+        "Lambda Handler"
+      ],
+      "Useful Recipes": [
+        "DynamoDB Key Design",
+        "S3 Presigned Upload"
+      ]
+    }
+  },
+  {
+    "slug": "laravel",
+    "title": "Laravel",
+    "icon": "◢",
+    "color": "#ff2d20",
+    "description": "Productive PHP web application framework",
+    "tags": [
+      "php",
+      "backend",
+      "eloquent",
+      "api"
+    ],
+    "preview": {
+      "Must Know": [
+        "Common Commands",
+        "Route and Controller"
+      ],
+      "Important Patterns": [
+        "Validate Requests",
+        "Eloquent Relationships"
+      ],
+      "Useful Recipes": [
+        "Database Transaction",
+        "Queue a Job"
+      ]
+    }
+  },
+  {
+    "slug": "tailwindcss",
+    "title": "Tailwind CSS",
+    "icon": "〰",
+    "color": "#38bdf8",
+    "description": "Utility-first styling for fast UI development",
+    "tags": [
+      "css",
+      "responsive",
+      "design"
+    ],
+    "preview": {
+      "Must Know": [
+        "Responsive Utilities",
+        "State Variants"
+      ],
+      "Important Patterns": [
+        "Flexible Layout",
+        "Dark Mode"
+      ],
+      "Useful Recipes": [
+        "Centered Container",
+        "Accessible Screen Reader Text"
+      ]
+    }
+  },
+  {
+    "slug": "graphql",
+    "title": "GraphQL",
+    "icon": "◆",
+    "color": "#e535ab",
+    "description": "Typed APIs with client-selected data",
+    "tags": [
+      "api",
+      "schema",
+      "queries"
+    ],
+    "preview": {
+      "Must Know": [
+        "Query",
+        "Schema"
+      ],
+      "Important Patterns": [
+        "Mutation",
+        "Resolver Authorization"
+      ],
+      "Useful Recipes": [
+        "Reusable Fragment",
+        "Cursor Pagination"
+      ]
+    }
+  },
+  {
+    "slug": "rest-api",
+    "title": "REST APIs",
+    "icon": "⇄",
+    "color": "#22c55e",
+    "description": "Design and consume predictable HTTP APIs",
+    "tags": [
+      "http",
+      "backend",
+      "api"
+    ],
+    "preview": {
+      "Must Know": [
+        "HTTP Methods",
+        "Status Codes"
+      ],
+      "Important Patterns": [
+        "Consistent Response",
+        "Validation Error"
+      ],
+      "Useful Recipes": [
+        "Pagination",
+        "Conditional Request"
+      ]
+    }
+  },
+  {
+    "slug": "cypress",
+    "title": "Cypress",
+    "icon": "◉",
+    "color": "#69d3a7",
+    "description": "Reliable browser and end-to-end testing",
+    "tags": [
+      "testing",
+      "e2e",
+      "frontend"
+    ],
+    "preview": {
+      "Must Know": [
+        "Basic Test",
+        "Run Tests"
+      ],
+      "Important Patterns": [
+        "Intercept API",
+        "Stable Selectors"
+      ],
+      "Useful Recipes": [
+        "Custom Command",
+        "Retry Assertions"
+      ]
+    }
+  },
+  {
+    "slug": "bash",
+    "title": "Bash",
+    "icon": "❯_",
+    "color": "#4eaa25",
+    "description": "Shell commands and dependable automation",
+    "tags": [
+      "cli",
+      "scripting",
+      "automation"
+    ],
+    "preview": {
+      "Must Know": [
+        "Safe Script Header",
+        "Variables and Arguments"
+      ],
+      "Important Patterns": [
+        "Conditionals",
+        "Loop Safely"
+      ],
+      "Useful Recipes": [
+        "Find and Transform",
+        "Temporary Directory"
+      ]
+    }
+  },
+  {
+    "slug": "angular",
+    "title": "Angular",
+    "icon": "A",
+    "color": "#dd0031",
+    "description": "Full-featured TypeScript application framework",
+    "tags": [
+      "typescript",
+      "frontend",
+      "rxjs"
+    ],
+    "preview": {
+      "Must Know": [
+        "Standalone Component",
+        "CLI"
+      ],
+      "Important Patterns": [
+        "Signals",
+        "HTTP Service"
+      ],
+      "Useful Recipes": [
+        "Control Flow",
+        "Lazy Route"
+      ]
+    }
+  },
+  {
+    "slug": "vue",
+    "title": "Vue",
+    "icon": "V",
+    "color": "#42b883",
+    "description": "Progressive framework for web interfaces",
+    "tags": [
+      "javascript",
+      "frontend",
+      "components"
+    ],
+    "preview": {
+      "Must Know": [
+        "Composition API",
+        "Props and Events"
+      ],
+      "Important Patterns": [
+        "List Rendering",
+        "Watch Async State"
+      ],
+      "Useful Recipes": [
+        "Composable",
+        "Async Component"
+      ]
+    }
+  },
+  {
+    "slug": "kotlin",
+    "title": "Kotlin",
+    "icon": "K",
+    "color": "#a97bff",
+    "description": "Modern programming for Android and the JVM",
+    "tags": [
+      "android",
+      "jvm",
+      "mobile"
+    ],
+    "preview": {
+      "Must Know": [
+        "Values and Null Safety",
+        "Data Class"
+      ],
+      "Important Patterns": [
+        "Sealed Result",
+        "Coroutines"
+      ],
+      "Useful Recipes": [
+        "Collection Pipeline",
+        "Scope Functions"
+      ]
+    }
+  },
+  {
+    "slug": "swift",
+    "title": "Swift",
+    "icon": "🕊",
+    "color": "#f05138",
+    "description": "Safe, expressive development for Apple platforms",
+    "tags": [
+      "ios",
+      "mobile",
+      "apple"
+    ],
+    "preview": {
+      "Must Know": [
+        "Optionals",
+        "Struct and Protocol"
+      ],
+      "Important Patterns": [
+        "Async/Await",
+        "Main Actor"
+      ],
+      "Useful Recipes": [
+        "Codable",
+        "Guard"
+      ]
+    }
+  },
+  {
+    "slug": "java",
+    "title": "Java",
+    "icon": "☕",
+    "color": "#f89820",
+    "description": "Object-oriented programming on the JVM",
+    "tags": [
+      "jvm",
+      "backend",
+      "android"
+    ],
+    "preview": {
+      "Must Know": [
+        "Record",
+        "Collections"
+      ],
+      "Important Patterns": [
+        "Try with Resources",
+        "Optional"
+      ],
+      "Useful Recipes": [
+        "Stream Pipeline",
+        "Executor"
+      ]
+    }
+  },
+  {
+    "slug": "c",
+    "title": "C",
+    "icon": "C",
+    "color": "#659ad2",
+    "description": "Systems programming fundamentals and memory safety",
+    "tags": [
+      "systems",
+      "memory",
+      "programming"
+    ],
+    "preview": {
+      "Must Know": [
+        "Compile and Run",
+        "Pointers"
+      ],
+      "Important Patterns": [
+        "Allocate Safely",
+        "Bounded Formatting"
+      ],
+      "Useful Recipes": [
+        "Dynamic Array Growth",
+        "Read Lines"
+      ]
+    }
+  },
+  {
+    "slug": "bootstrap",
+    "title": "Bootstrap",
+    "icon": "B",
+    "color": "#7952b3",
+    "description": "Responsive components and layout utilities",
+    "tags": [
+      "css",
+      "ui",
+      "responsive"
+    ],
+    "preview": {
+      "Must Know": [
+        "Responsive Grid",
+        "Flex Utilities"
+      ],
+      "Important Patterns": [
+        "Accessible Modal",
+        "Form Validation"
+      ],
+      "Useful Recipes": [
+        "Spacing and Display",
+        "Theme Variables"
+      ]
+    }
+  },
+  {
+    "slug": "trpc",
+    "title": "tRPC",
+    "icon": "⟷",
+    "color": "#398ccb",
+    "description": "End-to-end typesafe TypeScript APIs",
+    "tags": [
+      "typescript",
+      "api",
+      "react"
+    ],
+    "preview": {
+      "Must Know": [
+        "Procedure",
+        "Client Query"
+      ],
+      "Important Patterns": [
+        "Protected Procedure",
+        "Validate Input"
+      ],
+      "Useful Recipes": [
+        "Optimistic Update",
+        "Batching"
+      ]
+    }
+  },
+  {
+    "slug": "github-actions",
+    "title": "GitHub Actions",
+    "icon": "▶",
+    "color": "#8b949e",
+    "description": "Automate tests, builds, and deployments",
+    "tags": [
+      "ci",
+      "cd",
+      "github",
+      "automation"
+    ],
+    "preview": {
+      "Must Know": [
+        "Node CI",
+        "Events and Filters"
+      ],
+      "Important Patterns": [
+        "Least-Permission Token",
+        "Concurrency"
+      ],
+      "Useful Recipes": [
+        "Matrix Tests",
+        "Artifacts"
+      ]
+    }
+  },
+  {
+    "slug": "websockets",
+    "title": "WebSockets",
+    "icon": "⇆",
+    "color": "#10b981",
+    "description": "Persistent, real-time two-way communication",
+    "tags": [
+      "realtime",
+      "networking",
+      "chat"
+    ],
+    "preview": {
+      "Must Know": [
+        "Browser Client",
+        "Message Envelope"
+      ],
+      "Important Patterns": [
+        "Reconnect with Backoff",
+        "Heartbeat"
+      ],
+      "Useful Recipes": [
+        "Resume Stream",
+        "Presence"
+      ]
+    }
+  },
+  {
+    "slug": "authentication",
+    "title": "Authentication",
+    "icon": "🔐",
+    "color": "#6366f1",
+    "description": "Sessions, tokens, authorization, and account safety",
+    "tags": [
+      "security",
+      "sessions",
+      "oauth"
+    ],
+    "preview": {
+      "Must Know": [
+        "Auth vs Authorization",
+        "Secure Session Cookie"
+      ],
+      "Important Patterns": [
+        "Password Storage",
+        "OAuth Authorization Code + PKCE"
+      ],
+      "Useful Recipes": [
+        "RBAC + Ownership",
+        "Account Recovery"
+      ]
+    }
+  },
+  {
+    "slug": "webhooks",
+    "title": "Webhooks",
+    "icon": "🪝",
+    "color": "#f97316",
+    "description": "Receive external events safely and reliably",
+    "tags": [
+      "api",
+      "events",
+      "security"
+    ],
+    "preview": {
+      "Must Know": [
+        "Verify Signature",
+        "Acknowledge Quickly"
+      ],
+      "Important Patterns": [
+        "Idempotent Consumer",
+        "Event State Machine"
+      ],
+      "Useful Recipes": [
+        "Retry Policy",
+        "Event Log"
+      ]
+    }
+  },
+  {
+    "slug": "stripe",
+    "title": "Stripe",
+    "icon": "S",
+    "color": "#635bff",
+    "description": "Payments, subscriptions, and safe integrations",
+    "tags": [
+      "payments",
+      "webhooks",
+      "billing"
+    ],
+    "preview": {
+      "Must Know": [
+        "PaymentIntent",
+        "Webhook Verification"
+      ],
+      "Important Patterns": [
+        "Trust Server State",
+        "Metadata"
+      ],
+      "Useful Recipes": [
+        "Checkout Session",
+        "Refund"
+      ]
+    }
+  },
+  {
+    "slug": "firebase",
+    "title": "Firebase",
+    "icon": "🔥",
+    "color": "#ffca28",
+    "description": "Managed auth, data, messaging, and analytics",
+    "tags": [
+      "cloud",
+      "mobile",
+      "firestore"
+    ],
+    "preview": {
+      "Must Know": [
+        "Initialize App",
+        "Firestore Read"
+      ],
+      "Important Patterns": [
+        "Security Rules",
+        "Transaction"
+      ],
+      "Useful Recipes": [
+        "Realtime Listener",
+        "Local Emulator"
+      ]
+    }
+  },
+  {
+    "slug": "api-security",
+    "title": "API Security",
+    "icon": "🛡",
+    "color": "#ef4444",
+    "description": "Protect APIs from common attacks and misuse",
+    "tags": [
+      "security",
+      "api",
+      "owasp"
+    ],
+    "preview": {
+      "Must Know": [
+        "Validate at the Boundary",
+        "Parameterized Query"
+      ],
+      "Important Patterns": [
+        "Object-Level Authorization",
+        "Rate Limits"
+      ],
+      "Useful Recipes": [
+        "Security Headers",
+        "Safe Outbound Requests"
+      ]
+    }
+  },
+  {
+    "slug": "pagination",
+    "title": "Pagination",
+    "icon": "⋯",
+    "color": "#06b6d4",
+    "description": "Efficiently navigate large and changing datasets",
+    "tags": [
+      "api",
+      "database",
+      "performance"
+    ],
+    "preview": {
+      "Must Know": [
+        "Offset Pagination",
+        "Cursor Pagination"
+      ],
+      "Important Patterns": [
+        "Page Response",
+        "Limit + 1"
+      ],
+      "Useful Recipes": [
+        "Encode Cursor",
+        "Bidirectional"
+      ]
+    }
+  },
+  {
+    "slug": "push-notifications",
+    "title": "Push Notifications",
+    "icon": "🔔",
+    "color": "#f59e0b",
+    "description": "Reliable mobile and web notification delivery",
+    "tags": [
+      "mobile",
+      "apns",
+      "fcm"
+    ],
+    "preview": {
+      "Must Know": [
+        "Delivery Flow",
+        "Payload"
+      ],
+      "Important Patterns": [
+        "Token Lifecycle",
+        "Deep Link"
+      ],
+      "Useful Recipes": [
+        "Preferences",
+        "Idempotent Send"
+      ]
+    }
+  },
+  {
+    "slug": "docker",
+    "title": "Docker",
+    "icon": "🐳",
+    "color": "#2496ed",
+    "description": "Package and run applications consistently",
+    "tags": [
+      "containers",
+      "devops",
+      "deployment"
+    ],
+    "preview": {
+      "Must Know": [
+        "Core Commands",
+        "Basic Dockerfile"
+      ],
+      "Important Patterns": [
+        "Multi-Stage Build",
+        "Compose"
+      ],
+      "Useful Recipes": [
+        ".dockerignore",
+        "Health Check"
+      ]
     }
   }
 ]

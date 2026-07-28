@@ -1,0 +1,71 @@
+{
+  "title": "Vue",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Composition API",
+          "code": "<script setup lang=\"ts\">\nimport { ref, computed } from 'vue';\nconst count = ref(0);\nconst doubled = computed(() => count.value * 2);\n</script>",
+          "tag": "html"
+        },
+        {
+          "title": "Props and Events",
+          "code": "const props = defineProps<{ title: string }>();\nconst emit = defineEmits<{ save: [id: string] }>();\nemit('save', '42');",
+          "tag": "typescript"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "List Rendering",
+          "code": "<li v-for=\"user in users\" :key=\"user.id\">{{ user.name }}</li>",
+          "description": "Always use a stable, unique key.",
+          "tag": "html"
+        },
+        {
+          "title": "Watch Async State",
+          "code": "watch(query, async (value, _, onCleanup) => {\n  const controller = new AbortController();\n  onCleanup(() => controller.abort());\n  results.value = await search(value, controller.signal);\n});",
+          "description": "Cancel stale work when dependencies change.",
+          "tag": "typescript"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Composable",
+          "code": "export function useToggle(initial = false) {\n  const value = ref(initial);\n  const toggle = () => value.value = !value.value;\n  return { value, toggle };\n}",
+          "description": "Composables package reusable stateful logic.",
+          "tag": "typescript"
+        },
+        {
+          "title": "Async Component",
+          "code": "const AdminPanel = defineAsyncComponent(() => import('./AdminPanel.vue'));",
+          "description": "Load large or uncommon features on demand.",
+          "tag": "typescript"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Reactivity Rules",
+          "code": "const state = reactive({ count: 0 });\nconst { count } = toRefs(state);",
+          "description": "Plain destructuring can disconnect reactive properties.",
+          "tag": "typescript"
+        },
+        {
+          "title": "Security",
+          "code": "<div>{{ userContent }}</div>\n<!-- Avoid v-html with untrusted content -->",
+          "description": "Vue escapes interpolation; raw HTML needs sanitization.",
+          "tag": "html"
+        }
+      ]
+    }
+  ]
+}

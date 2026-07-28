@@ -1,0 +1,71 @@
+{
+  "title": "Swift",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Optionals",
+          "code": "var nickname: String?\nlet displayName = nickname ?? \"Guest\"\nif let nickname { print(nickname) }",
+          "description": "Unwrap optionals safely.",
+          "tag": "swift"
+        },
+        {
+          "title": "Struct and Protocol",
+          "code": "protocol Identifiable { var id: UUID { get } }\nstruct User: Identifiable {\n    let id: UUID\n    var name: String\n}",
+          "description": "Prefer value types unless shared identity is required.",
+          "tag": "swift"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Async/Await",
+          "code": "func loadUser() async throws -> User {\n    let (data, response) = try await URLSession.shared.data(from: url)\n    return try JSONDecoder().decode(User.self, from: data)\n}",
+          "tag": "swift"
+        },
+        {
+          "title": "Main Actor",
+          "code": "@MainActor\nfinal class UserViewModel: ObservableObject {\n    @Published private(set) var user: User?\n}",
+          "description": "UI state must be updated on the main actor.",
+          "tag": "swift"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Codable",
+          "code": "struct User: Codable {\n    let id: Int\n    let displayName: String\n\n    enum CodingKeys: String, CodingKey { case id; case displayName = \"display_name\" }\n}",
+          "tag": "swift"
+        },
+        {
+          "title": "Guard",
+          "code": "guard response.statusCode == 200 else {\n    throw APIError.badStatus(response.statusCode)\n}",
+          "description": "Use guard for early exits and happy-path readability.",
+          "tag": "swift"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Avoid Retain Cycles",
+          "code": "service.load { [weak self] result in\n    self?.handle(result)\n}",
+          "description": "Escaping closures can strongly capture their owner.",
+          "tag": "swift"
+        },
+        {
+          "title": "Error Context",
+          "code": "do { try await save() }\ncatch let error as APIError { logger.error(\"Save failed: \\(error)\") }",
+          "description": "Do not silently discard errors with try?.",
+          "tag": "swift"
+        }
+      ]
+    }
+  ]
+}

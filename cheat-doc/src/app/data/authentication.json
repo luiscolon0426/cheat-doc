@@ -1,0 +1,66 @@
+{
+  "title": "Authentication",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Auth vs Authorization",
+          "code": "authentication: who are you?\nauthorization: may you perform this action?",
+          "description": "Check authorization on every protected server operation."
+        },
+        {
+          "title": "Secure Session Cookie",
+          "code": "Set-Cookie: session=opaque-id; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=3600",
+          "description": "Store session data server-side and rotate IDs after login."
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Password Storage",
+          "code": "Argon2id(password, uniqueSalt, tunedCost)\n\n// Store hash + parameters, never plaintext or reversible encryption.",
+          "description": "Use a maintained password-hashing library."
+        },
+        {
+          "title": "OAuth Authorization Code + PKCE",
+          "code": "code_verifier = random secret\ncode_challenge = BASE64URL(SHA256(code_verifier))\n\nauthorize -> callback code -> token exchange",
+          "description": "Validate state, issuer, audience, nonce, and redirect URI."
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "RBAC + Ownership",
+          "code": "requireRole(user, 'admin');\nif (record.ownerId !== user.id && !user.roles.includes('admin')) deny();",
+          "description": "Roles often need resource-level ownership checks.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Account Recovery",
+          "code": "short-lived single-use token\nhash token in database\ninvalidate after use\nnotify account owner\nrate limit requests",
+          "description": "Recovery is another authentication flow and needs equal protection."
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "JWT Rules",
+          "code": "verify signature\nallow-list algorithms\nvalidate exp, nbf, iss, aud\nkeep access tokens short-lived\nrotate signing keys",
+          "description": "Decoding is not verification."
+        },
+        {
+          "title": "Defense in Depth",
+          "code": "MFA\nlogin throttling\nsession revocation\naudit log\nsuspicious-login alerts\nCSRF protection",
+          "description": "Protect the full account lifecycle, not only login."
+        }
+      ]
+    }
+  ]
+}

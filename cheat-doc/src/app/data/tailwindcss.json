@@ -1,0 +1,72 @@
+{
+  "title": "Tailwind CSS",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Responsive Utilities",
+          "code": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4\">...</div>",
+          "description": "Utilities are mobile-first: unprefixed styles apply everywhere.",
+          "tag": "html"
+        },
+        {
+          "title": "State Variants",
+          "code": "<button class=\"bg-blue-600 hover:bg-blue-500 focus-visible:ring-2 disabled:opacity-50\">Save</button>",
+          "description": "Include keyboard focus and disabled states.",
+          "tag": "html"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Flexible Layout",
+          "code": "<div class=\"flex min-w-0 items-center gap-3\">\n  <span class=\"shrink-0\">Icon</span>\n  <p class=\"truncate\">Long content</p>\n</div>",
+          "description": "min-w-0 allows flex children to shrink correctly.",
+          "tag": "html"
+        },
+        {
+          "title": "Dark Mode",
+          "code": "<div class=\"bg-white text-gray-900 dark:bg-gray-900 dark:text-white\">...</div>",
+          "description": "Choose system-driven or class-driven dark mode consistently.",
+          "tag": "html"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Centered Container",
+          "code": "<main class=\"mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8\">...</main>",
+          "description": "Consistent page gutters improve responsive layouts.",
+          "tag": "html"
+        },
+        {
+          "title": "Accessible Screen Reader Text",
+          "code": "<button><svg aria-hidden=\"true\" /><span class=\"sr-only\">Close dialog</span></button>",
+          "description": "Icon-only controls still need an accessible name.",
+          "tag": "html"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Dynamic Classes",
+          "code": "// Avoid: `bg-${color}-500`\n// Prefer complete class strings or a lookup map.",
+          "description": "Tailwind must be able to discover complete class names."
+        },
+        {
+          "title": "Class Extraction",
+          "code": "const variants = {\n  primary: \"bg-blue-600 text-white\",\n  danger: \"bg-red-600 text-white\",\n};",
+          "description": "Centralize repeated variants instead of building class names at runtime.",
+          "tag": "javascript"
+        }
+      ]
+    }
+  ]
+}

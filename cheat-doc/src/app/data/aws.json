@@ -1,0 +1,68 @@
+{
+  "title": "AWS",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Core Service Map",
+          "code": "Compute: EC2, Lambda, ECS\nStorage: S3\nDatabase: RDS, DynamoDB\nNetwork: VPC, Route 53, CloudFront\nObservability: CloudWatch"
+        },
+        {
+          "title": "AWS CLI",
+          "code": "aws configure\naws sts get-caller-identity\naws s3 ls\naws logs tail /aws/lambda/my-function --follow",
+          "description": "Use profiles instead of repeatedly changing credentials.",
+          "tag": "bash"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Least-Privilege IAM",
+          "code": "{\n  \"Effect\": \"Allow\",\n  \"Action\": [\"dynamodb:GetItem\"],\n  \"Resource\": \"arn:aws:dynamodb:REGION:ACCOUNT:table/Users\"\n}",
+          "description": "Grant only the actions and resources a workload needs.",
+          "tag": "json"
+        },
+        {
+          "title": "Lambda Handler",
+          "code": "export const handler = async (event) => {\n  return { statusCode: 200, body: JSON.stringify({ ok: true }) };\n};",
+          "description": "Keep handlers small, idempotent, and safe to retry.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "DynamoDB Key Design",
+          "code": "PK: USER#123\nSK: PROFILE\nGSI1PK: EMAIL#user@example.com",
+          "description": "Design access patterns before creating the table."
+        },
+        {
+          "title": "S3 Presigned Upload",
+          "code": "const command = new PutObjectCommand({ Bucket, Key, ContentType });\nconst url = await getSignedUrl(s3, command, { expiresIn: 300 });",
+          "description": "Use short-lived URLs and validate content type and size.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Cost Controls",
+          "code": "Budgets + alerts\nLog retention\nS3 lifecycle rules\nRight-size compute\nTag every resource",
+          "description": "Set cost alerts before shipping."
+        },
+        {
+          "title": "Reliability",
+          "code": "timeouts < upstream timeout\nexponential backoff + jitter\nDLQ for failed events\nidempotency keys",
+          "description": "Assume network calls and event delivery can fail or repeat."
+        }
+      ]
+    }
+  ]
+}

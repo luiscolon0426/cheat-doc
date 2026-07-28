@@ -1,0 +1,69 @@
+{
+  "title": "Stripe",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "PaymentIntent",
+          "code": "const intent = await stripe.paymentIntents.create({\n  amount: 2500,\n  currency: 'usd',\n  automatic_payment_methods: { enabled: true },\n}, { idempotencyKey });",
+          "description": "Amounts use the currency's smallest unit.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Webhook Verification",
+          "code": "const event = stripe.webhooks.constructEvent(rawBody, signature, endpointSecret);",
+          "description": "Use the unmodified raw body.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Trust Server State",
+          "code": "switch (event.type) {\n  case 'payment_intent.succeeded':\n    await fulfillOrderOnce(event.data.object.id);\n}",
+          "description": "Fulfill from verified webhooks, not client redirects.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Metadata",
+          "code": "metadata: {\n  orderId: order.id,\n  tenantId: tenant.id,\n}",
+          "description": "Store internal references, but never secrets or sensitive health data.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Checkout Session",
+          "code": "await stripe.checkout.sessions.create({\n  mode: 'payment',\n  line_items: [{ price: priceId, quantity: 1 }],\n  success_url,\n  cancel_url,\n});",
+          "tag": "javascript"
+        },
+        {
+          "title": "Refund",
+          "code": "await stripe.refunds.create({\n  payment_intent: paymentIntentId,\n  amount: partialAmount,\n}, { idempotencyKey });",
+          "description": "Track refund state from webhook events.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Money Rules",
+          "code": "integer minor units\ndo not use floating point\nstore currency with amount\nhandle zero-decimal currencies\ncalculate totals server-side"
+        },
+        {
+          "title": "Operational Safety",
+          "code": "test clocks\nrestricted API keys\nrequest IDs\nwebhook replay\nfraud controls\nreconciliation jobs",
+          "description": "Payments need recovery and reconciliation, not only a happy path."
+        }
+      ]
+    }
+  ]
+}

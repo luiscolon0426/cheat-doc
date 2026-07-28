@@ -1,0 +1,71 @@
+{
+  "title": "Pagination",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Offset Pagination",
+          "code": "SELECT * FROM posts\nORDER BY created_at DESC, id DESC\nLIMIT 20 OFFSET 40;",
+          "description": "Simple, but deep pages get slower and changing data can shift results.",
+          "tag": "sql"
+        },
+        {
+          "title": "Cursor Pagination",
+          "code": "SELECT * FROM posts\nWHERE (created_at, id) < ($cursorTime, $cursorId)\nORDER BY created_at DESC, id DESC\nLIMIT 21;",
+          "description": "Use a unique tie-breaker for stable ordering.",
+          "tag": "sql"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Page Response",
+          "code": "{\n  \"data\": [],\n  \"pageInfo\": {\n    \"nextCursor\": \"opaque-value\",\n    \"hasNextPage\": true\n  }\n}",
+          "description": "Keep cursors opaque to clients.",
+          "tag": "json"
+        },
+        {
+          "title": "Limit + 1",
+          "code": "fetch pageSize + 1 rows\nhasNextPage = rows.length > pageSize\nreturn rows.slice(0, pageSize)",
+          "description": "Avoid a separate count query when total count is unnecessary.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Encode Cursor",
+          "code": "cursor = base64url(JSON.stringify({ createdAt, id }))\n// Decode, validate schema, then bind as query parameters.",
+          "description": "Signing prevents clients from tampering with internal cursor data.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Bidirectional",
+          "code": "after + first => forward\nbefore + last => backward\nreverse query order, then reverse results",
+          "description": "Clearly define edge behavior and ordering."
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Index Match",
+          "code": "CREATE INDEX posts_page_idx ON posts (created_at DESC, id DESC);",
+          "description": "The index should match filters and ordering.",
+          "tag": "sql"
+        },
+        {
+          "title": "Consistency Rules",
+          "code": "stable sort\nunique tie-breaker\nmaximum page size\ncursor version\nfilter values bound to cursor",
+          "description": "Changing filters between cursor requests can duplicate or skip data."
+        }
+      ]
+    }
+  ]
+}

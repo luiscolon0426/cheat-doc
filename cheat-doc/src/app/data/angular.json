@@ -1,0 +1,67 @@
+{
+  "title": "Angular",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Standalone Component",
+          "code": "@Component({\n  selector: 'app-user',\n  standalone: true,\n  template: `<h2>{{ user().name }}</h2>`,\n})\nexport class UserComponent { user = input.required<User>(); }",
+          "tag": "typescript"
+        },
+        {
+          "title": "CLI",
+          "code": "ng new my-app\nng generate component users/user-card\nng serve\nng test\nng build",
+          "tag": "bash"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Signals",
+          "code": "count = signal(0);\ndoubled = computed(() => this.count() * 2);\n\nincrement() { this.count.update(value => value + 1); }",
+          "tag": "typescript"
+        },
+        {
+          "title": "HTTP Service",
+          "code": "@Injectable({ providedIn: 'root' })\nexport class UsersService {\n  private http = inject(HttpClient);\n  getAll() { return this.http.get<User[]>('/api/users'); }\n}",
+          "tag": "typescript"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Control Flow",
+          "code": "@if (users().length) {\n  @for (user of users(); track user.id) { <app-user [user]=\"user\" /> }\n} @else { <p>No users</p> }",
+          "tag": "html"
+        },
+        {
+          "title": "Lazy Route",
+          "code": "{ path: 'admin', loadComponent: () => import('./admin/admin.component').then(m => m.AdminComponent) }",
+          "description": "Lazy loading reduces the initial bundle.",
+          "tag": "typescript"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "RxJS Cleanup",
+          "code": "private destroyRef = inject(DestroyRef);\n\nstream$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe();",
+          "description": "Prevent subscriptions from surviving destroyed components.",
+          "tag": "typescript"
+        },
+        {
+          "title": "Change Detection",
+          "code": "ChangeDetectionStrategy.OnPush\ntrack item.id\npure pipes\navoid functions in templates",
+          "description": "Keep template work predictable and measurable."
+        }
+      ]
+    }
+  ]
+}

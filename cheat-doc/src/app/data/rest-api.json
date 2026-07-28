@@ -1,0 +1,66 @@
+{
+  "title": "REST APIs",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "HTTP Methods",
+          "code": "GET /users/42\nPOST /users\nPATCH /users/42\nDELETE /users/42",
+          "description": "Use nouns for resources and methods for intent."
+        },
+        {
+          "title": "Status Codes",
+          "code": "200 OK\n201 Created\n204 No Content\n400 Bad Request\n401 Unauthenticated\n403 Forbidden\n404 Not Found\n409 Conflict\n422 Validation Error\n500 Server Error"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Consistent Response",
+          "code": "{\n  \"data\": { \"id\": \"42\", \"name\": \"Luis\" },\n  \"meta\": { \"requestId\": \"req_123\" }\n}",
+          "description": "Keep success and error shapes stable.",
+          "tag": "json"
+        },
+        {
+          "title": "Validation Error",
+          "code": "{\n  \"error\": { \"code\": \"VALIDATION_ERROR\", \"message\": \"Invalid input\", \"fields\": { \"email\": \"Required\" } }\n}",
+          "description": "Return machine-readable codes and human-readable messages.",
+          "tag": "json"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Pagination",
+          "code": "GET /users?limit=20&cursor=eyJpZCI6NDJ9\n\n{ \"data\": [], \"nextCursor\": \"...\" }",
+          "description": "Cap page size and use stable ordering."
+        },
+        {
+          "title": "Conditional Request",
+          "code": "ETag: \"user-42-v7\"\nIf-None-Match: \"user-42-v7\"\n\n304 Not Modified",
+          "description": "ETags reduce bandwidth and can prevent lost updates."
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Idempotency",
+          "code": "POST /payments\nIdempotency-Key: 9d62...\n\n// Same key + same request => same result",
+          "description": "Essential for retrying non-idempotent operations safely."
+        },
+        {
+          "title": "Operational Basics",
+          "code": "request IDs\nstructured logs\ntimeouts\nrate limits\nAPI versioning\nOpenAPI documentation",
+          "description": "Design observability and limits with the endpoint."
+        }
+      ]
+    }
+  ]
+}

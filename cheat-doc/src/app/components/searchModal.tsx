@@ -21,6 +21,10 @@ export default function SearchModal({
   const [selected, setSelected] = useState(results[0]);
 
   useEffect(() => {
+    setSelected(results[0]);
+  }, [query]);
+
+  useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Enter" && selected) {
         window.location.href = `/${selected.slug}`;
@@ -47,14 +51,14 @@ export default function SearchModal({
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="bg-gray-900 w-full max-w-4xl h-[500px] rounded-lg shadow-xl flex overflow-hidden relative"
+            className="relative flex h-[min(600px,80vh)] w-full max-w-4xl overflow-hidden rounded-xl border border-gray-700 bg-gray-900 shadow-2xl"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
             {/* Left Panel */}
-            <div className="w-1/2 border-r border-gray-800 overflow-y-auto">
+            <div className="w-full overflow-y-auto md:w-1/2 md:border-r md:border-gray-800">
               <div className="p-4 border-b border-gray-800">
                 <input
                   autoFocus
@@ -71,7 +75,7 @@ export default function SearchModal({
                   key={i}
                   onClick={() => (window.location.href = `/${item.slug}`)}
                   onMouseEnter={() => setSelected(item)}
-                  className={`p-4 cursor-pointer hover:bg-gray-800 ${
+                  className={`cursor-pointer p-4 pr-12 hover:bg-gray-800 ${
                     item.slug === selected?.slug ? "bg-gray-800" : ""
                   }`}
                 >
@@ -87,7 +91,7 @@ export default function SearchModal({
             </div>
 
             {/* Right Panel */}
-            <div className="w-1/2 p-6 text-white overflow-y-auto">
+            <div className="hidden w-1/2 overflow-y-auto p-6 text-white md:block">
               {selected.preview ? (
                 <div className="space-y-4">
                   {Object.entries(selected.preview).map(([section, items]) => (
@@ -115,7 +119,8 @@ export default function SearchModal({
 
             <button
               onClick={close}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white"
+              aria-label="Close search"
+              className="absolute right-4 top-4 z-10 rounded p-1 text-gray-400 hover:bg-gray-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             >
               ✕
             </button>

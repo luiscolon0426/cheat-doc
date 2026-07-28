@@ -1,0 +1,70 @@
+{
+  "title": "Docker",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Core Commands",
+          "code": "docker build -t my-app:dev .\ndocker run --rm -p 3000:3000 --env-file .env my-app:dev\ndocker ps\ndocker logs -f CONTAINER",
+          "tag": "bash"
+        },
+        {
+          "title": "Basic Dockerfile",
+          "code": "FROM node:22-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\nCMD [\"npm\", \"start\"]",
+          "description": "Pin major versions and use a lockfile.",
+          "tag": "docker"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Multi-Stage Build",
+          "code": "FROM node:22-alpine AS build\nWORKDIR /app\nCOPY . .\nRUN npm ci && npm run build\n\nFROM node:22-alpine AS runtime\nENV NODE_ENV=production\nCOPY --from=build /app/.next/standalone ./\nCMD [\"node\", \"server.js\"]",
+          "description": "Keep build tools out of the runtime image.",
+          "tag": "docker"
+        },
+        {
+          "title": "Compose",
+          "code": "services:\n  app:\n    build: .\n    ports: ['3000:3000']\n    depends_on: [db]\n  db:\n    image: postgres:17\n    volumes: [db-data:/var/lib/postgresql/data]\nvolumes:\n  db-data:",
+          "tag": "yaml"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": ".dockerignore",
+          "code": "node_modules\n.next\n.git\n.env*\nnpm-debug.log\ncoverage",
+          "description": "Reduce build context and keep secrets out.",
+          "tag": "bash"
+        },
+        {
+          "title": "Health Check",
+          "code": "HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://localhost:3000/health || exit 1",
+          "description": "Health endpoints should test readiness without expensive work.",
+          "tag": "docker"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Run as Non-Root",
+          "code": "RUN addgroup -S app && adduser -S app -G app\nUSER app",
+          "description": "Use a minimal image and a non-root runtime user.",
+          "tag": "docker"
+        },
+        {
+          "title": "Image Safety",
+          "code": "never bake secrets into ARG/ENV layers\nscan images\npin dependencies\nrebuild for security patches\nset CPU/memory limits",
+          "description": "Containers isolate processes; they are not a complete security boundary."
+        }
+      ]
+    }
+  ]
+}

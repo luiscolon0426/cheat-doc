@@ -1,0 +1,71 @@
+{
+  "title": "Kotlin",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Values and Null Safety",
+          "code": "val name: String = \"Luis\"\nvar nickname: String? = null\nval length = nickname?.length ?: 0",
+          "description": "Prefer immutable val and explicit nullable types.",
+          "tag": "java"
+        },
+        {
+          "title": "Data Class",
+          "code": "data class User(val id: Long, val name: String)\n\nval updated = user.copy(name = \"Ana\")",
+          "description": "Data classes provide equality, copy, and destructuring.",
+          "tag": "java"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Sealed Result",
+          "code": "sealed interface Result<out T> {\n  data class Success<T>(val value: T) : Result<T>\n  data class Error(val cause: Throwable) : Result<Nothing>\n}",
+          "description": "Sealed types make state handling exhaustive.",
+          "tag": "java"
+        },
+        {
+          "title": "Coroutines",
+          "code": "viewModelScope.launch {\n  val user = withContext(Dispatchers.IO) { repository.loadUser() }\n  _state.value = user\n}",
+          "description": "Use structured concurrency and appropriate dispatchers.",
+          "tag": "java"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Collection Pipeline",
+          "code": "val names = users\n  .filter { it.active }\n  .sortedBy { it.name }\n  .map { it.name }",
+          "tag": "java"
+        },
+        {
+          "title": "Scope Functions",
+          "code": "user.apply { name = \"Luis\" }\nuser?.let { render(it) }\nwith(config) { connect(host, port) }",
+          "description": "Choose scope functions for clarity, not brevity.",
+          "tag": "java"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Coroutine Errors",
+          "code": "supervisorScope {\n  val first = async { loadFirst() }\n  val second = async { loadSecond() }\n}",
+          "description": "Know whether sibling failure should cancel the whole operation.",
+          "tag": "java"
+        },
+        {
+          "title": "Avoid !!",
+          "code": "val user = repository.find(id) ?: return NotFound\n// Avoid user!!",
+          "description": "Handle absence at boundaries instead of forcing non-null."
+        }
+      ]
+    }
+  ]
+}

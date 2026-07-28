@@ -1,0 +1,70 @@
+{
+  "title": "tRPC",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Procedure",
+          "code": "const appRouter = router({\n  userById: publicProcedure\n    .input(z.object({ id: z.string().uuid() }))\n    .query(({ input, ctx }) => ctx.db.user.findUnique({ where: { id: input.id } })),\n});\nexport type AppRouter = typeof appRouter;",
+          "tag": "typescript"
+        },
+        {
+          "title": "Client Query",
+          "code": "const user = trpc.userById.useQuery({ id });\nif (user.isLoading) return <Spinner />;\nif (user.error) return <Error message={user.error.message} />;",
+          "tag": "tsx"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Protected Procedure",
+          "code": "const protectedProcedure = publicProcedure.use(({ ctx, next }) => {\n  if (!ctx.session?.user) throw new TRPCError({ code: 'UNAUTHORIZED' });\n  return next({ ctx: { ...ctx, user: ctx.session.user } });\n});",
+          "description": "Authentication belongs in reusable middleware.",
+          "tag": "typescript"
+        },
+        {
+          "title": "Validate Input",
+          "code": ".input(z.object({\n  name: z.string().trim().min(1).max(100),\n  page: z.number().int().positive().default(1),\n}))",
+          "description": "Types do not replace runtime validation.",
+          "tag": "typescript"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Optimistic Update",
+          "code": "const utils = trpc.useUtils();\nconst mutation = trpc.todo.toggle.useMutation({\n  onMutate: async input => { await utils.todo.list.cancel(); /* update cache */ },\n  onSettled: () => utils.todo.list.invalidate(),\n});",
+          "description": "Snapshot and roll back cache state on error.",
+          "tag": "typescript"
+        },
+        {
+          "title": "Batching",
+          "code": "httpBatchLink({ url: '/api/trpc', headers: () => ({ authorization: getToken() }) })",
+          "description": "Batching reduces requests but changes observability and size limits.",
+          "tag": "typescript"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "API Boundaries",
+          "code": "shared inferred types\nruntime input validation\nstable error codes\nexplicit authorization",
+          "description": "Type safety only covers TypeScript clients using the router types."
+        },
+        {
+          "title": "Error Formatting",
+          "code": "errorFormatter({ shape, error }) {\n  return { ...shape, data: { ...shape.data, validation: error.cause instanceof ZodError ? error.cause.flatten() : null } };\n}",
+          "description": "Do not leak internal stack traces or secrets.",
+          "tag": "typescript"
+        }
+      ]
+    }
+  ]
+}

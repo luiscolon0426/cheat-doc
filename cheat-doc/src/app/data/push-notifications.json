@@ -1,0 +1,65 @@
+{
+  "title": "Push Notifications",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Delivery Flow",
+          "code": "app requests permission\napp receives device token\nbackend stores token per installation\nbackend sends through APNs/FCM\napp handles foreground/background tap"
+        },
+        {
+          "title": "Payload",
+          "code": "{\n  \"notification\": { \"title\": \"Update\", \"body\": \"Your report is ready\" },\n  \"data\": { \"type\": \"report.ready\", \"reportId\": \"42\" }\n}",
+          "description": "Keep payloads small and avoid sensitive data.",
+          "tag": "json"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Token Lifecycle",
+          "code": "upsert token on refresh\nassociate with installation + user\nremove on logout when appropriate\ndeactivate invalid-provider responses",
+          "description": "Device tokens rotate and become invalid."
+        },
+        {
+          "title": "Deep Link",
+          "code": "validate route type\nvalidate identifier\nauthorize after app opens\nfallback to a safe screen",
+          "description": "A notification is navigation input, not authorization."
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Preferences",
+          "code": "transactional vs marketing\ntopic-level opt-ins\nquiet hours\ntime zone\nchannel selection",
+          "description": "Respect platform permission and in-app preferences."
+        },
+        {
+          "title": "Idempotent Send",
+          "code": "notification_key = event_id + user_id + channel\nunique constraint prevents duplicate enqueue",
+          "description": "Retries should not spam the user."
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Delivery Reality",
+          "code": "not guaranteed\nmay be delayed\nmay be collapsed\napp may be terminated\nuser may disable permission",
+          "description": "The app must synchronize authoritative state after opening."
+        },
+        {
+          "title": "Measure the Funnel",
+          "code": "eligible -> queued -> provider accepted -> delivered when available -> opened -> action",
+          "description": "Separate provider acceptance from actual delivery."
+        }
+      ]
+    }
+  ]
+}

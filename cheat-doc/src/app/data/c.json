@@ -1,0 +1,71 @@
+{
+  "title": "C",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Compile and Run",
+          "code": "cc -std=c17 -Wall -Wextra -Wpedantic -O2 main.c -o app\n./app",
+          "description": "Treat compiler warnings as problems to fix.",
+          "tag": "bash"
+        },
+        {
+          "title": "Pointers",
+          "code": "int value = 42;\nint *pointer = &value;\nprintf(\"%d\\n\", *pointer);",
+          "description": "& takes an address; * dereferences a pointer.",
+          "tag": "c"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Allocate Safely",
+          "code": "size_t count = 10;\nint *items = calloc(count, sizeof *items);\nif (items == NULL) return EXIT_FAILURE;\n\nfree(items);\nitems = NULL;",
+          "description": "Every successful allocation needs a clear owner and cleanup.",
+          "tag": "c"
+        },
+        {
+          "title": "Bounded Formatting",
+          "code": "char buffer[64];\nint written = snprintf(buffer, sizeof buffer, \"user-%d\", id);\nif (written < 0 || (size_t) written >= sizeof buffer) { /* truncated */ }",
+          "description": "Prefer bounded APIs and check truncation.",
+          "tag": "c"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Dynamic Array Growth",
+          "code": "if (length == capacity) {\n    size_t next = capacity ? capacity * 2 : 8;\n    void *temp = realloc(items, next * sizeof *items);\n    if (!temp) goto cleanup;\n    items = temp;\n    capacity = next;\n}",
+          "description": "Assign realloc to a temporary pointer.",
+          "tag": "c"
+        },
+        {
+          "title": "Read Lines",
+          "code": "char *line = NULL;\nsize_t size = 0;\nwhile (getline(&line, &size, stdin) != -1) { /* use line */ }\nfree(line);",
+          "tag": "c"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Undefined Behavior",
+          "code": "out-of-bounds access\nuse after free\nsigned overflow\ninvalid shifts\nuninitialized reads",
+          "description": "Undefined behavior can appear to work until optimization or input changes."
+        },
+        {
+          "title": "Sanitizers",
+          "code": "cc -g -fsanitize=address,undefined main.c -o app\n./app\nvalgrind --leak-check=full ./app",
+          "description": "Use sanitizers in development and CI.",
+          "tag": "bash"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import SearchModal from "./components/searchModal";
+import topics from "./meta/allTopics.json";
 
 export default function Home() {
   const [openModal, setOpenModal] = useState(false);
@@ -54,32 +56,54 @@ export default function Home() {
           </div>
 
           {/* Cards Grid */}
-          <div className="max-w-6xl mx-auto px-4 pb-20">
-            <h2 className="text-xl font-semibold mb-6">Programming</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {[
-                { name: "HTML", color: "bg-red-500" },
-                { name: "CSS", color: "bg-blue-600" },
-                { name: "JavaScript", color: "bg-yellow-500 text-black" },
-                { name: "Git", color: "bg-gray-700" },
-                { name: "PHP", color: "bg-cyan-500" },
-                { name: "HomeBrew", color: "bg-teal-400" },
-                { name: "Sass", color: "bg-indigo-600" },
-                { name: "JSON", color: "bg-green-600" },
-                { name: "Python", color: "bg-green-400" },
-                { name: "NodeJS", color: "bg-yellow-400" },
-                { name: "React", color: "bg-blue-300" },
-                { name: "TypeScript", color: "bg-blue-500" },
-                { name: "NextJS", color: "bg-gray-800" },
-                { name: "SQL", color: "bg-purple-600" },
-              ].map(({ name, color }) => (
-                <a
-                  href={`/${name.toLowerCase().replace(".", "")}`}
-                  key={name}
-                  className={`block rounded-lg text-center py-4 px-2 font-semibold text-white hover:opacity-70 transition ${color}`}
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
+            <div className="mb-6 flex items-end justify-between gap-4">
+              <div>
+                <h2 className="text-xl font-semibold">Explore cheatsheets</h2>
+                <p className="mt-1 text-sm text-gray-400">
+                  Pick a topic for commands, examples, and quick references.
+                </p>
+              </div>
+              <span className="shrink-0 text-sm text-gray-500">
+                {topics.length} topics
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {topics.map((topic) => (
+                <Link
+                  href={`/${topic.slug}`}
+                  key={topic.slug}
+                  className="group relative min-h-36 overflow-hidden rounded-xl border border-gray-700/80 bg-[#151e30] p-5 transition duration-200 hover:-translate-y-1 hover:border-gray-500 hover:bg-[#1a2539] hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                 >
-                  {name}
-                </a>
+                  <span
+                    className="absolute inset-x-0 top-0 h-1"
+                    style={{ backgroundColor: topic.color }}
+                  />
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="font-semibold text-white transition group-hover:text-blue-100">
+                        {topic.title}
+                      </h3>
+                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-400">
+                        {topic.description}
+                      </p>
+                    </div>
+                    <span
+                      className="flex size-10 shrink-0 items-center justify-center rounded-lg text-lg"
+                      style={{
+                        backgroundColor: `${topic.color}20`,
+                        color: topic.color,
+                      }}
+                      aria-hidden="true"
+                    >
+                      {topic.icon}
+                    </span>
+                  </div>
+                  <span className="absolute bottom-4 right-5 text-gray-600 transition group-hover:translate-x-1 group-hover:text-gray-300">
+                    →
+                  </span>
+                </Link>
               ))}
             </div>
           </div>

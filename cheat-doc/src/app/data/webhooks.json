@@ -1,0 +1,64 @@
+{
+  "title": "Webhooks",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Verify Signature",
+          "code": "expected = HMAC_SHA256(secret, timestamp + '.' + rawBody)\nsecureCompare(expected, signature)\nreject old timestamps",
+          "description": "Verify the raw request body before parsing."
+        },
+        {
+          "title": "Acknowledge Quickly",
+          "code": "verify -> persist event -> return 2xx\n                 -> process asynchronously",
+          "description": "Do not make providers wait for slow business logic."
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Idempotent Consumer",
+          "code": "INSERT INTO webhook_events (provider, event_id)\nVALUES (?, ?)\nON CONFLICT DO NOTHING",
+          "description": "Provider event IDs prevent duplicate side effects."
+        },
+        {
+          "title": "Event State Machine",
+          "code": "payment.pending -> payment.succeeded\npayment.pending -> payment.failed\n\nignore impossible or stale transitions",
+          "description": "Events can arrive late or out of order."
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Retry Policy",
+          "code": "retry transient failures\nexponential backoff + jitter\nmax attempts\nmove poison events to DLQ\nmanual replay tooling"
+        },
+        {
+          "title": "Event Log",
+          "code": "provider\nevent_id\ntype\nreceived_at\nsignature_valid\nprocessing_status\nattempts\nlast_error",
+          "description": "Keep enough metadata to debug and replay safely."
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Never Trust Payload Alone",
+          "code": "verify signature\nfetch sensitive resource from provider when needed\nvalidate account/tenant IDs",
+          "description": "A valid event still needs business authorization checks."
+        },
+        {
+          "title": "Secret Rotation",
+          "code": "accept current + next secret during rotation\nmeasure old-secret traffic\nremove old secret after provider update",
+          "description": "Plan rotation before an emergency."
+        }
+      ]
+    }
+  ]
+}

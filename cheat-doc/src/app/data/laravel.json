@@ -1,0 +1,73 @@
+{
+  "title": "Laravel",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Common Commands",
+          "code": "php artisan serve\nphp artisan make:model Post -mcr\nphp artisan migrate\nphp artisan route:list",
+          "description": "Artisan generates framework-aware boilerplate.",
+          "tag": "bash"
+        },
+        {
+          "title": "Route and Controller",
+          "code": "Route::get('/posts/{post}', [PostController::class, 'show']);\n\npublic function show(Post $post) {\n    return new PostResource($post);\n}",
+          "description": "Route model binding resolves the model automatically.",
+          "tag": "php"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Validate Requests",
+          "code": "$validated = $request->validate([\n    'title' => ['required', 'string', 'max:255'],\n    'email' => ['required', 'email'],\n]);",
+          "description": "Never trust request input.",
+          "tag": "php"
+        },
+        {
+          "title": "Eloquent Relationships",
+          "code": "class Post extends Model {\n    public function author() { return $this->belongsTo(User::class); }\n}\n\n$posts = Post::with('author')->paginate(20);",
+          "description": "Eager load relationships to avoid N+1 queries.",
+          "tag": "php"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Database Transaction",
+          "code": "DB::transaction(function () use ($data) {\n    $order = Order::create($data);\n    $order->items()->createMany($data['items']);\n});",
+          "description": "Group dependent writes atomically.",
+          "tag": "php"
+        },
+        {
+          "title": "Queue a Job",
+          "code": "ProcessUpload::dispatch($upload)->onQueue('media');\n\nphp artisan queue:work --tries=3",
+          "description": "Move slow, retryable work out of requests.",
+          "tag": "bash"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Mass Assignment",
+          "code": "protected $fillable = ['name', 'email'];\n\nUser::create($request->only(['name', 'email']));",
+          "description": "Do not pass unfiltered request data to models.",
+          "tag": "php"
+        },
+        {
+          "title": "Production Cache",
+          "code": "php artisan config:cache\nphp artisan route:cache\nphp artisan view:cache",
+          "description": "Do not call env() outside config files when config is cached.",
+          "tag": "bash"
+        }
+      ]
+    }
+  ]
+}

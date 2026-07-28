@@ -1,0 +1,72 @@
+{
+  "title": "Java",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Record",
+          "code": "public record User(long id, String name) {}",
+          "description": "Records are concise immutable data carriers.",
+          "tag": "java"
+        },
+        {
+          "title": "Collections",
+          "code": "List<String> names = new ArrayList<>();\nMap<Long, User> users = new HashMap<>();\nSet<String> roles = new HashSet<>();",
+          "description": "Program to collection interfaces.",
+          "tag": "java"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Try with Resources",
+          "code": "try (var reader = Files.newBufferedReader(path)) {\n    return reader.lines().toList();\n}",
+          "description": "AutoCloseable resources close even on failure.",
+          "tag": "java"
+        },
+        {
+          "title": "Optional",
+          "code": "return repository.find(id)\n    .map(UserDto::from)\n    .orElseThrow(NotFoundException::new);",
+          "description": "Use Optional for return values, not fields or parameters.",
+          "tag": "java"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Stream Pipeline",
+          "code": "var activeNames = users.stream()\n    .filter(User::active)\n    .map(User::name)\n    .sorted()\n    .toList();",
+          "tag": "java"
+        },
+        {
+          "title": "Executor",
+          "code": "try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {\n    var future = executor.submit(() -> client.fetch());\n    return future.get();\n}",
+          "description": "Bound concurrency around constrained downstream resources.",
+          "tag": "java"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Equality Contract",
+          "code": "@Override public boolean equals(Object other) { ... }\n@Override public int hashCode() { ... }",
+          "description": "Objects used as map keys need consistent equality and hashing.",
+          "tag": "java"
+        },
+        {
+          "title": "Exceptions",
+          "code": "throw new OrderNotFoundException(orderId);\n// Preserve the cause: new ServiceException(\"Failed\", cause)",
+          "description": "Use specific exceptions and preserve diagnostic context.",
+          "tag": "java"
+        }
+      ]
+    }
+  ]
+}

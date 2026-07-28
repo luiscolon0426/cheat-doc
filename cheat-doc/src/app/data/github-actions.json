@@ -1,0 +1,68 @@
+{
+  "title": "GitHub Actions",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Node CI",
+          "code": "name: CI\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n          cache: npm\n      - run: npm ci\n      - run: npm test\n      - run: npm run build",
+          "tag": "yaml"
+        },
+        {
+          "title": "Events and Filters",
+          "code": "on:\n  push:\n    branches: [main]\n  pull_request:\n    paths:\n      - 'src/**'\n      - 'package-lock.json'",
+          "tag": "yaml"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Least-Permission Token",
+          "code": "permissions:\n  contents: read\n  pull-requests: write",
+          "description": "Set explicit permissions at workflow or job level.",
+          "tag": "yaml"
+        },
+        {
+          "title": "Concurrency",
+          "code": "concurrency:\n  group: deploy-${{ github.ref }}\n  cancel-in-progress: true",
+          "description": "Avoid overlapping deployments for the same target.",
+          "tag": "yaml"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Matrix Tests",
+          "code": "strategy:\n  matrix:\n    node: [20, 22]\nsteps:\n  - uses: actions/setup-node@v4\n    with: { node-version: '${{ matrix.node }}' }",
+          "tag": "yaml"
+        },
+        {
+          "title": "Artifacts",
+          "code": "- uses: actions/upload-artifact@v4\n  with:\n    name: test-report\n    path: reports/\n    retention-days: 7",
+          "description": "Store reports and build outputs with short retention.",
+          "tag": "yaml"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Supply-Chain Safety",
+          "code": "pin third-party actions to a commit SHA\nprotect deployment environments\nuse OIDC instead of long-lived cloud keys",
+          "description": "Workflow changes can execute privileged code."
+        },
+        {
+          "title": "Secrets",
+          "code": "${{ secrets.API_TOKEN }}\n# Never print secrets or pass them to untrusted PR code.",
+          "description": "Environment approvals can protect production secrets."
+        }
+      ]
+    }
+  ]
+}

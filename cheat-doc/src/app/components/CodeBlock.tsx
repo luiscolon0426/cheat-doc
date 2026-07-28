@@ -14,20 +14,28 @@ type CodeBlockProps = {
 const detectLanguage = (tag?: string, title?: string): string => {
   const ref = (tag || title || "").toLowerCase();
 
+  if (ref.includes("tsx")) return "tsx";
+  if (ref.includes("jsx")) return "jsx";
+  if (ref.includes("typescript")) return "typescript";
   if (ref.includes("html")) return "html";
   if (ref.includes("css")) return "css";
   if (ref.includes("sass") || ref.includes("scss")) return "scss";
   if (ref.includes("js") || ref.includes("javascript")) return "javascript";
   if (ref.includes("json")) return "json";
+  if (ref.includes("graphql")) return "graphql";
+  if (ref.includes("sql")) return "sql";
+  if (ref.includes("yaml") || ref.includes("yml")) return "yaml";
+  if (ref.includes("docker")) return "docker";
   if (ref.includes("python")) return "python";
   if (ref.includes("bash") || ref.includes("sh")) return "bash";
   if (ref.includes("php")) return "php";
+  if (ref.includes("swift")) return "swift";
+  if (ref.includes("kotlin")) return "kotlin";
   if (ref.includes("c#") || ref.includes("cs")) return "csharp";
   if (ref.includes("c++")) return "cpp";
+  if (ref === "c") return "c";
   if (ref.includes("java")) return "java";
-  if (ref.includes("tsx")) return "tsx";
-  if (ref.includes("jsx")) return "jsx";
-  return "html";
+  return "text";
 };
 
 export default function CodeBlock({

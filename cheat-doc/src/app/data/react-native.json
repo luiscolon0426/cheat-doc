@@ -1,0 +1,71 @@
+{
+  "title": "React Native",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Core Components",
+          "code": "import { View, Text, Pressable } from \"react-native\";\n\n<View><Text>Hello</Text><Pressable onPress={save}><Text>Save</Text></Pressable></View>",
+          "description": "Use native primitives instead of DOM elements.",
+          "tag": "tsx"
+        },
+        {
+          "title": "State and Lists",
+          "code": "const [items, setItems] = useState([]);\n\n<FlatList data={items} keyExtractor={x => x.id} renderItem={({ item }) => <Text>{item.name}</Text>} />",
+          "description": "FlatList virtualizes long lists.",
+          "tag": "tsx"
+        }
+      ]
+    },
+    {
+      "section": "Important Patterns",
+      "cards": [
+        {
+          "title": "Platform-Specific Code",
+          "code": "import { Platform } from \"react-native\";\n\nconst padding = Platform.select({ ios: 16, android: 12 });",
+          "description": "Use .ios.tsx and .android.tsx for larger differences.",
+          "tag": "tsx"
+        },
+        {
+          "title": "Effect Cleanup",
+          "code": "useEffect(() => {\n  const sub = AppState.addEventListener(\"change\", handleChange);\n  return () => sub.remove();\n}, []);",
+          "description": "Clean up listeners, timers, and subscriptions.",
+          "tag": "tsx"
+        }
+      ]
+    },
+    {
+      "section": "Useful Recipes",
+      "cards": [
+        {
+          "title": "Safe Area",
+          "code": "import { SafeAreaView } from \"react-native-safe-area-context\";\n\n<SafeAreaView style={{ flex: 1 }}>{children}</SafeAreaView>",
+          "description": "Protect content from notches and system UI.",
+          "tag": "tsx"
+        },
+        {
+          "title": "Keyboard-Aware Form",
+          "code": "<KeyboardAvoidingView behavior={Platform.OS === \"ios\" ? \"padding\" : undefined}>\n  <TextInput returnKeyType=\"done\" />\n</KeyboardAvoidingView>",
+          "description": "Test forms on small screens and with both keyboards.",
+          "tag": "tsx"
+        }
+      ]
+    },
+    {
+      "section": "Pitfalls & Production",
+      "cards": [
+        {
+          "title": "Performance Checklist",
+          "code": "memo(Row)\nuseCallback(handler, [])\ngetItemLayout={...}\nremoveClippedSubviews",
+          "description": "Profile before optimizing; avoid inline work in large list rows."
+        },
+        {
+          "title": "Secrets",
+          "code": "// Never ship private API keys in the app bundle.\n// Call a trusted backend for privileged operations.",
+          "description": "Mobile bundles can be inspected by users."
+        }
+      ]
+    }
+  ]
+}
