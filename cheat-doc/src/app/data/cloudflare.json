@@ -1,0 +1,74 @@
+{
+  "title": "Cloudflare",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Create a Worker",
+          "code": "npm create cloudflare@latest -- my-worker\ncd my-worker\nnpm run dev\nnpm run deploy",
+          "tag": "bash"
+        },
+        {
+          "title": "Worker Handler",
+          "code": "export default {\n  async fetch(request, env, ctx) {\n    return Response.json({ ok: true });\n  },\n};",
+          "description": "Workers use the web-standard Request, Response, and fetch APIs.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Storage",
+      "cards": [
+        {
+          "title": "Choose the Right Store",
+          "code": "R2  -> object and file storage\nD1  -> relational SQL at the edge\nKV  -> read-heavy key/value configuration\nDurable Objects -> coordinated state\nQueues -> asynchronous delivery",
+          "description": "Each storage product has different consistency and access characteristics."
+        },
+        {
+          "title": "R2 Binding",
+          "code": "export default {\n  async fetch(request, env) {\n    const object = await env.MY_BUCKET.get(\"reports/latest.pdf\");\n    if (!object) return new Response(\"Not found\", { status: 404 });\n    return new Response(object.body, { headers: object.httpMetadata });\n  },\n};",
+          "tag": "javascript"
+        },
+        {
+          "title": "D1 Query",
+          "code": "const result = await env.DB\n  .prepare(\"select id, name from users where id = ?\")\n  .bind(userId)\n  .first();",
+          "description": "Bind input values instead of constructing SQL strings.",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Caching & Delivery",
+      "cards": [
+        {
+          "title": "Cache Response",
+          "code": "const response = await fetch(request);\nconst cached = new Response(response.body, response);\ncached.headers.set(\"Cache-Control\", \"public, max-age=60, s-maxage=3600\");\nreturn cached;",
+          "description": "Define who may cache a response and how it will be invalidated.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Cache Safety",
+          "code": "do not cache private user responses\ninclude representation-changing values in the cache key\nset explicit TTLs\nplan purge/invalidation\nmeasure hit ratio and stale content",
+          "description": "Caching can leak data when identity and authorization are ignored."
+        }
+      ]
+    },
+    {
+      "section": "Production Notes",
+      "cards": [
+        {
+          "title": "Bindings and Secrets",
+          "code": "npx wrangler secret put API_TOKEN\n\n# wrangler.jsonc\n{\n  \"r2_buckets\": [{ \"binding\": \"MY_BUCKET\", \"bucket_name\": \"files\" }],\n  \"d1_databases\": [{ \"binding\": \"DB\", \"database_name\": \"app\" }]\n}",
+          "description": "Use bindings for platform resources and secret storage for credentials.",
+          "tag": "json"
+        },
+        {
+          "title": "Edge Checklist",
+          "code": "set upstream timeouts\nbound request and response sizes\nvalidate every input\nuse structured logs\nunderstand regional cache behavior\nhandle retries and duplicates\nmonitor CPU and subrequest limits",
+          "description": "Running near users does not remove normal distributed-system failure modes."
+        }
+      ]
+    }
+  ]
+}

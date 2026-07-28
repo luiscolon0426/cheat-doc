@@ -1,15 +1,23 @@
 // components/Header.tsx
 "use client";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Github, Search } from "lucide-react";
 
+const SearchModal = dynamic(() => import("./searchModal"), { ssr: false });
+
 export default function Header() {
   const [stars, setStars] = useState<number | null>(null);
+  const [openSearch, setOpenSearch] = useState(false);
   const pathname = usePathname();
   const isCareer = pathname.startsWith("/career");
   const isLearn = pathname.startsWith("/learn");
+  const isJournal =
+    pathname.startsWith("/journal") ||
+    pathname === "/now" ||
+    pathname === "/changelog";
 
   useEffect(() => {
     const fetchStars = async () => {
@@ -25,7 +33,32 @@ export default function Header() {
     fetchStars();
   }, []);
 
+  useEffect(() => {
+    const handleKey = (event: KeyboardEvent) => {
+      const isMac = navigator.platform.toUpperCase().includes("MAC");
+      if (
+        (isMac && event.metaKey && event.key.toLowerCase() === "k") ||
+        (!isMac && event.ctrlKey && event.key.toLowerCase() === "k")
+      ) {
+        event.preventDefault();
+        setOpenSearch(true);
+      }
+    };
+    const handleOpen = () => setOpenSearch(true);
+
+    window.addEventListener("keydown", handleKey);
+    window.addEventListener("open-cheatdoc-search", handleOpen);
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+      window.removeEventListener("open-cheatdoc-search", handleOpen);
+    };
+  }, []);
+
   return (
+    <>
+    {openSearch && (
+      <SearchModal open={openSearch} close={() => setOpenSearch(false)} />
+    )}
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0e1525] border-b border-gray-800">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3 sm:gap-6">
         <Link href="/" className="shrink-0 text-lg font-bold text-green-400 sm:text-xl">
@@ -39,7 +72,7 @@ export default function Header() {
           <Link
             href="/"
             className={`rounded-md px-2.5 py-1.5 transition sm:px-3 ${
-              !isCareer && !isLearn
+              !isCareer && !isLearn && !isJournal
                 ? "bg-gray-800 text-white"
                 : "text-gray-400 hover:text-white"
             }`}
@@ -67,20 +100,23 @@ export default function Header() {
             <span className="sm:hidden">Learn</span>
             <span className="hidden sm:inline">Playbook</span>
           </Link>
+          <Link
+            href="/journal"
+            className={`rounded-md px-2.5 py-1.5 transition sm:px-3 ${
+              isJournal
+                ? "bg-gray-800 text-white"
+                : "text-gray-400 hover:text-white"
+            }`}
+          >
+            <span className="sm:hidden">Notes</span>
+            <span className="hidden sm:inline">Journal</span>
+          </Link>
         </nav>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          {pathname === "/" && (
           <button
             className="flex items-center gap-1 rounded bg-gray-800 p-2 text-sm text-gray-300 transition hover:bg-gray-700 sm:px-3 sm:py-1"
-            onClick={() =>
-              window.dispatchEvent(
-                new KeyboardEvent("keydown", {
-                  key: "k",
-                  metaKey: true,
-                })
-              )
-            }
+            onClick={() => setOpenSearch(true)}
           >
             <Search size={14} />
             <span className="hidden md:inline">Search</span>
@@ -88,7 +124,6 @@ export default function Header() {
               ⌘ K
             </kbd>
           </button>
-          )}
 
           <a
             href="https://github.com/luiscolon0426/cheat-doc"
@@ -110,5 +145,6 @@ export default function Header() {
         </div>
       </div>
     </header>
+    </>
   );
 }

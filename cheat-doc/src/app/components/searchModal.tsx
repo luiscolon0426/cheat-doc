@@ -2,10 +2,100 @@
 import { useEffect, useState } from "react";
 import Fuse from "fuse.js";
 import topics from "@/app/meta/allTopics.json";
+import { careerPaths } from "@/app/career/data";
+import { learningAreas } from "@/app/learn/data";
+import { journalEntries } from "@/app/journal/data";
 import { motion, AnimatePresence } from "framer-motion";
 
-const fuse = new Fuse(topics, {
-  keys: ["title", "description", "tags"],
+type SearchItem = {
+  href: string;
+  title: string;
+  description: string;
+  tags: string[];
+  icon: string;
+  group: string;
+  preview: Record<string, string[]>;
+};
+
+const searchItems: SearchItem[] = [
+  ...topics.map((topic): SearchItem => ({
+    href: `/${topic.slug}`,
+    title: topic.title,
+    description: topic.description,
+    tags: topic.tags,
+    icon: topic.icon,
+    group: "Tech",
+    preview: topic.preview as unknown as Record<string, string[]>,
+  })),
+  ...careerPaths.map((path): SearchItem => ({
+    href: `/career/${path.slug}`,
+    title: path.title,
+    description: path.summary,
+    tags: ["career", path.eyebrow.toLowerCase()],
+    icon: path.icon,
+    group: "Career",
+    preview: Object.fromEntries(
+      path.sections.slice(0, 3).map((section) => [
+        section.title,
+        section.items.slice(0, 4),
+      ]),
+    ),
+  })),
+  ...learningAreas.map((area): SearchItem => ({
+    href: `/learn/${area.slug}`,
+    title: area.title,
+    description: area.description,
+    tags: [area.eyebrow.toLowerCase(), ...area.topics],
+    icon: area.icon,
+    group: "Playbook",
+    preview: {
+      "Featured topics": area.topics.slice(0, 8),
+      "Deep dives": area.featured.map((guide) => guide.title),
+    },
+  })),
+  ...journalEntries.map((entry): SearchItem => ({
+    href: `/journal/${entry.slug}`,
+    title: entry.title,
+    description: entry.summary,
+    tags: entry.tags,
+    icon: "✦",
+    group: "Journal",
+    preview: {
+      [entry.category]: entry.sections.map((section) => section.title),
+      Context: [entry.context, entry.level, `Reviewed ${entry.reviewed}`],
+    },
+  })),
+  {
+    href: "/learn/toolkit",
+    title: "Personal Developer Toolkit",
+    description: "Track goals, notes, career evidence, and custom snippets locally.",
+    tags: ["toolkit", "goals", "notes", "progress"],
+    icon: "🧰",
+    group: "Playbook",
+    preview: { Tools: ["Growth goals", "Learning notes", "Evidence journal", "Custom snippets"] },
+  },
+  {
+    href: "/now",
+    title: "What I’m Learning Now",
+    description: "What Luis is currently building, studying, and exploring.",
+    tags: ["now", "learning", "building"],
+    icon: "◉",
+    group: "Journal",
+    preview: { Current: ["Building", "Studying", "Questions I’m exploring"] },
+  },
+  {
+    href: "/changelog",
+    title: "CheatDoc Build Log",
+    description: "A public record of how this engineering field guide is evolving.",
+    tags: ["changelog", "build log", "updates"],
+    icon: "⑂",
+    group: "Journal",
+    preview: { Updates: ["Engineering journal", "Personal field guide", "Applied engineering"] },
+  },
+];
+
+const fuse = new Fuse(searchItems, {
+  keys: ["title", "description", "tags", "group"],
   threshold: 0.3,
 });
 
@@ -17,7 +107,7 @@ export default function SearchModal({
   close: () => void;
 }) {
   const [query, setQuery] = useState("");
-  const results = query ? fuse.search(query).map((r) => r.item) : topics;
+  const results = query ? fuse.search(query).map((r) => r.item) : searchItems;
   const [selected, setSelected] = useState(results[0]);
 
   useEffect(() => {
@@ -27,7 +117,7 @@ export default function SearchModal({
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Enter" && selected) {
-        window.location.href = `/${selected.slug}`;
+        window.location.href = selected.href;
       }
       if (e.key === "Escape") {
         close();
@@ -73,14 +163,17 @@ export default function SearchModal({
               {results.map((item, i) => (
                 <div
                   key={i}
-                  onClick={() => (window.location.href = `/${item.slug}`)}
+                  onClick={() => (window.location.href = item.href)}
                   onMouseEnter={() => setSelected(item)}
                   className={`cursor-pointer p-4 pr-12 hover:bg-gray-800 ${
-                    item.slug === selected?.slug ? "bg-gray-800" : ""
+                    item.href === selected?.href ? "bg-gray-800" : ""
                   }`}
                 >
                   <div className="flex justify-between">
-                    <div className="font-semibold">{item.title}</div>
+                    <div>
+                      <div className="font-semibold">{item.title}</div>
+                      <div className="mt-0.5 text-xs text-gray-500">{item.group}</div>
+                    </div>
                     {item.icon && <div>{item.icon}</div>}
                   </div>
                   <div className="text-sm text-gray-400">

@@ -1,0 +1,75 @@
+{
+  "title": "Supabase",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Create a Client",
+          "code": "import { createClient } from \"@supabase/supabase-js\";\n\nexport const supabase = createClient(\n  import.meta.env.PUBLIC_SUPABASE_URL,\n  import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY,\n);",
+          "description": "Publishable keys can be used by clients when exposed data is protected by RLS.",
+          "tag": "typescript"
+        },
+        {
+          "title": "Query Postgres",
+          "code": "const { data, error } = await supabase\n  .from(\"projects\")\n  .select(\"id, name, created_at\")\n  .order(\"created_at\", { ascending: false })\n  .limit(20);",
+          "tag": "typescript"
+        }
+      ]
+    },
+    {
+      "section": "Row Level Security",
+      "cards": [
+        {
+          "title": "Enable RLS",
+          "code": "alter table public.projects enable row level security;\n\ncreate policy \"users read their projects\"\non public.projects\nfor select\nto authenticated\nusing ((select auth.uid()) = user_id);",
+          "description": "RLS should enforce ownership in the database, not only in the interface.",
+          "tag": "sql"
+        },
+        {
+          "title": "Service Keys",
+          "code": "// Never expose secret or service-role keys in browser/mobile code.\n// They bypass Row Level Security and belong only in trusted server environments.",
+          "description": "Use publishable keys in clients and least-privilege secrets on servers."
+        }
+      ]
+    },
+    {
+      "section": "Auth, Storage & Realtime",
+      "cards": [
+        {
+          "title": "Sign In",
+          "code": "const { data, error } = await supabase.auth.signInWithPassword({\n  email,\n  password,\n});",
+          "tag": "typescript"
+        },
+        {
+          "title": "Private Realtime Channel",
+          "code": "const channel = supabase.channel(\"room:42:messages\", {\n  config: { private: true },\n});\n\nawait channel.subscribe();\n// Remove the channel during cleanup.\nawait supabase.removeChannel(channel);",
+          "description": "Production channels need authorization policies and lifecycle cleanup.",
+          "tag": "typescript"
+        },
+        {
+          "title": "Upload a File",
+          "code": "const { data, error } = await supabase.storage\n  .from(\"avatars\")\n  .upload(`${user.id}/avatar.png`, file, { upsert: true });",
+          "description": "Protect storage objects with policies and validate file type and size.",
+          "tag": "typescript"
+        }
+      ]
+    },
+    {
+      "section": "Production Notes",
+      "cards": [
+        {
+          "title": "Edge Function",
+          "code": "Deno.serve(async (request) => {\n  const payload = await request.json();\n  return Response.json({ received: payload });\n});\n\n# Local development\nsupabase functions serve",
+          "description": "Keep edge operations short-lived and idempotent; move heavy jobs to workers.",
+          "tag": "typescript"
+        },
+        {
+          "title": "Security Checklist",
+          "code": "enable + test RLS\nuse least-privilege grants\nnever expose service secrets\nvalidate function authorization\ntest policies with multiple users\nindex columns used by policies\nplan backups and restore tests",
+          "description": "A working query is not proof that its access policy is correct."
+        }
+      ]
+    }
+  ]
+}

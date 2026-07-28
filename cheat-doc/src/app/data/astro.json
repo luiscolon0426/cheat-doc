@@ -1,0 +1,69 @@
+{
+  "title": "Astro",
+  "snippets": [
+    {
+      "section": "Must Know",
+      "cards": [
+        {
+          "title": "Create a Project",
+          "code": "npm create astro@latest\ncd my-astro-site\nnpm run dev",
+          "tag": "bash"
+        },
+        {
+          "title": "Astro Component",
+          "code": "---\nconst { title } = Astro.props;\n---\n\n<article>\n  <h1>{title}</h1>\n  <slot />\n</article>",
+          "description": "The component script runs on the server; the template produces HTML.",
+          "tag": "html"
+        }
+      ]
+    },
+    {
+      "section": "Routing & Content",
+      "cards": [
+        {
+          "title": "File-Based Route",
+          "code": "src/pages/index.astro       -> /\nsrc/pages/about.astro       -> /about\nsrc/pages/posts/[slug].astro -> /posts/:slug",
+          "description": "Files inside src/pages become routes."
+        },
+        {
+          "title": "Dynamic Static Paths",
+          "code": "---\nexport function getStaticPaths() {\n  return posts.map((post) => ({\n    params: { slug: post.slug },\n    props: { post },\n  }));\n}\nconst { post } = Astro.props;\n---",
+          "tag": "javascript"
+        }
+      ]
+    },
+    {
+      "section": "Islands & Rendering",
+      "cards": [
+        {
+          "title": "Client Island",
+          "code": "<Counter client:visible />\n<Search client:idle />\n<ThemeToggle client:load />",
+          "description": "Hydrate only interactive components and choose when their JavaScript loads.",
+          "tag": "html"
+        },
+        {
+          "title": "Server Island",
+          "code": "<Avatar server:defer>\n  <AvatarSkeleton slot=\"fallback\" />\n</Avatar>",
+          "description": "Render personalized or dynamic content separately without delaying the main page.",
+          "tag": "html"
+        }
+      ]
+    },
+    {
+      "section": "Production Notes",
+      "cards": [
+        {
+          "title": "Environment Variables",
+          "code": "const publicValue = import.meta.env.PUBLIC_API_URL;\nconst secret = import.meta.env.API_SECRET;",
+          "description": "Only variables prefixed with PUBLIC_ are available to client code.",
+          "tag": "javascript"
+        },
+        {
+          "title": "Choose Rendering Intentionally",
+          "code": "static output  -> content known at build time\nserver output  -> request-time rendering\nclient island  -> browser interactivity\nserver island  -> deferred personalization",
+          "description": "Do not hydrate a component just because it was written with a UI framework."
+        }
+      ]
+    }
+  ]
+}

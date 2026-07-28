@@ -1143,5 +1143,90 @@
         "Health Check"
       ]
     }
+  },
+  {
+    "slug": "astro",
+    "title": "Astro",
+    "icon": "🚀",
+    "color": "#ff5d01",
+    "description": "Content-focused web framework with server-first islands",
+    "tags": [
+      "framework",
+      "frontend",
+      "islands",
+      "static sites"
+    ],
+    "preview": {
+      "Must Know": [
+        "Create a Project",
+        "Astro Component"
+      ],
+      "Routing & Content": [
+        "File-Based Route",
+        "Dynamic Static Paths"
+      ],
+      "Islands & Rendering": [
+        "Client Island",
+        "Server Island"
+      ]
+    }
+  },
+  {
+    "slug": "supabase",
+    "title": "Supabase",
+    "icon": "⚡",
+    "color": "#3ecf8e",
+    "description": "Postgres, Auth, Storage, Realtime, and Edge Functions",
+    "tags": [
+      "postgres",
+      "backend",
+      "auth",
+      "realtime",
+      "rls"
+    ],
+    "preview": {
+      "Must Know": [
+        "Create a Client",
+        "Query Postgres"
+      ],
+      "Row Level Security": [
+        "Enable RLS",
+        "Service Keys"
+      ],
+      "Auth, Storage & Realtime": [
+        "Sign In",
+        "Private Realtime Channel",
+        "Upload a File"
+      ]
+    }
+  },
+  {
+    "slug": "cloudflare",
+    "title": "Cloudflare",
+    "icon": "☁",
+    "color": "#f48120",
+    "description": "Edge compute, delivery, storage, and security platform",
+    "tags": [
+      "workers",
+      "edge",
+      "r2",
+      "d1",
+      "cdn"
+    ],
+    "preview": {
+      "Must Know": [
+        "Create a Worker",
+        "Worker Handler"
+      ],
+      "Storage": [
+        "Choose the Right Store",
+        "R2 Binding",
+        "D1 Query"
+      ],
+      "Caching & Delivery": [
+        "Cache Response",
+        "Cache Safety"
+      ]
+    }
   }
 ]

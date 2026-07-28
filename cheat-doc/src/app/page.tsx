@@ -1,36 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import SearchModal from "./components/searchModal";
 import topics from "./meta/allTopics.json";
 
 export default function Home() {
-  const [openModal, setOpenModal] = useState(false);
-
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      const isMac = navigator.platform.toUpperCase().includes("MAC");
-      if (
-        (isMac && e.metaKey && e.key === "k") ||
-        (!isMac && e.ctrlKey && e.key === "k")
-      ) {
-        e.preventDefault();
-        setOpenModal(true);
-      }
-    };
-
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
-
   return (
     <>
-      {/* <Header onSearchClick={() => setOpenModal(true)} /> */}
-
-      {openModal && (
-        <SearchModal open={openModal} close={() => setOpenModal(false)} />
-      )}
-
       <main className="bg-[#0e1525] min-h-screen text-white pt-24 flex flex-col justify-between">
         <div>
           <div className="text-center py-20 px-4">
@@ -49,7 +23,7 @@ export default function Home() {
             <div className="mt-8 max-w-md mx-auto">
               <div
                 className="w-full px-4 py-2 rounded-md bg-[#1f2937] text-white text-left placeholder-gray-400 border border-gray-600 cursor-pointer hover:border-blue-500 transition"
-                onClick={() => setOpenModal(true)}
+                onClick={() => window.dispatchEvent(new Event("open-cheatdoc-search"))}
               >
                 <span className="opacity-60">Search my technical notes...</span>
                 <kbd className="float-right bg-gray-600 px-2 py-0.5 rounded text-xs">
