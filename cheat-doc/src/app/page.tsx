@@ -33,12 +33,16 @@ export default function Home() {
 
       <main className="bg-[#0e1525] min-h-screen text-white pt-24 flex flex-col justify-between">
         <div>
-          {/* Hero Section */}
           <div className="text-center py-20 px-4">
-            <h1 className="text-4xl sm:text-5xl font-bold">Quick Reference</h1>
-            <p className="mt-4 text-lg text-gray-400">
-              Here are some cheatsheets and quick references contributed by devs
-              like you.
+            <span className="inline-flex rounded-full border border-green-400/20 bg-green-400/10 px-3 py-1 text-sm text-green-300">
+              Notes from 5+ years in software engineering
+            </span>
+            <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
+              Luis&apos;s Engineering Field Notes
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-gray-400">
+              Commands, patterns, mistakes, and lessons I keep coming back to
+              while building web, mobile, backend, and cloud software.
             </p>
 
             {/* Search Field */}
@@ -47,7 +51,7 @@ export default function Home() {
                 className="w-full px-4 py-2 rounded-md bg-[#1f2937] text-white text-left placeholder-gray-400 border border-gray-600 cursor-pointer hover:border-blue-500 transition"
                 onClick={() => setOpenModal(true)}
               >
-                <span className="opacity-60">Search for cheatsheet...</span>
+                <span className="opacity-60">Search my technical notes...</span>
                 <kbd className="float-right bg-gray-600 px-2 py-0.5 rounded text-xs">
                   ⌘ K
                 </kbd>
@@ -59,9 +63,10 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
             <div className="mb-6 flex items-end justify-between gap-4">
               <div>
-                <h2 className="text-xl font-semibold">Explore cheatsheets</h2>
+                <h2 className="text-xl font-semibold">Technical notes</h2>
                 <p className="mt-1 text-sm text-gray-400">
-                  Pick a topic for commands, examples, and quick references.
+                  The references and examples I want close by when I&apos;m
+                  building.
                 </p>
               </div>
               <span className="shrink-0 text-sm text-gray-500">
@@ -107,12 +112,52 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+            <div className="relative overflow-hidden rounded-2xl border border-gray-700/80 bg-[#151e30] p-6 sm:p-8">
+              <div className="absolute -right-16 -top-16 size-48 rounded-full bg-green-400/5 blur-3xl" />
+              <div className="relative grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-center">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-widest text-green-300">
+                    About these notes
+                  </span>
+                  <h2 className="mt-3 text-2xl font-semibold">
+                    The things I&apos;ve learned—and the things I&apos;m still
+                    learning
+                  </h2>
+                  <p className="mt-4 max-w-2xl leading-7 text-gray-400">
+                    I&apos;m Luis Colon, a software engineer working across web,
+                    mobile, backend systems, and cloud infrastructure. CheatDoc
+                    is where I organize the references I repeatedly need,
+                    lessons from production work, and advice I wish I had
+                    earlier.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-gray-700 bg-gray-900/50 p-5">
+                  <p className="text-sm leading-6 text-gray-400">
+                    These are working field notes—not universal rules. They
+                    combine my professional experience, personal projects,
+                    official documentation, and ongoing research.
+                  </p>
+                  <a
+                    href="https://luiscolon0426.github.io/portfolio/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex text-sm font-medium text-green-300 transition hover:text-green-200"
+                  >
+                    More about my work →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
 
         {/* Footer */}
         <footer className="text-center text-sm text-gray-500 py-6 border-t border-gray-700">
           <p>
-            &copy; {new Date().getFullYear()} All rights reserved. Designed by{" "}
+            &copy; {new Date().getFullYear()} Field notes collected and designed
+            by{" "}
             <a
               href="https://luiscolon0426.github.io/portfolio/"
               target="_blank"

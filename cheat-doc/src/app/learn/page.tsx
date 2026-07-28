@@ -7,23 +7,23 @@ export default function LearnPage() {
     <main className="min-h-screen bg-[#0e1525] pt-24 text-white">
       <section className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-20">
         <span className="inline-flex rounded-full border border-blue-400/20 bg-blue-400/10 px-3 py-1 text-sm text-blue-300">
-          Applied engineering
+          My engineering playbook
         </span>
         <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
-          Learn how professional software gets built
+          How I approach building production software
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-gray-400 sm:text-lg">
-          Playbooks, scenarios, architecture, production practices, templates,
-          and projects that turn technical knowledge into engineering judgment.
+          The playbooks, debugging habits, architecture lessons, templates, and
+          production practices I&apos;ve gathered—and continue refining—through real work.
         </p>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-semibold">Learning areas</h2>
+            <h2 className="text-2xl font-semibold">Inside my playbook</h2>
             <p className="mt-2 text-sm text-gray-400">
-              Use these as references, practice material, or team discussion guides.
+              Working notes to use as references, practice, or team discussion guides.
             </p>
           </div>
           <span className="shrink-0 text-sm text-gray-500">

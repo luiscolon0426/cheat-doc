@@ -25,14 +25,14 @@ export default function CareerPage() {
     <main className="min-h-screen bg-[#0e1525] pt-24 text-white">
       <section className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-20">
         <span className="inline-flex rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-300">
-          Engineering growth
+          Career lessons from the journey
         </span>
         <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
-          Build the skills behind the title
+          Growth lessons I wish I had earlier
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-gray-400 sm:text-lg">
-          Practical paths for growing from strong foundations to senior-level
-          ownership, judgment, communication, and impact.
+          My practical map for growing from strong foundations toward greater
+          ownership, judgment, communication, and senior-level impact.
         </p>
       </section>
 
@@ -53,9 +53,9 @@ export default function CareerPage() {
 
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
         <div className="mb-6">
-          <h2 className="text-2xl font-semibold">Choose your path</h2>
-          <p className="mt-2 text-sm text-gray-400">
-            Start with your current responsibilities, not just your job title.
+            <h2 className="text-2xl font-semibold">Career field notes</h2>
+            <p className="mt-2 text-sm text-gray-400">
+              Start with the responsibilities you have today—not only your title.
           </p>
         </div>
 

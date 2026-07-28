@@ -64,7 +64,8 @@ export default function Header() {
                 : "text-gray-400 hover:text-white"
             }`}
           >
-            Learn
+            <span className="sm:hidden">Learn</span>
+            <span className="hidden sm:inline">Playbook</span>
           </Link>
         </nav>
 
