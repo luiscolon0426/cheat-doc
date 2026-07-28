@@ -100,5 +100,41 @@
       "Remote & Sync": ["push", "pull", "fetch", "merge", "remote"],
       "Git Tricks": ["branch -m", "cherry-pick", "amend", "log", "aliases"]
     }
+  },
+  {
+    "slug": "typescript",
+    "title": "TypeScript",
+    "description": "Typed superset of JavaScript",
+    "icon": "🔷",
+    "tags": ["types", "javascript", "programming"],
+    "preview": {
+      "Getting Started": ["basic types", "arrays", "any vs unknown"],
+      "Interfaces & Types": ["interface", "type alias", "union types"],
+      "Generics": ["generic function", "generic interface"]
+    }
+  },
+  {
+    "slug": "nextjs",
+    "title": "Next.js",
+    "description": "The React framework for production",
+    "icon": "▲",
+    "tags": ["react", "framework", "web"],
+    "preview": {
+      "Routing (App Router)": ["dynamic route", "layout", "loading/error"],
+      "Data Fetching": ["server fetch", "caching", "revalidate"],
+      "API Routes": ["route handler GET", "route handler POST"]
+    }
+  },
+  {
+    "slug": "sql",
+    "title": "SQL",
+    "description": "Query and manage relational data",
+    "icon": "🗄️",
+    "tags": ["database", "query", "data"],
+    "preview": {
+      "Querying": ["select", "order by", "limit"],
+      "Joins": ["inner join", "left join"],
+      "Aggregation": ["count/sum/avg", "group by", "having"]
+    }
   }
 ]

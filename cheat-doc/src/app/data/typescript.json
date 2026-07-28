@@ -1,0 +1,123 @@
+{
+  "title": "TypeScript",
+  "snippets": [
+    {
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "Basic Types",
+          "code": "let age: number = 18;\nlet name: string = \"John\";\nlet isActive: boolean = true;",
+          "description": "TypeScript adds static types on top of JavaScript."
+        },
+        {
+          "title": "Arrays & Tuples",
+          "code": "let list: number[] = [1, 2, 3];\nlet tuple: [string, number] = [\"age\", 18];"
+        },
+        {
+          "title": "Any & Unknown",
+          "code": "let a: any = 4;\nlet b: unknown = \"hello\";",
+          "description": "`unknown` is safer than `any` — it forces a type check before use."
+        }
+      ]
+    },
+    {
+      "section": "Interfaces & Types",
+      "cards": [
+        {
+          "title": "Interface",
+          "code": "interface User {\n  id: number;\n  name: string;\n  email?: string;\n}"
+        },
+        {
+          "title": "Type Alias",
+          "code": "type Point = { x: number; y: number };"
+        },
+        {
+          "title": "Union Types",
+          "code": "type Status = \"loading\" | \"success\" | \"error\";"
+        },
+        {
+          "title": "Extending",
+          "code": "interface Admin extends User {\n  role: \"admin\";\n}"
+        }
+      ]
+    },
+    {
+      "section": "Functions",
+      "cards": [
+        {
+          "title": "Typed Function",
+          "code": "function add(x: number, y: number): number {\n  return x + y;\n}"
+        },
+        {
+          "title": "Optional & Default Params",
+          "code": "function greet(name: string, greeting: string = \"Hello\"): string {\n  return `${greeting}, ${name}`;\n}"
+        },
+        {
+          "title": "Arrow Function Typing",
+          "code": "const multiply = (a: number, b: number): number => a * b;"
+        }
+      ]
+    },
+    {
+      "section": "Classes",
+      "cards": [
+        {
+          "title": "Basic Class",
+          "code": "class Animal {\n  constructor(public name: string) {}\n  speak(): void {\n    console.log(`${this.name} makes a noise.`);\n  }\n}"
+        },
+        {
+          "title": "Access Modifiers",
+          "code": "class Account {\n  private balance: number = 0;\n  protected id: string = \"acc_1\";\n  public owner: string = \"Luis\";\n}"
+        },
+        {
+          "title": "Implementing an Interface",
+          "code": "class Employee implements User {\n  constructor(public id: number, public name: string) {}\n}"
+        }
+      ]
+    },
+    {
+      "section": "Generics",
+      "cards": [
+        {
+          "title": "Generic Function",
+          "code": "function identity<T>(arg: T): T {\n  return arg;\n}\n\nidentity<string>(\"hello\");"
+        },
+        {
+          "title": "Generic Interface",
+          "code": "interface ApiResponse<T> {\n  data: T;\n  error?: string;\n}"
+        }
+      ]
+    },
+    {
+      "section": "Utility Types",
+      "cards": [
+        {
+          "title": "Partial",
+          "code": "type PartialUser = Partial<User>;",
+          "description": "Makes all properties optional."
+        },
+        {
+          "title": "Pick & Omit",
+          "code": "type NameOnly = Pick<User, \"name\">;\ntype NoEmail = Omit<User, \"email\">;"
+        },
+        {
+          "title": "Record",
+          "code": "type Roles = Record<string, boolean>;"
+        }
+      ]
+    },
+    {
+      "section": "Type Narrowing",
+      "cards": [
+        {
+          "title": "typeof Guard",
+          "code": "function print(value: string | number) {\n  if (typeof value === \"string\") {\n    console.log(value.toUpperCase());\n  }\n}"
+        },
+        {
+          "title": "instanceof Guard",
+          "code": "if (error instanceof Error) {\n  console.log(error.message);\n}"
+        }
+      ]
+    }
+  ]
+}

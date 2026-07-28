@@ -1,0 +1,127 @@
+{
+  "title": "SQL",
+  "snippets": [
+    {
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "Create Table",
+          "code": "CREATE TABLE users (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(100),\n  email VARCHAR(100) UNIQUE\n);"
+        },
+        {
+          "title": "Insert Row",
+          "code": "INSERT INTO users (name, email)\nVALUES ('Luis', 'luis@example.com');"
+        }
+      ]
+    },
+    {
+      "section": "Querying",
+      "cards": [
+        {
+          "title": "Select All",
+          "code": "SELECT * FROM users;"
+        },
+        {
+          "title": "Select Specific Columns",
+          "code": "SELECT name, email FROM users;"
+        },
+        {
+          "title": "Order & Limit",
+          "code": "SELECT * FROM users\nORDER BY name ASC\nLIMIT 10;"
+        }
+      ]
+    },
+    {
+      "section": "Filtering",
+      "cards": [
+        {
+          "title": "WHERE Clause",
+          "code": "SELECT * FROM users WHERE id = 1;"
+        },
+        {
+          "title": "Multiple Conditions",
+          "code": "SELECT * FROM users\nWHERE age > 18 AND status = 'active';"
+        },
+        {
+          "title": "LIKE & IN",
+          "code": "SELECT * FROM users WHERE name LIKE 'L%';\nSELECT * FROM users WHERE id IN (1, 2, 3);"
+        }
+      ]
+    },
+    {
+      "section": "Joins",
+      "cards": [
+        {
+          "title": "Inner Join",
+          "code": "SELECT orders.id, users.name\nFROM orders\nINNER JOIN users ON orders.user_id = users.id;"
+        },
+        {
+          "title": "Left Join",
+          "code": "SELECT users.name, orders.id\nFROM users\nLEFT JOIN orders ON users.id = orders.user_id;",
+          "description": "Returns all users, even those with no matching orders."
+        }
+      ]
+    },
+    {
+      "section": "Aggregation",
+      "cards": [
+        {
+          "title": "COUNT, SUM, AVG",
+          "code": "SELECT COUNT(*), SUM(total), AVG(total)\nFROM orders;"
+        },
+        {
+          "title": "GROUP BY",
+          "code": "SELECT user_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY user_id;"
+        },
+        {
+          "title": "HAVING",
+          "code": "SELECT user_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY user_id\nHAVING COUNT(*) > 5;"
+        }
+      ]
+    },
+    {
+      "section": "Modifying Data",
+      "cards": [
+        {
+          "title": "Update Row",
+          "code": "UPDATE users\nSET email = 'new@example.com'\nWHERE id = 1;"
+        },
+        {
+          "title": "Delete Row",
+          "code": "DELETE FROM users WHERE id = 1;"
+        }
+      ]
+    },
+    {
+      "section": "Table Management",
+      "cards": [
+        {
+          "title": "Alter Table",
+          "code": "ALTER TABLE users ADD COLUMN age INT;"
+        },
+        {
+          "title": "Drop Table",
+          "code": "DROP TABLE users;"
+        },
+        {
+          "title": "Index",
+          "code": "CREATE INDEX idx_email ON users(email);",
+          "description": "Speeds up lookups on the email column."
+        }
+      ]
+    },
+    {
+      "section": "Subqueries",
+      "cards": [
+        {
+          "title": "Subquery in WHERE",
+          "code": "SELECT * FROM users\nWHERE id IN (SELECT user_id FROM orders WHERE total > 100);"
+        },
+        {
+          "title": "Subquery as a Table",
+          "code": "SELECT avg_total.user_id, avg_total.avg\nFROM (\n  SELECT user_id, AVG(total) AS avg\n  FROM orders\n  GROUP BY user_id\n) AS avg_total;"
+        }
+      ]
+    }
+  ]
+}

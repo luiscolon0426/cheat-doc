@@ -1,0 +1,106 @@
+{
+  "title": "Next.js",
+  "snippets": [
+    {
+      "section": "Getting Started",
+      "cards": [
+        {
+          "title": "Create App",
+          "code": "npx create-next-app@latest my-app\ncd my-app\nnpm run dev"
+        },
+        {
+          "title": "File-Based Routing",
+          "code": "app/page.tsx        -> /\napp/about/page.tsx  -> /about",
+          "description": "Any `page.tsx` inside `app/` becomes a route."
+        }
+      ]
+    },
+    {
+      "section": "Routing (App Router)",
+      "cards": [
+        {
+          "title": "Dynamic Route",
+          "code": "// app/[topic]/page.tsx\nexport default function Page({ params }: { params: { topic: string } }) {\n  return <h1>{params.topic}</h1>;\n}"
+        },
+        {
+          "title": "Nested Layout",
+          "code": "// app/dashboard/layout.tsx\nexport default function Layout({ children }: { children: React.ReactNode }) {\n  return <section>{children}</section>;\n}"
+        },
+        {
+          "title": "Loading & Error States",
+          "code": "app/dashboard/loading.tsx\napp/dashboard/error.tsx",
+          "description": "Special files that automatically wrap the route segment."
+        }
+      ]
+    },
+    {
+      "section": "Data Fetching",
+      "cards": [
+        {
+          "title": "Server Component Fetch",
+          "code": "export default async function Page() {\n  const res = await fetch(\"https://api.example.com/data\");\n  const data = await res.json();\n  return <div>{data.title}</div>;\n}",
+          "description": "Fetching directly in a Server Component runs on the server, no client JS needed."
+        },
+        {
+          "title": "Caching a Request",
+          "code": "fetch(url, { next: { revalidate: 60 } });",
+          "description": "Revalidate cached data every 60 seconds (ISR)."
+        },
+        {
+          "title": "Opt Out of Caching",
+          "code": "fetch(url, { cache: \"no-store\" });"
+        }
+      ]
+    },
+    {
+      "section": "API Routes",
+      "cards": [
+        {
+          "title": "Route Handler (GET)",
+          "code": "// app/api/hello/route.ts\nexport async function GET() {\n  return Response.json({ message: \"Hello\" });\n}"
+        },
+        {
+          "title": "Route Handler (POST)",
+          "code": "export async function POST(request: Request) {\n  const body = await request.json();\n  return Response.json({ received: body });\n}"
+        }
+      ]
+    },
+    {
+      "section": "Client vs Server Components",
+      "cards": [
+        {
+          "title": "Client Component",
+          "code": "\"use client\";\n\nimport { useState } from \"react\";\n\nexport default function Counter() {\n  const [count, setCount] = useState(0);\n  return <button onClick={() => setCount(count + 1)}>{count}</button>;\n}",
+          "description": "Add \"use client\" at the top when you need state, effects, or browser APIs."
+        }
+      ]
+    },
+    {
+      "section": "Navigation",
+      "cards": [
+        {
+          "title": "Link Component",
+          "code": "import Link from \"next/link\";\n\n<Link href=\"/about\">About</Link>"
+        },
+        {
+          "title": "Programmatic Navigation",
+          "code": "\"use client\";\nimport { useRouter } from \"next/navigation\";\n\nconst router = useRouter();\nrouter.push(\"/dashboard\");"
+        }
+      ]
+    },
+    {
+      "section": "Metadata & Config",
+      "cards": [
+        {
+          "title": "Static Metadata",
+          "code": "export const metadata = {\n  title: \"My App\",\n  description: \"An example Next.js app\",\n};"
+        },
+        {
+          "title": "Environment Variables",
+          "code": "// .env.local\nNEXT_PUBLIC_API_URL=https://api.example.com",
+          "description": "Prefix with NEXT_PUBLIC_ to expose a variable to the browser."
+        }
+      ]
+    }
+  ]
+}
