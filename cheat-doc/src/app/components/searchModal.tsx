@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Fuse from "fuse.js";
 import topics from "@/app/meta/allTopics.json";
 import { careerPaths } from "@/app/career/data";
 import { learningAreas } from "@/app/learn/data";
 import { journalEntries } from "@/app/journal/data";
+import { blueprints, caseStudies, goalPaths, portfolioProjects } from "@/app/content/data";
 import { motion, AnimatePresence } from "framer-motion";
 
 type SearchItem = {
@@ -65,6 +66,48 @@ const searchItems: SearchItem[] = [
       Context: [entry.context, entry.level, `Reviewed ${entry.reviewed}`],
     },
   })),
+  ...caseStudies.map((study): SearchItem => ({
+    href: `/case-studies/${study.slug}`,
+    title: study.title,
+    description: study.summary,
+    tags: study.tags,
+    icon: "◈",
+    group: "Case Studies",
+    preview: {
+      Outcome: [study.outcome],
+      Sections: study.sections.map((section) => section.title),
+    },
+  })),
+  ...blueprints.map((blueprint): SearchItem => ({
+    href: `/blueprints/${blueprint.slug}`,
+    title: blueprint.title,
+    description: blueprint.summary,
+    tags: [...blueprint.stack, blueprint.level],
+    icon: "▦",
+    group: "Blueprints",
+    preview: {
+      Build: blueprint.outcomes,
+      Plan: blueprint.phases.map((phase) => phase.title),
+    },
+  })),
+  ...goalPaths.map((path): SearchItem => ({
+    href: `/start#${path.slug}`,
+    title: path.title,
+    description: path.summary,
+    tags: path.steps.map((step) => step.title),
+    icon: path.icon,
+    group: "Paths",
+    preview: { Steps: path.steps.map((step) => step.title) },
+  })),
+  ...portfolioProjects.map((project): SearchItem => ({
+    href: project.href,
+    title: project.title,
+    description: project.summary,
+    tags: project.stack,
+    icon: "◆",
+    group: "Projects",
+    preview: { Stack: project.stack },
+  })),
   {
     href: "/learn/toolkit",
     title: "Personal Developer Toolkit",
@@ -92,6 +135,15 @@ const searchItems: SearchItem[] = [
     group: "Journal",
     preview: { Updates: ["Engineering journal", "Personal field guide", "Applied engineering"] },
   },
+  {
+    href: "/newsletter",
+    title: "Building Real Products",
+    description: "Practical lessons from shipping, refactoring, and designing real-world web apps.",
+    tags: ["newsletter", "linkedin", "shipping", "products"],
+    icon: "✉",
+    group: "Newsletter",
+    preview: { Published: ["Monthly on LinkedIn"] },
+  },
 ];
 
 const fuse = new Fuse(searchItems, {
@@ -107,17 +159,33 @@ export default function SearchModal({
   close: () => void;
 }) {
   const [query, setQuery] = useState("");
-  const results = query ? fuse.search(query).map((r) => r.item) : searchItems;
-  const [selected, setSelected] = useState(results[0]);
+  const [activeGroup, setActiveGroup] = useState("All");
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const groups = ["All", ...Array.from(new Set(searchItems.map((item) => item.group)))];
+  const results = useMemo(() => {
+    const matches = query ? fuse.search(query).map((result) => result.item) : searchItems;
+    return activeGroup === "All"
+      ? matches
+      : matches.filter((item) => item.group === activeGroup);
+  }, [query, activeGroup]);
+  const selected = results[selectedIndex];
 
   useEffect(() => {
-    setSelected(results[0]);
-  }, [query]);
+    setSelectedIndex(0);
+  }, [query, activeGroup]);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Enter" && selected) {
         window.location.href = selected.href;
+      }
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setSelectedIndex((index) => Math.min(index + 1, results.length - 1));
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setSelectedIndex((index) => Math.max(index - 1, 0));
       }
       if (e.key === "Escape") {
         close();
@@ -129,7 +197,7 @@ export default function SearchModal({
     }
 
     return () => window.removeEventListener("keydown", handleKey);
-  }, [selected, open, close]);
+  }, [selected, results.length, open, close]);
 
   return (
     <AnimatePresence>
@@ -149,24 +217,40 @@ export default function SearchModal({
           >
             {/* Left Panel */}
             <div className="w-full overflow-y-auto md:w-1/2 md:border-r md:border-gray-800">
-              <div className="p-4 border-b border-gray-800">
+              <div className="sticky top-0 z-10 border-b border-gray-800 bg-gray-900 p-4">
                 <input
                   autoFocus
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search for cheatsheet..."
+                  placeholder="Search DevMarks..."
                   className="w-full px-4 py-2 rounded bg-gray-800 text-white placeholder-gray-400 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
+                <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+                  {groups.map((group) => (
+                    <button
+                      key={group}
+                      type="button"
+                      onClick={() => setActiveGroup(group)}
+                      className={`shrink-0 rounded-full px-2.5 py-1 text-xs transition ${
+                        activeGroup === group
+                          ? "bg-blue-500 text-white"
+                          : "bg-gray-800 text-gray-400 hover:text-white"
+                      }`}
+                    >
+                      {group}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {results.map((item, i) => (
                 <div
                   key={i}
                   onClick={() => (window.location.href = item.href)}
-                  onMouseEnter={() => setSelected(item)}
+                  onMouseEnter={() => setSelectedIndex(i)}
                   className={`cursor-pointer p-4 pr-12 hover:bg-gray-800 ${
-                    item.href === selected?.href ? "bg-gray-800" : ""
+                    i === selectedIndex ? "bg-gray-800" : ""
                   }`}
                 >
                   <div className="flex justify-between">
@@ -181,6 +265,9 @@ export default function SearchModal({
                   </div>
                 </div>
               ))}
+              {results.length === 0 && (
+                <p className="p-6 text-sm text-gray-500">No matching content found.</p>
+              )}
             </div>
 
             {/* Right Panel */}

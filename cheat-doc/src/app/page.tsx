@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import { ArrowRight, BookOpen, BriefcaseBusiness, Layers3 } from "lucide-react";
+import { caseStudies, goalPaths } from "./content/data";
 import topics from "./meta/allTopics.json";
 
 export default function Home() {
@@ -32,6 +34,33 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+            <div className="mb-6 flex items-end justify-between gap-4">
+              <div>
+                <h2 className="text-xl font-semibold">Start with an outcome</h2>
+                <p className="mt-1 text-sm text-gray-400">
+                  Follow a focused path or learn from a complete project.
+                </p>
+              </div>
+              <Link href="/start" className="hidden items-center gap-1 text-sm text-green-300 hover:text-green-200 sm:flex">
+                View all paths <ArrowRight className="size-4" />
+              </Link>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {goalPaths.map((path) => (
+                <Link
+                  key={path.slug}
+                  href={`/start#${path.slug}`}
+                  className="group rounded-xl border border-gray-700/80 bg-[#151e30] p-5 transition hover:-translate-y-1 hover:border-green-400/40"
+                >
+                  <span className="text-2xl">{path.icon}</span>
+                  <h3 className="mt-4 font-semibold">{path.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-gray-400">{path.summary}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
 
           {/* Cards Grid */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
@@ -86,6 +115,51 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+            <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr_1fr]">
+              <Link
+                href={`/case-studies/${caseStudies[0].slug}`}
+                className="group rounded-2xl border border-orange-400/20 bg-orange-400/5 p-6 transition hover:border-orange-400/50"
+              >
+                <BookOpen className="size-6 text-orange-300" />
+                <span className="mt-5 block text-xs font-semibold uppercase tracking-wider text-orange-300">
+                  Featured case study
+                </span>
+                <h2 className="mt-2 text-2xl font-semibold">{caseStudies[0].title}</h2>
+                <p className="mt-3 leading-7 text-gray-400">{caseStudies[0].summary}</p>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm text-orange-200">
+                  Read the case study <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                </span>
+              </Link>
+              <Link
+                href="/blueprints"
+                className="group rounded-2xl border border-violet-400/20 bg-violet-400/5 p-6 transition hover:border-violet-400/50"
+              >
+                <Layers3 className="size-6 text-violet-300" />
+                <h2 className="mt-5 text-xl font-semibold">Project blueprints</h2>
+                <p className="mt-3 text-sm leading-6 text-gray-400">
+                  Build complete applications with milestones, failure modes, and proof.
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm text-violet-200">
+                  Choose a project <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                </span>
+              </Link>
+              <Link
+                href="/projects"
+                className="group rounded-2xl border border-blue-400/20 bg-blue-400/5 p-6 transition hover:border-blue-400/50"
+              >
+                <BriefcaseBusiness className="size-6 text-blue-300" />
+                <h2 className="mt-5 text-xl font-semibold">Projects and work</h2>
+                <p className="mt-3 text-sm leading-6 text-gray-400">
+                  Connect the field notes to real engineering practice and my portfolio.
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1 text-sm text-blue-200">
+                  Explore the work <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                </span>
+              </Link>
+            </div>
+          </section>
 
           <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
             <div className="relative overflow-hidden rounded-2xl border border-gray-700/80 bg-[#151e30] p-6 sm:p-8">

@@ -15,6 +15,11 @@ export default function Header() {
   const isCareer = pathname.startsWith("/career");
   const isLearn = pathname.startsWith("/learn");
   const isNewsletter = pathname.startsWith("/newsletter");
+  const isExplore =
+    pathname.startsWith("/start") ||
+    pathname.startsWith("/case-studies") ||
+    pathname.startsWith("/blueprints") ||
+    pathname.startsWith("/projects");
   const isJournal =
     pathname.startsWith("/journal") ||
     pathname === "/now" ||
@@ -73,7 +78,7 @@ export default function Header() {
           <Link
             href="/"
             className={`rounded-md px-2.5 py-1.5 transition sm:px-3 ${
-              !isCareer && !isLearn && !isJournal
+              !isCareer && !isLearn && !isJournal && !isNewsletter && !isExplore
                 ? "bg-gray-800 text-white"
                 : "text-gray-400 hover:text-white"
             }`}
@@ -113,14 +118,14 @@ export default function Header() {
             <span className="hidden sm:inline">Journal</span>
           </Link>
           <Link
-            href="/newsletter"
+            href="/start"
             className={`hidden rounded-md px-3 py-1.5 transition sm:inline-flex ${
-              isNewsletter
+              isExplore
                 ? "bg-gray-800 text-white"
                 : "text-gray-400 hover:text-white"
             }`}
           >
-            Newsletter
+            Start here
           </Link>
         </nav>
 

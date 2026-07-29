@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Check, Clock3 } from "lucide-react";
 import ShareButton from "../ShareButton";
+import RelatedContent, { type RelatedItem } from "../../components/RelatedContent";
+import { blueprints, caseStudies } from "../../content/data";
 import { getJournalEntry, journalEntries } from "../data";
 
 type JournalEntryPageProps = {
@@ -21,6 +23,16 @@ export async function generateMetadata({
   return {
     title: note ? `${note.title} | Luis's Engineering Journal` : "Engineering Journal",
     description: note?.summary,
+    alternates: note ? { canonical: `/journal/${note.slug}` } : undefined,
+    openGraph: note
+      ? {
+          type: "article",
+          title: note.title,
+          description: note.summary,
+          url: `/journal/${note.slug}`,
+          images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+        }
+      : undefined,
   };
 }
 
@@ -32,6 +44,30 @@ export default async function JournalEntryPage({ params }: JournalEntryPageProps
   const related = note.related
     .map((slug) => getJournalEntry(slug))
     .filter((item) => item !== undefined);
+  const crossContent: RelatedItem[] = [
+    ...caseStudies
+      .filter((study) => study.tags.some((tag) => note.tags.includes(tag)))
+      .slice(0, 2)
+      .map((study) => ({
+        href: `/case-studies/${study.slug}`,
+        title: study.title,
+        description: study.summary,
+        type: "Case study",
+      })),
+    ...blueprints
+      .filter((blueprint) =>
+        blueprint.stack.some((item) =>
+          note.tags.some((tag) => item.toLowerCase().includes(tag)),
+        ),
+      )
+      .slice(0, 1)
+      .map((blueprint) => ({
+        href: `/blueprints/${blueprint.slug}`,
+        title: blueprint.title,
+        description: blueprint.summary,
+        type: "Project blueprint",
+      })),
+  ];
 
   return (
     <main className="min-h-screen bg-[#0e1525] pb-24 pt-24 text-white">
@@ -109,6 +145,7 @@ export default async function JournalEntryPage({ params }: JournalEntryPageProps
             </div>
           </aside>
         )}
+        <RelatedContent items={crossContent} title="Apply this lesson" />
       </article>
     </main>
   );

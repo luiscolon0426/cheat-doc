@@ -20,6 +20,7 @@ export async function generateMetadata({
   return {
     title: area ? `${area.title} | DevMarks` : "Learn | DevMarks",
     description: area?.description,
+    alternates: area ? { canonical: `/learn/${area.slug}` } : undefined,
   };
 }
 

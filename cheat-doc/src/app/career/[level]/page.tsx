@@ -21,6 +21,7 @@ export async function generateMetadata({
   return {
     title: path ? `${path.title} | DevMarks` : "Career Path | DevMarks",
     description: path?.summary,
+    alternates: path ? { canonical: `/career/${path.slug}` } : undefined,
   };
 }
 
