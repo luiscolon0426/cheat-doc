@@ -14,6 +14,7 @@ export default function Header() {
   const pathname = usePathname();
   const isCareer = pathname.startsWith("/career");
   const isLearn = pathname.startsWith("/learn");
+  const isNewsletter = pathname.startsWith("/newsletter");
   const isJournal =
     pathname.startsWith("/journal") ||
     pathname === "/now" ||
@@ -110,6 +111,16 @@ export default function Header() {
           >
             <span className="sm:hidden">Notes</span>
             <span className="hidden sm:inline">Journal</span>
+          </Link>
+          <Link
+            href="/newsletter"
+            className={`hidden rounded-md px-3 py-1.5 transition sm:inline-flex ${
+              isNewsletter
+                ? "bg-gray-800 text-white"
+                : "text-gray-400 hover:text-white"
+            }`}
+          >
+            Newsletter
           </Link>
         </nav>
 

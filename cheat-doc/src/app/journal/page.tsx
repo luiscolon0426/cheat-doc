@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Clock3, History, Radio } from "lucide-react";
+import { ArrowRight, Clock3, History, Linkedin, Radio } from "lucide-react";
 import { journalCategories, journalEntries } from "./data";
 
 const categoryColors = {
@@ -35,6 +35,12 @@ export default function JournalPage() {
             className="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-[#151e30] px-4 py-2 text-sm text-gray-300 hover:border-gray-500 hover:text-white"
           >
             <History className="size-4 text-blue-300" /> DevMarks build log
+          </Link>
+          <Link
+            href="/newsletter"
+            className="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-[#151e30] px-4 py-2 text-sm text-gray-300 hover:border-gray-500 hover:text-white"
+          >
+            <Linkedin className="size-4 text-sky-300" /> Newsletter
           </Link>
         </div>
       </section>
