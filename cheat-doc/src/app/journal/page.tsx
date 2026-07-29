@@ -34,7 +34,7 @@ export default function JournalPage() {
             href="/changelog"
             className="inline-flex items-center gap-2 rounded-lg border border-gray-700 bg-[#151e30] px-4 py-2 text-sm text-gray-300 hover:border-gray-500 hover:text-white"
           >
-            <History className="size-4 text-blue-300" /> CheatDoc build log
+            <History className="size-4 text-blue-300" /> DevMarks build log
           </Link>
         </div>
       </section>

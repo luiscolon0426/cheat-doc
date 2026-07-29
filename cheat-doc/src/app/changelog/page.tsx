@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, GitCommitHorizontal } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "CheatDoc Build Log",
+  title: "DevMarks Build Log",
   description: "A public log of how Luis's engineering field guide is evolving.",
 };
 
@@ -22,7 +22,7 @@ const releases = [
     date: "July 2026",
     title: "A personal field guide",
     items: [
-      "Repositioned CheatDoc as Luis’s Engineering Field Notes",
+      "Repositioned DevMarks as Luis’s Engineering Field Notes",
       "Added a transparent author and content-context section",
       "Rewrote Career and Learn around personal lessons and ongoing growth",
     ],
@@ -72,7 +72,7 @@ export default function ChangelogPage() {
             Building in public
           </span>
           <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
-            CheatDoc build log
+            DevMarks build log
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-gray-400">
             A record of how this project is changing as I organize what I&apos;ve

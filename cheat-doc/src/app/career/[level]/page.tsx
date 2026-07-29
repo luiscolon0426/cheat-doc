@@ -19,7 +19,7 @@ export async function generateMetadata({
   const path = getCareerPath(level);
 
   return {
-    title: path ? `${path.title} | CheatDoc.ME` : "Career Path | CheatDoc.ME",
+    title: path ? `${path.title} | DevMarks` : "Career Path | DevMarks",
     description: path?.summary,
   };
 }

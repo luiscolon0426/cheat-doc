@@ -62,9 +62,9 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0e1525] border-b border-gray-800">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3 sm:gap-6">
         <Link href="/" className="shrink-0 text-lg font-bold text-green-400 sm:text-xl">
-          <span className="sm:hidden">C<span className="text-white">D</span></span>
+          <span className="sm:hidden">D<span className="text-white">M</span></span>
           <span className="hidden sm:inline">
-            Cheat<span className="text-white">Doc</span>.ME
+            Dev<span className="text-white">Marks</span>
           </span>
         </Link>
 

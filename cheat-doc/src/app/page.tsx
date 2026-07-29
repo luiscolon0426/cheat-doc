@@ -101,7 +101,7 @@ export default function Home() {
                   </h2>
                   <p className="mt-4 max-w-2xl leading-7 text-gray-400">
                     I&apos;m Luis Colon, a software engineer working across web,
-                    mobile, backend systems, and cloud infrastructure. CheatDoc
+                    mobile, backend systems, and cloud infrastructure. DevMarks
                     is where I organize the references I repeatedly need,
                     lessons from production work, and advice I wish I had
                     earlier.

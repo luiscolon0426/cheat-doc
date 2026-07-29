@@ -4,7 +4,7 @@ import { ArrowLeft, LockKeyhole } from "lucide-react";
 import ToolkitClient from "./ToolkitClient";
 
 export const metadata: Metadata = {
-  title: "Personal Developer Toolkit | CheatDoc.ME",
+  title: "Personal Developer Toolkit | DevMarks",
   description: "Track growth goals, learning notes, career evidence, and reusable snippets locally.",
 };
 

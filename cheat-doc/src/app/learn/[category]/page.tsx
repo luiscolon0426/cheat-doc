@@ -18,7 +18,7 @@ export async function generateMetadata({
   const { category } = await params;
   const area = getLearningArea(category);
   return {
-    title: area ? `${area.title} | CheatDoc.ME` : "Learn | CheatDoc.ME",
+    title: area ? `${area.title} | DevMarks` : "Learn | DevMarks",
     description: area?.description,
   };
 }

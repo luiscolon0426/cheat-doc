@@ -85,7 +85,7 @@ const searchItems: SearchItem[] = [
   },
   {
     href: "/changelog",
-    title: "CheatDoc Build Log",
+    title: "DevMarks Build Log",
     description: "A public record of how this engineering field guide is evolving.",
     tags: ["changelog", "build log", "updates"],
     icon: "⑂",

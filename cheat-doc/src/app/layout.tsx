@@ -2,9 +2,13 @@ import "./globals.css";
 import Header from "./components/Header";
 
 export const metadata = {
-  title: "CheatDoc.ME | Luis's Engineering Field Notes",
+  metadataBase: new URL("https://devmarks.netlify.app"),
+  title: "DevMarks | Luis's Engineering Field Notes",
   description:
     "Technical references, production lessons, and career notes collected by software engineer Luis Colon.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

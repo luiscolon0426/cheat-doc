@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, BookOpen, Hammer, HelpCircle, RefreshCw } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "What I'm Learning Now | CheatDoc.ME",
+  title: "What I'm Learning Now | DevMarks",
   description: "What Luis is currently building, studying, and exploring in software engineering.",
 };
 
@@ -12,7 +12,7 @@ const nowItems = [
     icon: Hammer,
     title: "Building",
     items: [
-      "Turning CheatDoc from a syntax reference into a personal engineering field guide",
+      "Turning DevMarks from a syntax reference into a personal engineering field guide",
       "Organizing technical notes, career lessons, and applied engineering practices",
       "Making useful knowledge easier to search, revisit, and share",
     ],
